@@ -1,0 +1,10 @@
+.upper-play-board {
+  margin: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.bullet-board {
+  width: 230px;
+  background-color: rgb(115, 115, 115);
+}
