@@ -70,3 +70,7 @@ Here are the incoming bullet no. of each round.
 3. 5 bullets + no. of all the bullets you cleared in the 2nd rd.
 4. 6 bullets + no. of all the bullets you cleared in the 3rd rd.
    ...and so on
+
+# Disclaimer
+
+This web-based game is a digital adaptation of a board game and is intended solely for educational purposes as part of a bootcamp project. It is not intended for commercial use or business purposes.
