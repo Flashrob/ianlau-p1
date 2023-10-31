@@ -10,6 +10,10 @@
 
 .game-board {
   background-color: #282c34;
-  height: 580px;
-  width: 300px;
+}
+
+.hp-bar {
+  width: auto;
+  margin: 5px;
+  background-color: #09ff00b8;
 }

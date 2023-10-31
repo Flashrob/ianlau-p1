@@ -1,0 +1,24 @@
+.lower-play-board {
+  margin: 5px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.pattern-display {
+  width: 230px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.pattern-card {
+  margin: 5px;
+  width: 90px;
+  height: 90px;
+  background-color: rgb(115, 115, 115);
+}
+
+.place-bullet-button {
+  width: 50px;
+  background-color: rgb(115, 115, 115);
+}

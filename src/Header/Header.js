@@ -4,12 +4,12 @@ import GameTitle from "./GameTitle";
 import Timer from "./Timer";
 import RoundDisplay from "./RoundDisplay";
 
-export default function Header() {
+export default function Header(props) {
   return (
     <div className="header">
-      <GameTitle />
+      <GameTitle gameMode={props.gameMode} />
       <Timer />
-      <RoundDisplay />
+      <RoundDisplay currRound={props.currRound} />
     </div>
   );
 }
