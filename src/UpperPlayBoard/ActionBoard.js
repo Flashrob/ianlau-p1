@@ -8,6 +8,7 @@ export default class ActionBoard extends React.Component {
         <div className="action-icon"></div>
         <div className="action-icon"></div>
         <div className="action-icon"></div>
+        <div className="action-icon"></div>
         <div className="energy-icon">
           Energy:
           <br />7
