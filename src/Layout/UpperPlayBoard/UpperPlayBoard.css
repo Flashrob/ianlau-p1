@@ -6,5 +6,79 @@
 
 .bullet-board {
   width: 230px;
+  height: 322px;
   background-color: rgb(115, 115, 115);
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.bullet-column {
+  align-items: center;
+  width: 20%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.red-column-bullet {
+  border: 1px solid white;
+  background-color: red;
+  color: black;
+  width: 50%;
+  aspect-ratio: 1/1;
+  border-radius: 100%;
+}
+
+.blue-column-bullet {
+  border: 1px solid white;
+  background-color: blue;
+  color: black;
+  width: 50%;
+  aspect-ratio: 1/1;
+  border-radius: 100%;
+}
+
+.green-column-bullet {
+  border: 1px solid white;
+  background-color: green;
+  color: black;
+  width: 50%;
+
+  aspect-ratio: 1/1;
+  border-radius: 100%;
+}
+.yellow-column-bullet {
+  border: 1px solid white;
+  background-color: yellow;
+  color: black;
+  width: 50%;
+  aspect-ratio: 1/1;
+  border-radius: 100%;
+}
+.pink-column-bullet {
+  border: 1px solid white;
+  background-color: pink;
+  width: 50%;
+  aspect-ratio: 1/1;
+  color: black;
+  border-radius: 100%;
+}
+
+.bullet {
+  border: 1px solid white;
+  width: 90%;
+  aspect-ratio: 1/1;
+  border-radius: 100%;
+}
+
+.action-board {
+  width: 70px;
+}
+
+.actionIcon {
+  background-color: rgb(115, 115, 115);
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
 }

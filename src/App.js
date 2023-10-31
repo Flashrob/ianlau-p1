@@ -2,7 +2,6 @@ import React from "react";
 import "./App.css";
 import Header from "./Layout/Header/Header";
 import UpperPlayBoard from "./Layout/UpperPlayBoard/UpperPlayBoard";
-import LowerPlayBoard from "./Layout/LowerPlayBoard/LowerPlayBoard";
 import genLocationInfo from "./genLocationInfo";
 
 class App extends React.Component {
@@ -16,11 +15,11 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.locationInfo);
     return (
       <div className="App">
         <div className="game-board">
           <Header />
+          <UpperPlayBoard location={this.state.locationInfo} />
         </div>
       </div>
     );
