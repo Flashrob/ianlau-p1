@@ -1,10 +1,6 @@
 import React from "react";
 
 export default class BulletBoard extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   genEachColumn = (color) => {
     const { location } = this.props;
     let column = [

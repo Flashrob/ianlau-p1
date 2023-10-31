@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
-import Header from "./Layout/Header/Header";
-import UpperPlayBoard from "./Layout/UpperPlayBoard/UpperPlayBoard";
+import Header from "./Header/Header";
+import UpperPlayBoard from "./UpperPlayBoard/UpperPlayBoard";
 import genLocationInfo from "./genLocationInfo";
 
 class App extends React.Component {
