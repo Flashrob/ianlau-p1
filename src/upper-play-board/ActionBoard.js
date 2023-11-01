@@ -1,23 +1,18 @@
 import React from "react";
 
 export default class ActionBoard extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { selected: "" };
-  }
-
   handleClick = (e) => {
-    console.log(this.state.selected);
-    if (this.state.selected !== "") {
-      this.setState({ selected: "" });
+    const { handleSelect, selected } = this.props;
+    if (selected !== "") {
+      handleSelect("");
       return;
     }
     let select = e.target.value;
-    this.setState({ selected: select });
+    handleSelect(select);
   };
 
   render() {
-    const { selected } = this.state;
+    const { selected } = this.props;
     console.log(selected);
     return (
       <div className="action-board">

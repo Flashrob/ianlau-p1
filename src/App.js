@@ -11,6 +11,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       ...DEFAULTGAMESTATE,
+      selected: "",
     };
   }
 
@@ -27,6 +28,10 @@ class App extends React.Component {
       bulletCentralPool: central,
       bulletPool: playerPool,
     });
+  };
+
+  handleSelect = (value) => {
+    this.setState({ selected: value });
   };
 
   resetGame() {
@@ -46,7 +51,11 @@ class App extends React.Component {
             currRound={this.state.currRound}
             playing={this.state.playing}
           />
-          <UpperPlayBoard location={this.state.locationInfo} />
+          <UpperPlayBoard
+            location={this.state.locationInfo}
+            selected={this.state.selected}
+            handleSelect={this.handleSelect}
+          />
           <div
             className="hp-bar"
             onClick={() =>
@@ -65,6 +74,8 @@ class App extends React.Component {
             bulletPool={this.state.bulletPool}
             handlePlaceBullet={this.handlePlaceBullet}
             hp={this.state.hp}
+            selected={this.state.selected}
+            handleSelect={this.handleSelect}
           />
         </div>
       </div>
