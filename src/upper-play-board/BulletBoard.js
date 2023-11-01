@@ -23,7 +23,10 @@ export default class BulletBoard extends React.Component {
 
   render() {
     const color = ["red", "blue", "green", "yellow", "pink"];
-    const display = color.map((column) => this.genEachColumn(column));
-    return <div className="bullet-board">{display}</div>;
+    return (
+      <div className="bullet-board">
+        {color.map((column) => this.genEachColumn(column))}
+      </div>
+    );
   }
 }
