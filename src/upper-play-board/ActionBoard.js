@@ -36,7 +36,7 @@ export default class ActionBoard extends React.Component {
           }
         >
           <img src={require("./ActionIcon/Action2.jpg")} alt="Action2" />
-          Draw
+          Move
         </button>
         <button
           className={selected === "Action3" ? "selected-icon" : "action-icon"}
@@ -48,15 +48,10 @@ export default class ActionBoard extends React.Component {
           <img src={require("./ActionIcon/Action3.jpg")} alt="Action3" />
           Move
         </button>
-        <button
-          className={selected === "Action4" ? "selected-icon" : "action-icon"}
-          value="Action4"
-          onClick={
-            selected === "Action4" || selected === "" ? this.handleClick : null
-          }
-        >
+        <button className="action-icon">
+          {/*Need to Add onClick drawCArdfunction with selected===""*/}
           <img src={require("./ActionIcon/Action4.jpg")} alt="Action4" />
-          Move
+          Draw
         </button>
         <div className="energy-icon">
           Energy:

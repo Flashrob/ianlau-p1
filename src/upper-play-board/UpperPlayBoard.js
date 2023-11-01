@@ -6,7 +6,11 @@ export default function UpperPlayBoard(props) {
   const { location, selected, handleSelect } = props;
   return (
     <div className="upper-play-board">
-      <BulletBoard location={location} />
+      <BulletBoard
+        location={location}
+        selected={selected}
+        handleSelect={handleSelect}
+      />
       <ActionBoard selected={selected} handleSelect={handleSelect} />
     </div>
   );

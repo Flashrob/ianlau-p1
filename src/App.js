@@ -5,6 +5,7 @@ import UpperPlayBoard from "./upper-play-board/UpperPlayBoard";
 import LowerPlayBoard from "./lower-play-board/LowerPlayBoard";
 import { DEFAULTROUNDSTATE, DEFAULTGAMESTATE } from "./Constant";
 import drawFromCentral from "./drawFromCentral";
+import checkBoard from "./checkBoard/checkBoard";
 
 class App extends React.Component {
   constructor(props) {
@@ -30,8 +31,9 @@ class App extends React.Component {
     });
   };
 
-  handleSelect = (value) => {
-    this.setState({ selected: value });
+  handleSelect = (select) => {
+    checkBoard(select);
+    this.setState({ selected: select });
   };
 
   resetGame() {
