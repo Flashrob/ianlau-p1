@@ -14,7 +14,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.bulletPlayerPool);
     return (
       <div className="App">
         <div className="game-board">
