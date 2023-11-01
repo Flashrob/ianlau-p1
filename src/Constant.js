@@ -1,7 +1,7 @@
 import genLocationInfo from "./genLocationInfo";
 import genCentralPool from "./genCentralPool";
 
-export const DEFAULTROUNDSATE = {
+export const DEFAULTROUNDSTATE = {
   energy: 7,
   locationInfo: genLocationInfo(),
   bulletCentralPool: genCentralPool(),
@@ -9,13 +9,13 @@ export const DEFAULTROUNDSATE = {
   playing: false,
 };
 
-export const DEFAULTGAMESATE = {
+export const DEFAULTGAMESTATE = {
   hp: 4,
   energy: 7,
   gameMode: "",
   locationInfo: genLocationInfo(),
   bulletCentralPool: genCentralPool(),
-  bulletPlayerPool: [],
+  bulletPool: [],
   erasedbullet: [],
   currRound: 0,
   patternDeck: [],

@@ -3,14 +3,38 @@ import "./App.css";
 import Header from "./header/Header";
 import UpperPlayBoard from "./upper-play-board/UpperPlayBoard";
 import LowerPlayBoard from "./lower-play-board/LowerPlayBoard";
-import { DEFAULTROUNDSATE, DEFAULTGAMESATE } from "./Constant";
+import { DEFAULTROUNDSTATE, DEFAULTGAMESTATE } from "./Constant";
+import drawFromCentral from "./drawFromCentral";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ...DEFAULTGAMESATE,
+      ...DEFAULTGAMESTATE,
     };
+  }
+
+  handlePlaceBullet = (locationInfo, bulletPool, hp) => {
+    this.setState({
+      locationInfo: locationInfo,
+      bulletPool: bulletPool,
+      hp: hp,
+    });
+  };
+
+  handleCentraltoPlayerPool = (central, playerPool) => {
+    this.setState({
+      bulletCentralPool: central,
+      bulletPool: playerPool,
+    });
+  };
+
+  resetGame() {
+    this.setState({ ...DEFAULTGAMESTATE });
+  }
+
+  passRound() {
+    this.setState({ ...DEFAULTROUNDSTATE });
   }
 
   render() {
@@ -23,8 +47,25 @@ class App extends React.Component {
             playing={this.state.playing}
           />
           <UpperPlayBoard location={this.state.locationInfo} />
-          <div className="hp-bar">{this.state.hp}</div>
-          <LowerPlayBoard patternCard={this.state.patternCardDrew} />
+          <div
+            className="hp-bar"
+            onClick={() =>
+              drawFromCentral(
+                this.state.bulletCentralPool,
+                10,
+                this.handleCentraltoPlayerPool
+              )
+            }
+          >
+            {this.state.hp}
+          </div>
+          <LowerPlayBoard
+            patternCard={this.state.patternCardDrew}
+            location={this.state.locationInfo}
+            bulletPool={this.statebulletPlayerPool}
+            handlePlaceBullet={this.handlePlaceBullet}
+            hp={this.state.hp}
+          />
         </div>
       </div>
     );

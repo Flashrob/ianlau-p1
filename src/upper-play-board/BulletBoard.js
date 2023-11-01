@@ -18,7 +18,11 @@ export default class BulletBoard extends React.Component {
         </div>
       );
     }
-    return <div className="bullet-column">{column}</div>;
+    return (
+      <div className="bullet-column" key={color + "column"}>
+        {column}
+      </div>
+    );
   };
 
   render() {

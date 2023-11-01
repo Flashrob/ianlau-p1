@@ -1,4 +1,8 @@
-export default function drawFromCentral(central, amount) {
+export default function drawFromCentral(
+  central,
+  amount,
+  handleCentraltoPlayerPool
+) {
   //shuffle the central bag first
   for (let i = 0; i < central.length; i++) {
     //randomIndex from 0 to length-1
@@ -12,6 +16,5 @@ export default function drawFromCentral(central, amount) {
   for (let i = 0; i < amount; i++) {
     playerPool.push(central.pop());
   }
-
-  return { bulletCentralPool: central, playerPool: playerPool };
+  handleCentraltoPlayerPool(central, playerPool);
 }
