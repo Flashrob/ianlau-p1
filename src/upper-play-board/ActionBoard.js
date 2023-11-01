@@ -7,6 +7,7 @@ export default class ActionBoard extends React.Component {
       handleSelect("");
       return;
     }
+    console.log(e.target.value);
     let select = e.target.value;
     handleSelect(select);
   };
@@ -18,40 +19,40 @@ export default class ActionBoard extends React.Component {
       <div className="action-board">
         Action:
         <button
-          className={selected === "1" ? "selected-icon" : "action-icon"}
-          value="1"
+          className={selected === "Action1" ? "selected-icon" : "action-icon"}
+          value="Action1"
           onClick={
-            selected === "1" || selected === "" ? this.handleClick : null
+            selected === "Action1" || selected === "" ? this.handleClick : null
           }
         >
           <img src={require("./ActionIcon/Action1.jpg")} alt="Action1" />
           Move
         </button>
         <button
-          className={selected === "2" ? "selected-icon" : "action-icon"}
-          value="2"
+          className={selected === "Action2" ? "selected-icon" : "action-icon"}
+          value="Action2"
           onClick={
-            selected === "2" || selected === "" ? this.handleClick : null
+            selected === "Action2" || selected === "" ? this.handleClick : null
           }
         >
           <img src={require("./ActionIcon/Action2.jpg")} alt="Action2" />
           Draw
         </button>
         <button
-          className={selected === "3" ? "selected-icon" : "action-icon"}
-          value="3"
+          className={selected === "Action3" ? "selected-icon" : "action-icon"}
+          value="Action3"
           onClick={
-            selected === "3" || selected === "" ? this.handleClick : null
+            selected === "Action3" || selected === "" ? this.handleClick : null
           }
         >
           <img src={require("./ActionIcon/Action3.jpg")} alt="Action3" />
           Move
         </button>
         <button
-          className={selected === "4" ? "selected-icon" : "action-icon"}
-          value="4"
+          className={selected === "Action4" ? "selected-icon" : "action-icon"}
+          value="Action4"
           onClick={
-            selected === "4" || selected === "" ? this.handleClick : null
+            selected === "Action4" || selected === "" ? this.handleClick : null
           }
         >
           <img src={require("./ActionIcon/Action4.jpg")} alt="Action4" />
