@@ -5,14 +5,16 @@ import UpperPlayBoard from "./upper-play-board/UpperPlayBoard";
 import LowerPlayBoard from "./lower-play-board/LowerPlayBoard";
 import { DEFAULTROUNDSTATE, DEFAULTGAMESTATE } from "./Constant";
 import drawFromCentral from "./drawFromCentral";
-import checkBoard from "./checkBoard/checkBoard";
+import check from "./checkBoard/check.js";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       ...DEFAULTGAMESTATE,
-      selected: "",
+      selectBullet: "",
+      chosenAction: "",
+      availableSpace: {},
     };
   }
 
@@ -31,9 +33,18 @@ class App extends React.Component {
     });
   };
 
-  handleSelect = (select) => {
-    checkBoard(select);
-    this.setState({ selected: select });
+  handleSelectAction = (chosenAction) => {
+    if (chosenAction !== "") {
+      check(chosenAction, this.state.locationInfo, this.chooseAction);
+    }
+    this.setState({
+      chosenAction: chosenAction,
+      ...(chosenAction === "" && { selectBullet: "" }),
+    });
+  };
+
+  handleSelectBullet = (selectBullet) => {
+    this.setState({ selectBullet: selectBullet });
   };
 
   resetGame() {
@@ -55,8 +66,9 @@ class App extends React.Component {
           />
           <UpperPlayBoard
             location={this.state.locationInfo}
-            selected={this.state.selected}
-            handleSelect={this.handleSelect}
+            chosenAction={this.state.chosenAction}
+            handleSelectAction={this.handleSelectAction}
+            handleSelectBullet={this.handleSelectBullet}
           />
           <div
             className="hp-bar"
@@ -76,8 +88,7 @@ class App extends React.Component {
             bulletPool={this.state.bulletPool}
             handlePlaceBullet={this.handlePlaceBullet}
             hp={this.state.hp}
-            selected={this.state.selected}
-            handleSelect={this.handleSelect}
+            chosenAction={this.state.chosenAction}
           />
         </div>
       </div>

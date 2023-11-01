@@ -3,7 +3,7 @@ import PatternDisplay from "./PatternDisplay";
 import PlaceBulletButton from "./PlaceBulletButton";
 
 export default function LowerPlayBoard(props) {
-  let { location, bulletPool, handlePlaceBullet, hp } = props;
+  let { location, bulletPool, handlePlaceBullet, hp, chosenAction } = props;
   return (
     <div className="lower-play-board">
       <PatternDisplay patternCard={props.patternCard} />
@@ -12,6 +12,7 @@ export default function LowerPlayBoard(props) {
         bulletPool={bulletPool}
         handlePlaceBullet={handlePlaceBullet}
         hp={hp}
+        chosenAction={chosenAction}
       />
     </div>
   );
