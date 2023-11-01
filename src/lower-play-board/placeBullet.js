@@ -14,10 +14,14 @@ export default function placeBullet(
   let color = bullet.color;
   let rank = bullet.rank;
   const column = Object.keys(location).filter((key) => key.includes(color));
-
   for (let place of column) {
-    !column[place] && rank--;
-    rank === 0 && (location[place] = bullet);
+    if (location[place] === "") {
+      rank--;
+    }
+    if (rank === 0) {
+      location[place] = bullet;
+      break;
+    }
   }
 
   rank !== 0 && (hp -= 1);

@@ -62,7 +62,7 @@ class App extends React.Component {
           <LowerPlayBoard
             patternCard={this.state.patternCardDrew}
             location={this.state.locationInfo}
-            bulletPool={this.statebulletPlayerPool}
+            bulletPool={this.state.bulletPool}
             handlePlaceBullet={this.handlePlaceBullet}
             hp={this.state.hp}
           />

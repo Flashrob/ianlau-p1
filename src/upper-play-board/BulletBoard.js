@@ -12,9 +12,17 @@ export default class BulletBoard extends React.Component {
       place.includes(color)
     );
     for (const place of colorFilter) {
+      let bullet = "";
+      if (location[place] !== "") {
+        bullet = location[place].name;
+      }
       column.push(
-        <div className="bullet" key={place}>
-          {location.place}
+        <div
+          className="bullet"
+          key={place}
+          style={{ backgroundColor: location[place].color }}
+        >
+          {bullet}
         </div>
       );
     }
