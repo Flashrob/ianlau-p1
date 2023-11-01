@@ -17,3 +17,11 @@
   margin: 5px;
   background-color: #09ff00b8;
 }
+
+img {
+  width: 100%;
+}
+
+button {
+  padding: 0px;
+}

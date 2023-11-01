@@ -87,6 +87,16 @@
   width: 50px;
   height: 50px;
   border-radius: 5%;
+  font-size: small;
+}
+
+.selected-icon {
+  background-color: rgb(115, 115, 115);
+  border: 2px solid green;
+  width: 50px;
+  height: 50px;
+  border-radius: 5%;
+  font-size: small;
 }
 
 .energy-icon {
