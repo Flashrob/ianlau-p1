@@ -3,7 +3,7 @@ import React from "react";
 export default class ActionBoard extends React.Component {
   handleClick = (e) => {
     const { handleSelectAction, chosenAction } = this.props;
-    let action = e.target.value;
+    let action = e.currentTarget.value;
     e.target.value === chosenAction && (action = "");
     handleSelectAction(action);
   };

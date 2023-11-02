@@ -5,16 +5,13 @@ import UpperPlayBoard from "./upper-play-board/UpperPlayBoard";
 import LowerPlayBoard from "./lower-play-board/LowerPlayBoard";
 import { DEFAULTROUNDSTATE, DEFAULTGAMESTATE } from "./Constant";
 import drawFromCentral from "./drawFromCentral";
-import check from "./checkBoard/check.js";
+import check from "./check/check.js";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       ...DEFAULTGAMESTATE,
-      selectBullet: "",
-      chosenAction: "",
-      availableSpace: {},
     };
   }
 
@@ -34,18 +31,25 @@ class App extends React.Component {
   };
 
   handleSelectAction = (chosenAction) => {
-    if (chosenAction !== "") {
-      check(chosenAction, this.state.locationInfo, this.chooseAction);
-    }
     this.setState({
       chosenAction: chosenAction,
-      ...(chosenAction === "" && { selectBullet: "" }),
+      ...(chosenAction === "" && { selectBullet: "", availableSpace: [] }),
     });
   };
 
   handleSelectBullet = (selectBullet) => {
-    this.setState({ selectBullet: selectBullet });
+    let availableSpace = check(
+      this.state.chosenAction,
+      this.state.locationInfo,
+      selectBullet
+    );
+    this.setState({
+      selectBullet: selectBullet,
+      availableSpace: availableSpace,
+    });
   };
+
+  handlePerformAction = (place) => {};
 
   resetGame() {
     this.setState({ ...DEFAULTGAMESTATE });
@@ -56,11 +60,11 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <div className="App">
         <div className="game-board">
           <Header
-            gameMode={this.state.gameMode}
             currRound={this.state.currRound}
             playing={this.state.playing}
           />
@@ -69,6 +73,8 @@ class App extends React.Component {
             chosenAction={this.state.chosenAction}
             handleSelectAction={this.handleSelectAction}
             handleSelectBullet={this.handleSelectBullet}
+            availableSpace={this.state.availableSpace}
+            handlePerformAction={this.handlePerformAction}
           />
           <div
             className="hp-bar"
