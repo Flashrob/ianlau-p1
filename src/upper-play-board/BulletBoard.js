@@ -3,7 +3,7 @@ import React from "react";
 export default class BulletBoard extends React.Component {
   genEachColumn = (color) => {
     const {
-      location,
+      locationInfo,
       chosenAction,
       handleSelectBullet,
       availableSpace,
@@ -14,25 +14,25 @@ export default class BulletBoard extends React.Component {
         ▼
       </div>,
     ];
-    const colorFilter = Object.keys(location).filter((place) =>
+    const colorFilter = Object.keys(locationInfo).filter((place) =>
       place.includes(color)
     );
     for (const place of colorFilter) {
       let available = availableSpace.includes(place);
       let bullet = "";
-      if (location[place] !== "") {
-        bullet = location[place].name;
+      if (locationInfo[place] !== "") {
+        bullet = locationInfo[place].name;
       }
       column.push(
         <div
           className="bullet"
           key={place}
           style={{
-            backgroundColor: location[place].color,
+            backgroundColor: locationInfo[place].color,
             ...(available && { border: "2px solid green" }),
           }}
           onClick={
-            bullet && available
+            available
               ? () => handlePerformAction(place)
               : bullet && chosenAction
               ? () => handleSelectBullet(place)

@@ -6,6 +6,7 @@ import LowerPlayBoard from "./lower-play-board/LowerPlayBoard";
 import { DEFAULTROUNDSTATE, DEFAULTGAMESTATE } from "./Constant";
 import drawFromCentral from "./drawFromCentral";
 import check from "./check/check.js";
+import perform from "./perform/perform";
 
 class App extends React.Component {
   constructor(props) {
@@ -49,7 +50,23 @@ class App extends React.Component {
     });
   };
 
-  handlePerformAction = (place) => {};
+  handlePerformAction = (selectPlace) => {
+    const updated = perform(
+      this.state.chosenAction,
+      this.state.locationInfo,
+      this.state.selectBullet,
+      selectPlace,
+      this.state.energy
+    );
+    const { updatedLocation, energy } = updated;
+    this.setState({
+      chosenAction: "",
+      selectBullet: "",
+      availableSpace: [],
+      locationInfo: updatedLocation,
+      energy: energy,
+    });
+  };
 
   resetGame() {
     this.setState({ ...DEFAULTGAMESTATE });
@@ -60,7 +77,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className="App">
         <div className="game-board">
@@ -69,12 +85,13 @@ class App extends React.Component {
             playing={this.state.playing}
           />
           <UpperPlayBoard
-            location={this.state.locationInfo}
+            locationInfo={this.state.locationInfo}
             chosenAction={this.state.chosenAction}
             handleSelectAction={this.handleSelectAction}
             handleSelectBullet={this.handleSelectBullet}
             availableSpace={this.state.availableSpace}
             handlePerformAction={this.handlePerformAction}
+            energy={this.state.energy}
           />
           <div
             className="hp-bar"
@@ -90,7 +107,7 @@ class App extends React.Component {
           </div>
           <LowerPlayBoard
             patternCard={this.state.patternCardDrew}
-            location={this.state.locationInfo}
+            locationInfo={this.state.locationInfo}
             bulletPool={this.state.bulletPool}
             handlePlaceBullet={this.handlePlaceBullet}
             hp={this.state.hp}

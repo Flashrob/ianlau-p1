@@ -2,14 +2,16 @@ import React from "react";
 
 export default class ActionBoard extends React.Component {
   handleClick = (e) => {
-    const { handleSelectAction, chosenAction } = this.props;
+    const { handleSelectAction, chosenAction, energy } = this.props;
     let action = e.currentTarget.value;
-    e.target.value === chosenAction && (action = "");
+    if (e.target.value === chosenAction || energy < Number(action.slice(-1))) {
+      action = "";
+    }
     handleSelectAction(action);
   };
 
   render() {
-    const { chosenAction } = this.props;
+    const { chosenAction, energy } = this.props;
     return (
       <div className="action-board">
         Action:
@@ -62,7 +64,8 @@ export default class ActionBoard extends React.Component {
         </button>
         <div className="energy-icon">
           Energy:
-          <br />7
+          <br />
+          {energy}
         </div>
       </div>
     );
