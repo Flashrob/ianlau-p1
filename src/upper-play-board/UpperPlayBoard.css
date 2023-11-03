@@ -66,7 +66,7 @@
 }
 
 .bullet {
-  border: 1px solid white;
+  border: 2px solid white;
   width: 90%;
   aspect-ratio: 1/1;
   border-radius: 100%;
@@ -90,6 +90,13 @@
   font-size: small;
 }
 
+.energy-icon {
+  background-color: rgb(115, 115, 115);
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+}
+
 .selected-icon {
   background-color: rgb(115, 115, 115);
   border: 2px solid green;
@@ -99,9 +106,10 @@
   font-size: small;
 }
 
-.energy-icon {
-  background-color: rgb(115, 115, 115);
-  width: 50px;
-  height: 50px;
+.available-space {
+  border: 5px solid green;
+  width: 90%;
+  aspect-ratio: 1/1;
   border-radius: 100%;
+  color: black;
 }

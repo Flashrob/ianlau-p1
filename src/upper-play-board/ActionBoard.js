@@ -2,30 +2,30 @@ import React from "react";
 
 export default class ActionBoard extends React.Component {
   handleClick = (e) => {
-    const { handleSelectAction, chosenAction, energy } = this.props;
+    const { handleSelectAction, selectedElement, energy } = this.props;
     let action = e.currentTarget.value;
     const notEnoughEnergy =
       (action === "Action1" && energy < 1) ||
       ((action === "Action2" || action === "Action3" || action === "Action4") &&
         energy < 2);
-    if (e.target.value === chosenAction || notEnoughEnergy) {
+    if (action === selectedElement || notEnoughEnergy) {
       action = "";
     }
     handleSelectAction(action);
   };
 
   render() {
-    const { chosenAction, energy } = this.props;
+    const { selectedElement, energy } = this.props;
     return (
       <div className="action-board">
         Action:
         <button
           className={
-            chosenAction === "Action1" ? "selected-icon" : "action-icon"
+            selectedElement === "Action1" ? "selected-icon" : "action-icon"
           }
           value="Action1"
           onClick={
-            chosenAction === "Action1" || chosenAction === ""
+            selectedElement === "Action1" || selectedElement === ""
               ? this.handleClick
               : null
           }
@@ -35,11 +35,11 @@ export default class ActionBoard extends React.Component {
         </button>
         <button
           className={
-            chosenAction === "Action2" ? "selected-icon" : "action-icon"
+            selectedElement === "Action2" ? "selected-icon" : "action-icon"
           }
           value="Action2"
           onClick={
-            chosenAction === "Action2" || chosenAction === ""
+            selectedElement === "Action2" || selectedElement === ""
               ? this.handleClick
               : null
           }
@@ -49,11 +49,11 @@ export default class ActionBoard extends React.Component {
         </button>
         <button
           className={
-            chosenAction === "Action3" ? "selected-icon" : "action-icon"
+            selectedElement === "Action3" ? "selected-icon" : "action-icon"
           }
           value="Action3"
           onClick={
-            chosenAction === "Action3" || chosenAction === ""
+            selectedElement === "Action3" || selectedElement === ""
               ? this.handleClick
               : null
           }
@@ -64,7 +64,7 @@ export default class ActionBoard extends React.Component {
         <button
           className="action-icon"
           value="Action4"
-          onClick={chosenAction === "" ? this.handleClick : null}
+          onClick={selectedElement === "" ? this.handleClick : null}
         >
           <img src={require("./ActionIcon/Action4.jpg")} alt="Action4" />
           Draw

@@ -1,10 +1,31 @@
-export default function PatternDisplay(props) {
-  const patternCards = props.patternCard;
-  const patternCardsDisplay = patternCards.map((card) => (
-    <button className="pattern-card" key={card}>
-      <img src={require(`./PatternIcon/${card}.jpg`)} alt={card} />
-    </button>
-  ));
+import React from "react";
 
-  return <div className="pattern-display">{patternCardsDisplay}</div>;
+export default class PatternDisplay extends React.Component {
+  handleClick = (e) => {
+    const { handleSelectPattern, selectedElement } = this.props;
+    let pattern = e.currentTarget.value;
+    if (pattern === selectedElement) {
+      pattern = "";
+    }
+    handleSelectPattern(pattern);
+  };
+  render() {
+    const { patternCard, selectedElement } = this.props;
+    const patternCardsDisplay = patternCard.map((card) => (
+      <button
+        className={selectedElement === card ? "selected-card" : "pattern-card"}
+        key={card}
+        value={card}
+        onClick={
+          selectedElement === card || selectedElement === ""
+            ? this.handleClick
+            : null
+        }
+      >
+        <img src={require(`./PatternIcon/${card}.jpg`)} alt={card} />
+      </button>
+    ));
+
+    return <div className="pattern-display">{patternCardsDisplay}</div>;
+  }
 }

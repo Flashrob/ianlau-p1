@@ -5,9 +5,11 @@ import UpperPlayBoard from "./upper-play-board/UpperPlayBoard";
 import LowerPlayBoard from "./lower-play-board/LowerPlayBoard";
 import { DEFAULTROUNDSTATE, DEFAULTGAMESTATE } from "./Constant";
 import drawFromCentral from "./drawFromCentral";
-import check from "./check/check.js";
-import perform from "./perform/perform";
+import checkAction from "./check/checkActionList";
+import checkPattern from "./check/checkPatternList";
+import performAction from "./perform/performAction";
 import drawPattern from "./drawPattern";
+import performPatternList from "./perform/performPatternList";
 
 class App extends React.Component {
   constructor(props) {
@@ -32,26 +34,26 @@ class App extends React.Component {
     });
   };
 
-  handleSelectAction = (chosenAction) => {
-    if (chosenAction === "Action4") {
+  handleSelectAction = (action) => {
+    if (action === "Action4") {
       drawPattern(
         this.state.patternDeck,
         this.state.patternCard,
         1,
         this.handleDrawPattern
       );
-      chosenAction = "";
+      action = "";
       this.setState({ energy: this.state.energy - 2 });
     }
     this.setState({
-      chosenAction: chosenAction,
-      ...(chosenAction === "" && { selectBullet: "", availableSpace: [] }),
+      selectedElement: action,
+      ...(action === "" && { selectBullet: "", availableSpace: [] }),
     });
   };
 
   handleSelectBullet = (selectBullet) => {
-    let availableSpace = check(
-      this.state.chosenAction,
+    let availableSpace = checkAction(
+      this.state.selectedElement,
       this.state.locationInfo,
       selectBullet
     );
@@ -61,9 +63,18 @@ class App extends React.Component {
     });
   };
 
+  handleSelectPattern = (pattern) => {
+    let availableSpace = checkPattern(pattern, this.state.locationInfo);
+    this.setState({
+      selectedElement: pattern,
+      availableSpace: availableSpace,
+      ...(pattern === "" && { availableSpace: [] }),
+    });
+  };
+
   handlePerformAction = (selectPlace) => {
-    const updated = perform(
-      this.state.chosenAction,
+    const updated = performAction(
+      this.state.selectedElement,
       this.state.locationInfo,
       this.state.selectBullet,
       selectPlace,
@@ -71,11 +82,30 @@ class App extends React.Component {
     );
     const { updatedLocation, energy } = updated;
     this.setState({
-      chosenAction: "",
+      selectedElement: "",
       selectBullet: "",
       availableSpace: [],
       locationInfo: updatedLocation,
       energy: energy,
+    });
+  };
+
+  handlePerformPattern = (selectPlace) => {
+    const updated = performPatternList(
+      this.state.selectedElement,
+      this.state.locationInfo,
+      selectPlace
+    );
+    const { erased, energyGain, locationInfo } = updated;
+    this.setState({
+      locationInfo: locationInfo,
+      erasedBullet: this.state.erasedBullet + erased,
+      energy: this.state.energy + energyGain,
+      selectedElement: "",
+      availableSpace: "",
+      patternCard: this.state.patternCard.filter(
+        (pattern) => pattern !== this.state.selectedElement
+      ),
     });
   };
 
@@ -106,6 +136,7 @@ class App extends React.Component {
       4,
       this.handleDrawPattern
     );
+    this.setState({ playing: true });
   };
 
   render() {
@@ -118,12 +149,13 @@ class App extends React.Component {
           />
           <UpperPlayBoard
             locationInfo={this.state.locationInfo}
-            chosenAction={this.state.chosenAction}
+            selectedElement={this.state.selectedElement}
             handleSelectAction={this.handleSelectAction}
             handleSelectBullet={this.handleSelectBullet}
             availableSpace={this.state.availableSpace}
             handlePerformAction={this.handlePerformAction}
             energy={this.state.energy}
+            handlePerformPattern={this.handlePerformPattern}
           />
           <div className="hp-bar" onClick={this.test}>
             {this.state.hp}
@@ -134,7 +166,8 @@ class App extends React.Component {
             bulletPool={this.state.bulletPool}
             handlePlaceBullet={this.handlePlaceBullet}
             hp={this.state.hp}
-            chosenAction={this.state.chosenAction}
+            selectedElement={this.state.selectedElement}
+            handleSelectPattern={this.handleSelectPattern}
           />
         </div>
       </div>

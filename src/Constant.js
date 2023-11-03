@@ -6,10 +6,10 @@ export const DEFAULTROUNDSTATE = {
   energy: 7,
   locationInfo: genLocationInfo(),
   bulletCentralPool: genCentralPool(),
-  erasedbullet: [],
+  erasedBullet: 0,
   playing: false,
   selectBullet: "",
-  chosenAction: "",
+  selectedElement: "",
   availableSpace: [],
 };
 
@@ -19,12 +19,12 @@ export const DEFAULTGAMESTATE = {
   locationInfo: genLocationInfo(),
   bulletCentralPool: genCentralPool(),
   bulletPool: [],
-  erasedbullet: [],
+  erasedBullet: 0,
   currRound: 0,
   patternDeck: genPatternDeck([]),
   patternCard: [],
   playing: false,
   selectBullet: "",
-  chosenAction: "",
+  selectedElement: "",
   availableSpace: [],
 };

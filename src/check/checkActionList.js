@@ -1,6 +1,6 @@
 import { checkAction1, checkAction2, checkAction3 } from "./checkAction";
 
-export default function check(action, locationInfo, selectBullet) {
+export default function checkActionList(action, locationInfo, selectBullet) {
   if (action === "Action1") {
     return checkAction1(locationInfo, selectBullet);
   }

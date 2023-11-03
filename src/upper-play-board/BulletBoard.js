@@ -4,10 +4,11 @@ export default class BulletBoard extends React.Component {
   genEachColumn = (color) => {
     const {
       locationInfo,
-      chosenAction,
+      selectedElement,
       handleSelectBullet,
       availableSpace,
       handlePerformAction,
+      handlePerformPattern,
     } = this.props;
     let column = [
       <div className={`${color}-column-bullet`} key={color}>
@@ -25,16 +26,17 @@ export default class BulletBoard extends React.Component {
       }
       column.push(
         <div
-          className="bullet"
+          className={available ? "available-space" : "bullet"}
           key={place}
           style={{
             backgroundColor: locationInfo[place].color,
-            ...(available && { border: "2px solid green" }),
           }}
           onClick={
-            available
+            available && selectedElement.slice(0, -1) === "pattern"
+              ? () => handlePerformPattern(place)
+              : available && selectedElement.slice(0, -1) === "Action"
               ? () => handlePerformAction(place)
-              : bullet && chosenAction
+              : bullet && selectedElement.slice(0, -1) === "Action"
               ? () => handleSelectBullet(place)
               : null
           }
