@@ -1,5 +1,6 @@
 import genLocationInfo from "./genLocationInfo";
 import genCentralPool from "./genCentralPool";
+import genPatternDeck from "./genPatternDeck";
 
 export const DEFAULTROUNDSTATE = {
   energy: 7,
@@ -7,7 +8,6 @@ export const DEFAULTROUNDSTATE = {
   bulletCentralPool: genCentralPool(),
   erasedbullet: [],
   playing: false,
-
   selectBullet: "",
   chosenAction: "",
   availableSpace: [],
@@ -21,7 +21,7 @@ export const DEFAULTGAMESTATE = {
   bulletPool: [],
   erasedbullet: [],
   currRound: 0,
-  patternDeck: [],
+  patternDeck: genPatternDeck([]),
   patternCardDrew: [],
   playing: false,
   selectBullet: "",
