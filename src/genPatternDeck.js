@@ -12,6 +12,5 @@ export default function genPatternDeck(exception) {
     deck[i] = deck[randomIndex];
     deck[randomIndex] = temp;
   }
-  console.log(deck);
   return deck;
 }

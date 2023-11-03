@@ -22,7 +22,7 @@ export const DEFAULTGAMESTATE = {
   erasedbullet: [],
   currRound: 0,
   patternDeck: genPatternDeck([]),
-  patternCardDrew: [],
+  patternCard: [],
   playing: false,
   selectBullet: "",
   chosenAction: "",

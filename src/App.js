@@ -7,6 +7,7 @@ import { DEFAULTROUNDSTATE, DEFAULTGAMESTATE } from "./Constant";
 import drawFromCentral from "./drawFromCentral";
 import check from "./check/check.js";
 import perform from "./perform/perform";
+import drawPattern from "./drawPattern";
 
 class App extends React.Component {
   constructor(props) {
@@ -68,13 +69,29 @@ class App extends React.Component {
     });
   };
 
-  resetGame() {
-    this.setState({ ...DEFAULTGAMESTATE });
-  }
+  handleDrawPattern = (deck, card) => {
+    this.setState({
+      patternDeck: deck,
+      patternCard: card,
+    });
+  };
 
-  passRound() {
+  resetGame = () => {
+    this.setState({ ...DEFAULTGAMESTATE });
+  };
+
+  passRound = () => {
     this.setState({ ...DEFAULTROUNDSTATE });
-  }
+  };
+
+  test = () => {
+    drawFromCentral(
+      this.state.bulletCentralPool,
+      10,
+      this.handleCentraltoPlayerPool
+    );
+    drawPattern(this.state.patternDeck, 4, this.handleDrawPattern);
+  };
 
   render() {
     return (
@@ -93,20 +110,11 @@ class App extends React.Component {
             handlePerformAction={this.handlePerformAction}
             energy={this.state.energy}
           />
-          <div
-            className="hp-bar"
-            onClick={() =>
-              drawFromCentral(
-                this.state.bulletCentralPool,
-                10,
-                this.handleCentraltoPlayerPool
-              )
-            }
-          >
+          <div className="hp-bar" onClick={this.test}>
             {this.state.hp}
           </div>
           <LowerPlayBoard
-            patternCard={this.state.patternCardDrew}
+            patternCard={this.state.patternCard}
             locationInfo={this.state.locationInfo}
             bulletPool={this.state.bulletPool}
             handlePlaceBullet={this.handlePlaceBullet}
