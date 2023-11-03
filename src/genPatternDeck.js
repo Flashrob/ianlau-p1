@@ -6,5 +6,12 @@ export default function genPatternDeck(exception) {
       deck.push(`pattern${i}`);
     }
   }
+  for (let i = 0; i < deck.length; i++) {
+    let randomIndex = Math.floor(Math.random() * deck.length);
+    let temp = deck[i];
+    deck[i] = deck[randomIndex];
+    deck[randomIndex] = temp;
+  }
+  console.log(deck);
   return deck;
 }

@@ -17,5 +17,14 @@ export default function genCentralPool() {
     bag.push({ name: "4", rank: 4, color: c });
     bag.push({ name: 4 + "⭐", rank: 4, color: c, star: true });
   }
+
+  //shuffle the central bag first
+  for (let i = 0; i < bag.length; i++) {
+    //randomIndex from 0 to length-1
+    let randomIndex = Math.floor(Math.random() * bag.length);
+    let temp = bag[i];
+    bag[i] = bag[randomIndex];
+    bag[randomIndex] = temp;
+  }
   return bag;
 }
