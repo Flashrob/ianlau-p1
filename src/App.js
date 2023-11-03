@@ -33,6 +33,16 @@ class App extends React.Component {
   };
 
   handleSelectAction = (chosenAction) => {
+    if (chosenAction === "Action4") {
+      drawPattern(
+        this.state.patternDeck,
+        this.state.patternCard,
+        1,
+        this.handleDrawPattern
+      );
+      chosenAction = "";
+      this.setState({ energy: this.state.energy - 2 });
+    }
     this.setState({
       chosenAction: chosenAction,
       ...(chosenAction === "" && { selectBullet: "", availableSpace: [] }),
@@ -90,7 +100,12 @@ class App extends React.Component {
       10,
       this.handleCentraltoPlayerPool
     );
-    drawPattern(this.state.patternDeck, 4, this.handleDrawPattern);
+    drawPattern(
+      this.state.patternDeck,
+      this.state.patternCard,
+      4,
+      this.handleDrawPattern
+    );
   };
 
   render() {

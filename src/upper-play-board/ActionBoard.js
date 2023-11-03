@@ -4,7 +4,11 @@ export default class ActionBoard extends React.Component {
   handleClick = (e) => {
     const { handleSelectAction, chosenAction, energy } = this.props;
     let action = e.currentTarget.value;
-    if (e.target.value === chosenAction || energy < Number(action.slice(-1))) {
+    const notEnoughEnergy =
+      (action === "Action1" && energy < 1) ||
+      ((action === "Action2" || action === "Action3" || action === "Action4") &&
+        energy < 2);
+    if (e.target.value === chosenAction || notEnoughEnergy) {
       action = "";
     }
     handleSelectAction(action);
@@ -57,8 +61,11 @@ export default class ActionBoard extends React.Component {
           <img src={require("./ActionIcon/Action3.jpg")} alt="Action3" />
           Move
         </button>
-        <button className="action-icon">
-          {/*Need to Add onClick drawCArdfunction with chosenAction===""*/}
+        <button
+          className="action-icon"
+          value="Action4"
+          onClick={chosenAction === "" ? this.handleClick : null}
+        >
           <img src={require("./ActionIcon/Action4.jpg")} alt="Action4" />
           Draw
         </button>
