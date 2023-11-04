@@ -146,8 +146,6 @@ class App extends React.Component {
   };
 
   render() {
-    console.log(this.state.selectedElement);
-    console.log(this.state.availableSpace);
     return (
       <div className="App">
         <div className="game-board">

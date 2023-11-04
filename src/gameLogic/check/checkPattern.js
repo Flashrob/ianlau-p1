@@ -17,7 +17,26 @@ export function checkPattern0(locationInfo) {
   return availableSpace;
 }
 
-export function checkPattern1(locationInfo) {}
+export function checkPattern1(locationInfo) {
+  const availableSpace = [];
+  const color = ["red", "blue", "green", "yellow", "pink"];
+  for (let c = 1; c <= 3; c++) {
+    for (let i = 0; i <= 4; i++) {
+      if (
+        locationInfo[color[c - 1] + i] &&
+        locationInfo[color[c - 1] + i].rank ===
+          locationInfo[color[c + 1] + i].rank &&
+        (locationInfo[color[c - 1] + (i + 1)] ||
+          locationInfo[color[c] + (i + 1)] ||
+          locationInfo[color[c + 1] + (i + 1)])
+      ) {
+        availableSpace.push(color[c] + i);
+      }
+    }
+  }
+  return availableSpace;
+}
+
 export function checkPattern2(locationInfo) {}
 export function checkPattern3(locationInfo) {}
 export function checkPattern4(locationInfo) {}
