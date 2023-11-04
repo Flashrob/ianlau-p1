@@ -51,7 +51,6 @@ export function performPattern2(locationInfo, selectPlace) {
   return { erased, energyGain, locationInfo };
 }
 export function performPattern3(locationInfo, selectPlace) {
-  console.log(selectPlace);
   let erased = 0,
     energyGain = 0;
   const color = ["red", "blue", "green", "yellow", "pink"];
@@ -60,7 +59,6 @@ export function performPattern3(locationInfo, selectPlace) {
   let row = selectPlace.slice(-1);
   for (let c = columnIndex + 1; c <= columnIndex + 3; c++) {
     let target = locationInfo[color[c] + row];
-    console.log(color[c], row);
     if (target) {
       target.star && (energyGain += 1);
       erased += 1;
@@ -70,7 +68,28 @@ export function performPattern3(locationInfo, selectPlace) {
 
   return { erased, energyGain, locationInfo };
 }
-export function performPattern4(locationInfo, selectPlace) {}
+export function performPattern4(locationInfo, selectPlace) {
+  let erased = 0,
+    energyGain = 0;
+  let row = selectPlace.slice(-1);
+  if (locationInfo["blue" + row]) {
+    locationInfo["blue" + row].star && (energyGain += 1);
+    erased += 1;
+    locationInfo["blue" + row] = "";
+  }
+  if (locationInfo["yellow" + row]) {
+    locationInfo["yellow" + row].star && (energyGain += 1);
+    erased += 1;
+    locationInfo["yellow" + row] = "";
+  }
+  if (locationInfo["green" + row]) {
+    locationInfo["green" + row].star && (energyGain += 1);
+    erased += 1;
+    locationInfo["green" + row] = "";
+  }
+
+  return { erased, energyGain, locationInfo };
+}
 export function performPattern5(locationInfo, selectPlace) {}
 export function performPattern6(locationInfo, selectPlace) {}
 export function performPattern7(locationInfo, selectPlace) {}
