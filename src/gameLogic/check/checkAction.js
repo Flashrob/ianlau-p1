@@ -7,13 +7,14 @@ export function checkAction1(locationInfo, selectBullet, energy) {
 
   const checkForSpace = function (c, i, ignore) {
     if (
-      Math.abs(originalColumn - c) + Math.abs(originalRow - i) > energy ||
+      Math.abs(originalColumn - c) + Math.abs(originalRow - i) + 1 > energy ||
       c < 0 ||
       c > 4 ||
       i > 5
     ) {
       return;
     }
+    console.log(Math.abs(originalColumn - c), Math.abs(originalRow - i));
     let down = color[c] + (i + 1);
     if (locationInfo[down] === "") {
       availableSpace.push(down);

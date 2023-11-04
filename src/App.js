@@ -90,7 +90,6 @@ class App extends React.Component {
       selectPlace
     );
     const { updatedLocation, cost } = updated;
-    console.log(cost);
     this.setState({
       selectedElement: "",
       selectBullet: "",
