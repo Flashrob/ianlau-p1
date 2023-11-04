@@ -115,8 +115,8 @@ export function checkPattern6(locationInfo) {
         locationInfo[color[c] + (i + 1)] &&
         locationInfo[color[c] + (i - 1)] &&
         (locationInfo[color[c - 1] + (i - 1)] ||
-          locationInfo[color[c - 2] + i] ||
-          locationInfo[color[c - 3] + (i + 1)])
+          locationInfo[color[c - 1] + i] ||
+          locationInfo[color[c - 1] + (i + 1)])
       ) {
         availableSpace.push(color[c] + i);
       }

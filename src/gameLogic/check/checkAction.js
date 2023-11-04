@@ -14,7 +14,6 @@ export function checkAction1(locationInfo, selectBullet, energy) {
     ) {
       return;
     }
-    console.log(Math.abs(originalColumn - c), Math.abs(originalRow - i));
     let down = color[c] + (i + 1);
     if (locationInfo[down] === "") {
       availableSpace.push(down);
