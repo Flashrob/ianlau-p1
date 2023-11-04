@@ -12,7 +12,6 @@ export default class MainMenu extends React.Component {
         </button>
       </div>
     );
-
     return this.props.playing ? "" : mainMenu;
   }
 }

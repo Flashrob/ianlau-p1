@@ -3,7 +3,13 @@ export function checkPattern0(locationInfo) {
   const color = ["red", "blue", "green", "yellow", "pink"];
   for (let c of color) {
     for (let i = 1; i < 5; i++) {
-      if (locationInfo[c + (i - 1)].color === "yellow" && locationInfo[c + i]) {
+      if (
+        locationInfo[c + (i - 1)].color === "yellow" &&
+        locationInfo[c + i] &&
+        (locationInfo[c + (i + 1)] ||
+          locationInfo[c + (i + 2)] ||
+          locationInfo[c + (i + 3)])
+      ) {
         availableSpace.push(c + i);
       }
     }

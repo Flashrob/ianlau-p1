@@ -6,7 +6,7 @@ import LowerPlayBoard from "./lower-play-board/LowerPlayBoard";
 import { DEFAULTROUNDSTATE, DEFAULTGAMESTATE } from "./Constant";
 import drawFromCentral from "./gameLogic/drawFromCentral";
 import checkAction from "./gameLogic/check/checkActionList";
-import checkPattern from "./gameLogic/check/checkPatternList";
+import checkPatternList from "./gameLogic/check/checkPatternList";
 import performAction from "./gameLogic/perform/performAction";
 import drawPattern from "./gameLogic/drawPattern";
 import performPatternList from "./gameLogic/perform/performPatternList";
@@ -89,7 +89,13 @@ class App extends React.Component {
   };
 
   handleSelectPattern = (pattern) => {
-    let availableSpace = checkPattern(pattern, this.state.locationInfo);
+    let availableSpace = [];
+    if (pattern !== "") {
+      availableSpace = checkPatternList(pattern, this.state.locationInfo);
+    }
+    if (availableSpace.length === 0) {
+      pattern = "";
+    }
     this.setState({
       selectedElement: pattern,
       availableSpace: availableSpace,
@@ -139,6 +145,8 @@ class App extends React.Component {
   };
 
   render() {
+    console.log(this.state.selectedElement);
+    console.log(this.state.availableSpace);
     return (
       <div className="App">
         <div className="game-board">
