@@ -112,7 +112,24 @@ export function performPattern5(locationInfo, selectPlace) {
 
   return { erased, energyGain, locationInfo };
 }
-export function performPattern6(locationInfo, selectPlace) {}
+export function performPattern6(locationInfo, selectPlace) {
+  let erased = 0,
+    energyGain = 0;
+  const color = ["red", "blue", "green", "yellow", "pink"];
+  let column = selectPlace.slice(0, -1);
+  let columnIndex = color.indexOf(column);
+  let row = selectPlace.slice(-1);
+  for (let i = Number(row) - 1; i <= Number(row) + 1; i++) {
+    let target = locationInfo[color[columnIndex - 1] + i];
+    if (target) {
+      target.star && (energyGain += 1);
+      erased += 1;
+      locationInfo[color[columnIndex - 1] + i] = "";
+    }
+  }
+
+  return { erased, energyGain, locationInfo };
+}
 export function performPattern7(locationInfo, selectPlace) {}
 export function performPattern8(locationInfo, selectPlace) {}
 export function performPattern9(locationInfo, selectPlace) {}
