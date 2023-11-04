@@ -110,15 +110,16 @@ class App extends React.Component {
       selectPlace
     );
     const { erased, energyGain, locationInfo } = updated;
+    let updatedEnergy = this.state.energy + energyGain;
     this.setState({
       locationInfo: locationInfo,
       erasedBullet: this.state.erasedBullet + erased,
-      energy: this.state.energy + energyGain,
       selectedElement: "",
       availableSpace: "",
       patternCard: this.state.patternCard.filter(
         (pattern) => pattern !== this.state.selectedElement
       ),
+      energy: updatedEnergy > 7 ? 7 : updatedEnergy,
     });
   };
 
