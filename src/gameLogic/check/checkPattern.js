@@ -90,7 +90,21 @@ export function checkPattern4(locationInfo) {
   }
   return availableSpace;
 }
-export function checkPattern5(locationInfo) {}
+export function checkPattern5(locationInfo) {
+  const availableSpace = [];
+  for (let i = 0; i <= 5; i++) {
+    if (
+      !locationInfo["red" + i] &&
+      !locationInfo["blue" + i] &&
+      (locationInfo["yellow" + i] ||
+        locationInfo["green" + i] ||
+        locationInfo["pink" + i])
+    ) {
+      availableSpace.push("blue" + i);
+    }
+  }
+  return availableSpace;
+}
 export function checkPattern6(locationInfo) {}
 export function checkPattern7(locationInfo) {}
 export function checkPattern8(locationInfo) {}

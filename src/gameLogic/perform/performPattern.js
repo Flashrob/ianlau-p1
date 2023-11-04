@@ -90,7 +90,28 @@ export function performPattern4(locationInfo, selectPlace) {
 
   return { erased, energyGain, locationInfo };
 }
-export function performPattern5(locationInfo, selectPlace) {}
+export function performPattern5(locationInfo, selectPlace) {
+  let erased = 0,
+    energyGain = 0;
+  let row = selectPlace.slice(-1);
+  if (locationInfo["pink" + row]) {
+    locationInfo["pink" + row].star && (energyGain += 1);
+    erased += 1;
+    locationInfo["pink" + row] = "";
+  }
+  if (locationInfo["yellow" + row]) {
+    locationInfo["yellow" + row].star && (energyGain += 1);
+    erased += 1;
+    locationInfo["yellow" + row] = "";
+  }
+  if (locationInfo["green" + row]) {
+    locationInfo["green" + row].star && (energyGain += 1);
+    erased += 1;
+    locationInfo["green" + row] = "";
+  }
+
+  return { erased, energyGain, locationInfo };
+}
 export function performPattern6(locationInfo, selectPlace) {}
 export function performPattern7(locationInfo, selectPlace) {}
 export function performPattern8(locationInfo, selectPlace) {}
