@@ -51,12 +51,7 @@ class App extends React.Component {
 
   handleSelectAction = (action) => {
     if (action === "Action4") {
-      drawPattern(
-        this.state.patternDeck,
-        this.state.patternCard,
-        1,
-        this.handleDrawPattern
-      );
+      this.handleDrawPattern(1);
       action = "";
       this.setState({ energy: this.state.energy - 2 });
     }
@@ -131,7 +126,12 @@ class App extends React.Component {
     });
   };
 
-  handleDrawPattern = (deck, card) => {
+  handleDrawPattern = (amount) => {
+    const { deck, card } = drawPattern(
+      this.state.patternDeck,
+      this.state.patternCard,
+      amount
+    );
     this.setState({
       patternDeck: deck,
       patternCard: card,
@@ -140,12 +140,7 @@ class App extends React.Component {
 
   handleStartGame = () => {
     this.handleCentraltoPlayerPool(10);
-    drawPattern(
-      this.state.patternDeck,
-      this.state.patternCard,
-      4,
-      this.handleDrawPattern
-    );
+    this.handleDrawPattern(4);
     this.setState({ playing: true, currRound: 1 });
   };
 
@@ -159,12 +154,7 @@ class App extends React.Component {
   handleStartRound = () => {
     let bulletAmount = this.state.currRound + 3 + this.state.erasedBullet;
     if (this.state.patternCard.length < 4) {
-      drawPattern(
-        this.state.patternDeck,
-        this.state.patternCard,
-        4 - this.state.patternCard.length,
-        this.handleDrawPattern
-      );
+      this.handleDrawPattern(4 - this.state.patternCard.length);
     }
     this.handleCentraltoPlayerPool(bulletAmount);
     this.setState({
