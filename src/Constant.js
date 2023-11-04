@@ -4,10 +4,8 @@ import genPatternDeck from "./gameLogic/genPatternDeck";
 
 export const DEFAULTROUNDSTATE = {
   energy: 7,
-  locationInfo: genLocationInfo(),
-  bulletCentralPool: genCentralPool(),
   erasedBullet: 0,
-  playing: false,
+  playing: true,
   selectBullet: "",
   selectedElement: "",
   availableSpace: [],

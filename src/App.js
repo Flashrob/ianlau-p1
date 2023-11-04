@@ -18,6 +18,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       ...DEFAULTGAMESTATE,
+      bestScore: 0,
     };
   }
 
@@ -27,6 +28,9 @@ class App extends React.Component {
       this.state.bulletPool,
       this.state.hp
     );
+    if (hp === 0) {
+      this.handleEndGame();
+    }
     this.setState({
       locationInfo: locationInfo,
       bulletPool: bulletPool,
@@ -145,17 +149,49 @@ class App extends React.Component {
     this.setState({ playing: true, currRound: 1 });
   };
 
+  handleEndRound = () => {
+    while (this.state.bulletPool.length > 0) {
+      this.handlePlaceBullet();
+    }
+    this.setState({ playing: false });
+  };
+
+  handleStartRound = () => {
+    let bulletAmount = this.state.currRound + 3 + this.state.erasedBullet;
+    if (this.state.patternCard.length < 4) {
+      drawPattern(
+        this.state.patternDeck,
+        this.state.patternCard,
+        4 - this.state.patternCard.length,
+        this.handleDrawPattern
+      );
+    }
+    drawFromCentral(
+      this.state.bulletCentralPool,
+      bulletAmount,
+      this.handleCentraltoPlayerPool
+    );
+    this.setState({
+      ...DEFAULTROUNDSTATE,
+      currRound: this.state.currRound + 1,
+    });
+  };
+
   render() {
     return (
       <div className="App">
         <div className="game-board">
           <MainMenu
+            currRound={this.state.currRound}
             playing={this.state.playing}
             handleStartGame={this.handleStartGame}
+            erasedBullet={this.state.erasedBullet}
+            handleStartRound={this.handleStartRound}
           />
           <Header
             currRound={this.state.currRound}
             playing={this.state.playing}
+            handleEndRound={this.handleEndRound}
           />
           <UpperPlayBoard
             locationInfo={this.state.locationInfo}
@@ -176,6 +212,7 @@ class App extends React.Component {
             handlePlaceBullet={this.handlePlaceBullet}
             selectedElement={this.state.selectedElement}
             handleSelectPattern={this.handleSelectPattern}
+            handleEndRound={this.handleEndRound}
           />
         </div>
       </div>

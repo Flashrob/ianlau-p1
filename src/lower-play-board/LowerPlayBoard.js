@@ -9,6 +9,7 @@ export default function LowerPlayBoard(props) {
     handlePlaceBullet,
     selectedElement,
     handleSelectPattern,
+    handleEndRound,
   } = props;
   return (
     <div className="lower-play-board">
@@ -21,6 +22,7 @@ export default function LowerPlayBoard(props) {
         bulletPool={bulletPool}
         handlePlaceBullet={handlePlaceBullet}
         selectedElement={selectedElement}
+        handleEndRound={handleEndRound}
       />
     </div>
   );

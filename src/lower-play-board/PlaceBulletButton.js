@@ -2,7 +2,9 @@ import React from "react";
 
 export default class PlaceBulletButton extends React.Component {
   handleClick = () => {
-    this.props.handlePlaceBullet();
+    this.props.bulletPool.length
+      ? this.props.handlePlaceBullet()
+      : this.props.handleEndRound();
   };
 
   render() {
@@ -14,7 +16,7 @@ export default class PlaceBulletButton extends React.Component {
       >
         Bullet Left:
         <div className="bullet-left">{bulletPool.length}</div>
-        Place Bullet
+        {this.props.bulletPool.length ? "Place Bullet" : "End Round"}
       </button>
     );
   }
