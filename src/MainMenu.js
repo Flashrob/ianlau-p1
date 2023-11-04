@@ -8,11 +8,15 @@ export default class MainMenu extends React.Component {
       currRound,
       playing,
       handleStartRound,
+      hp,
+      bestScore,
+      handleReset,
     } = this.props;
     const mainMenu = (
       <div className="main-menu">
         <div className="big-title">
           <h1>Bullet</h1>
+          Best score: {bestScore} rounds.
         </div>
         <button className="main-menu-button" onClick={handleStartGame}>
           Play
@@ -32,6 +36,24 @@ export default class MainMenu extends React.Component {
         </button>
       </div>
     );
-    return currRound === 0 ? mainMenu : !playing ? roundBreak : "";
+
+    const result = (
+      <div className="main-menu">
+        <h1>Oh, you busted!</h1>
+        <h2>No more hp left</h2>
+        you score is {currRound}
+        <button onClick={handleReset} className="main-menu-button">
+          Main Menu
+        </button>
+      </div>
+    );
+
+    return currRound === 0
+      ? mainMenu
+      : hp === 0
+      ? result
+      : !playing
+      ? roundBreak
+      : "";
   }
 }

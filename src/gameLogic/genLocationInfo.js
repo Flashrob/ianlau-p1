@@ -8,5 +8,5 @@ export default function genLocationInfo() {
       locationInfo[column[i] + j] = "";
     }
   }
-  return locationInfo;
+  return { ...locationInfo };
 }

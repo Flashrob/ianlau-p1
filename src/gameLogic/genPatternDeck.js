@@ -12,5 +12,5 @@ export default function genPatternDeck(exception) {
     deck[i] = deck[randomIndex];
     deck[randomIndex] = temp;
   }
-  return deck;
+  return [...deck];
 }

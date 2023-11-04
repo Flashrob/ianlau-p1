@@ -22,14 +22,16 @@ class App extends React.Component {
     };
   }
 
-  handlePlaceBullet = () => {
+  handlePlaceBullet = (amount) => {
     const { locationInfo, bulletPool, hp } = placeBullet(
+      amount,
       this.state.locationInfo,
       this.state.bulletPool,
       this.state.hp
     );
-    if (hp === 0) {
+    if (hp < 1) {
       this.handleEndGame();
+      return;
     }
     this.setState({
       locationInfo: locationInfo,
@@ -145,9 +147,7 @@ class App extends React.Component {
   };
 
   handleEndRound = () => {
-    while (this.state.bulletPool.length > 0) {
-      this.handlePlaceBullet();
-    }
+    this.handlePlaceBullet(this.state.bulletPool.length);
     this.setState({ playing: false });
   };
 
@@ -163,7 +163,24 @@ class App extends React.Component {
     });
   };
 
+  handleEndGame = () => {
+    this.setState({
+      hp: 0,
+      playing: false,
+      ...(this.state.bestScore < this.state.currRound && {
+        bestScore: this.state.currRound,
+      }),
+    });
+  };
+
+  handleReset = () => {
+    this.setState({
+      ...DEFAULTGAMESTATE,
+    });
+  };
+
   render() {
+    console.log(this.state);
     return (
       <div className="App">
         <div className="game-board">
@@ -173,6 +190,9 @@ class App extends React.Component {
             handleStartGame={this.handleStartGame}
             erasedBullet={this.state.erasedBullet}
             handleStartRound={this.handleStartRound}
+            hp={this.state.hp}
+            bestScore={this.state.bestScore}
+            handleReset={this.handleReset}
           />
           <Header
             currRound={this.state.currRound}

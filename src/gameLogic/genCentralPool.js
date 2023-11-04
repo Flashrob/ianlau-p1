@@ -26,5 +26,5 @@ export default function genCentralPool() {
     bag[i] = bag[randomIndex];
     bag[randomIndex] = temp;
   }
-  return bag;
+  return [...bag];
 }

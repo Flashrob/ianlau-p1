@@ -3,7 +3,7 @@ import React from "react";
 export default class PlaceBulletButton extends React.Component {
   handleClick = () => {
     this.props.bulletPool.length
-      ? this.props.handlePlaceBullet()
+      ? this.props.handlePlaceBullet(1)
       : this.props.handleEndRound();
   };
 
