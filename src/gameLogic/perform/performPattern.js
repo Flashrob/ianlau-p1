@@ -174,4 +174,21 @@ export function performPattern8(locationInfo, selectPlace) {
 
   return { erased, energyGain, locationInfo };
 }
-export function performPattern9(locationInfo, selectPlace) {}
+export function performPattern9(locationInfo, selectPlace) {
+  let erased = 0,
+    energyGain = 0;
+  const color = ["red", "blue", "green", "yellow", "pink"];
+  let column = selectPlace.slice(0, -1);
+  let columnIndex = color.indexOf(column);
+  let row = selectPlace.slice(-1);
+  for (let c = columnIndex - 1; c < columnIndex + 3; c++) {
+    let target = locationInfo[color[c] + (Number(row) - 2)];
+    if (target) {
+      target.star && (energyGain += 1);
+      erased += 1;
+      locationInfo[color[c] + (Number(row) - 2)] = "";
+    }
+  }
+
+  return { erased, energyGain, locationInfo };
+}

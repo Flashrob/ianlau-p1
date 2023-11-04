@@ -163,4 +163,23 @@ export function checkPattern8(locationInfo) {
   }
   return availableSpace;
 }
-export function checkPattern9(locationInfo) {}
+export function checkPattern9(locationInfo) {
+  const availableSpace = [];
+  const color = ["red", "blue", "green", "yellow", "pink"];
+  for (let c = 1; c <= 3; c++) {
+    for (let i = 2; i <= 5; i++) {
+      if (
+        locationInfo[color[c] + i] === "" &&
+        locationInfo[color[c] + (i - 1)].rank === 3 &&
+        locationInfo[color[c - 1] + (i - 1)] === "" &&
+        locationInfo[color[c + 1] + (i - 1)] === "" &&
+        (locationInfo[color[c - 1] + (i - 2)] ||
+          locationInfo[color[c] + (i - 2)] ||
+          locationInfo[color[c + 1] + (i - 2)])
+      ) {
+        availableSpace.push(color[c] + i);
+      }
+    }
+  }
+  return availableSpace;
+}
