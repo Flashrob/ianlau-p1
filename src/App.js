@@ -12,6 +12,9 @@ import drawPattern from "./gameLogic/drawPattern";
 import performPatternList from "./gameLogic/perform/performPatternList";
 import placeBullet from "./gameLogic/placeBullet";
 import MainMenu from "./MainMenu";
+import genLocationInfo from "./gameLogic/genLocationInfo";
+import genCentralPool from "./gameLogic/genCentralPool";
+import genPatternDeck from "./gameLogic/genPatternDeck";
 
 class App extends React.Component {
   constructor(props) {
@@ -19,6 +22,9 @@ class App extends React.Component {
     this.state = {
       ...DEFAULTGAMESTATE,
       bestScore: 0,
+      locationInfo: genLocationInfo(),
+      bulletCentralPool: genCentralPool(),
+      patternDeck: genPatternDeck([]),
     };
   }
 
@@ -31,13 +37,13 @@ class App extends React.Component {
     );
     if (hp < 1) {
       this.handleEndGame();
-      return;
+    } else {
+      this.setState({
+        locationInfo: locationInfo,
+        bulletPool: bulletPool,
+        hp: hp,
+      });
     }
-    this.setState({
-      locationInfo: locationInfo,
-      bulletPool: bulletPool,
-      hp: hp,
-    });
   };
 
   handleCentraltoPlayerPool = (amount) => {
@@ -115,28 +121,29 @@ class App extends React.Component {
       selectPlace
     );
     const { erased, energyGain, locationInfo } = updated;
+    const newPatternCard = this.state.patternCard.filter(
+      (pattern) => pattern !== this.state.selectedElement
+    );
     let updatedEnergy = this.state.energy + energyGain;
     this.setState({
       locationInfo: locationInfo,
       erasedBullet: this.state.erasedBullet + erased,
       selectedElement: "",
       availableSpace: "",
-      patternCard: this.state.patternCard.filter(
-        (pattern) => pattern !== this.state.selectedElement
-      ),
+      patternCard: newPatternCard,
       energy: updatedEnergy > 7 ? 7 : updatedEnergy,
     });
   };
 
   handleDrawPattern = (amount) => {
-    const { deck, card } = drawPattern(
+    const { deck, newCard } = drawPattern(
       this.state.patternDeck,
       this.state.patternCard,
       amount
     );
     this.setState({
       patternDeck: deck,
-      patternCard: card,
+      patternCard: newCard,
     });
   };
 
@@ -176,6 +183,9 @@ class App extends React.Component {
   handleReset = () => {
     this.setState({
       ...DEFAULTGAMESTATE,
+      locationInfo: genLocationInfo(),
+      bulletCentralPool: genCentralPool(),
+      patternDeck: genPatternDeck([]),
     });
   };
 
@@ -191,6 +201,7 @@ class App extends React.Component {
             erasedBullet={this.state.erasedBullet}
             handleStartRound={this.handleStartRound}
             hp={this.state.hp}
+            selectedElement
             bestScore={this.state.bestScore}
             handleReset={this.handleReset}
           />
