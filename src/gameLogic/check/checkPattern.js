@@ -124,6 +124,24 @@ export function checkPattern6(locationInfo) {
   }
   return availableSpace;
 }
-export function checkPattern7(locationInfo) {}
+export function checkPattern7(locationInfo) {
+  const availableSpace = [];
+  const color = ["red", "blue", "green", "yellow", "pink"];
+  for (let c = 1; c <= 3; c++) {
+    for (let i = 0; i <= 4; i++) {
+      if (
+        locationInfo[color[c] + i] &&
+        locationInfo[color[c - 1] + (i + 1)] &&
+        locationInfo[color[c + 1] + (i + 1)] &&
+        (locationInfo[color[c] + (i + 1)] ||
+          locationInfo[color[c - 1] + i] ||
+          locationInfo[color[c + 1] + i])
+      ) {
+        availableSpace.push(color[c] + i);
+      }
+    }
+  }
+  return availableSpace;
+}
 export function checkPattern8(locationInfo) {}
 export function checkPattern9(locationInfo) {}

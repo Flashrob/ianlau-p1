@@ -130,6 +130,31 @@ export function performPattern6(locationInfo, selectPlace) {
 
   return { erased, energyGain, locationInfo };
 }
-export function performPattern7(locationInfo, selectPlace) {}
+export function performPattern7(locationInfo, selectPlace) {
+  let erased = 0,
+    energyGain = 0;
+  const color = ["red", "blue", "green", "yellow", "pink"];
+  let column = selectPlace.slice(0, -1);
+  let columnIndex = color.indexOf(column);
+  let row = selectPlace.slice(-1);
+  if (locationInfo[color[columnIndex - 1] + row]) {
+    locationInfo[color[columnIndex - 1] + row] && (energyGain += 1);
+    erased += 1;
+    locationInfo[color[columnIndex - 1] + row] = "";
+  }
+  if (locationInfo[color[columnIndex + 1] + row]) {
+    locationInfo[color[columnIndex + 1] + row].star && (energyGain += 1);
+    erased += 1;
+    locationInfo[color[columnIndex + 1] + row] = "";
+  }
+  if (locationInfo[color[columnIndex] + (Number(row) + 1)]) {
+    locationInfo[color[columnIndex] + (Number(row) + 1)].star &&
+      (energyGain += 1);
+    erased += 1;
+    locationInfo[color[columnIndex] + (Number(row) + 1)] = "";
+  }
+
+  return { erased, energyGain, locationInfo };
+}
 export function performPattern8(locationInfo, selectPlace) {}
 export function performPattern9(locationInfo, selectPlace) {}
