@@ -38,7 +38,11 @@ class App extends React.Component {
     });
   };
 
-  handleCentraltoPlayerPool = (central, playerPool) => {
+  handleCentraltoPlayerPool = (amount) => {
+    const { central, playerPool } = drawFromCentral(
+      this.state.bulletCentralPool,
+      amount
+    );
     this.setState({
       bulletCentralPool: central,
       bulletPool: playerPool,
@@ -135,11 +139,7 @@ class App extends React.Component {
   };
 
   handleStartGame = () => {
-    drawFromCentral(
-      this.state.bulletCentralPool,
-      10,
-      this.handleCentraltoPlayerPool
-    );
+    this.handleCentraltoPlayerPool(10);
     drawPattern(
       this.state.patternDeck,
       this.state.patternCard,
@@ -166,11 +166,7 @@ class App extends React.Component {
         this.handleDrawPattern
       );
     }
-    drawFromCentral(
-      this.state.bulletCentralPool,
-      bulletAmount,
-      this.handleCentraltoPlayerPool
-    );
+    this.handleCentraltoPlayerPool(bulletAmount);
     this.setState({
       ...DEFAULTROUNDSTATE,
       currRound: this.state.currRound + 1,
