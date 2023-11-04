@@ -19,7 +19,7 @@ export function performPattern1(locationInfo, selectPlace) {
     energyGain = 0;
   const color = ["red", "blue", "green", "yellow", "pink"];
   let column = selectPlace.slice(0, -1);
-  let columnIndex = column.indexOf(column);
+  let columnIndex = color.indexOf(column);
   let row = selectPlace.slice(-1);
   for (let c = columnIndex - 1; c <= columnIndex + 1; c++) {
     let target = locationInfo[color[c] + (Number(row) + 1)];
@@ -37,7 +37,7 @@ export function performPattern2(locationInfo, selectPlace) {
     energyGain = 0;
   const color = ["red", "blue", "green", "yellow", "pink"];
   let column = selectPlace.slice(0, -1);
-  let c = column.indexOf(column);
+  let c = color.indexOf(column);
   let row = selectPlace.slice(-1);
   for (let i = Number(row) - 1; i <= Number(row) + 1; i++) {
     let target = locationInfo[color[c + 1] + i];
@@ -50,7 +50,26 @@ export function performPattern2(locationInfo, selectPlace) {
 
   return { erased, energyGain, locationInfo };
 }
-export function performPattern3(locationInfo, selectPlace) {}
+export function performPattern3(locationInfo, selectPlace) {
+  console.log(selectPlace);
+  let erased = 0,
+    energyGain = 0;
+  const color = ["red", "blue", "green", "yellow", "pink"];
+  let column = selectPlace.slice(0, -1);
+  let columnIndex = color.indexOf(column);
+  let row = selectPlace.slice(-1);
+  for (let c = columnIndex + 1; c <= columnIndex + 3; c++) {
+    let target = locationInfo[color[c] + row];
+    console.log(color[c], row);
+    if (target) {
+      target.star && (energyGain += 1);
+      erased += 1;
+      locationInfo[color[c] + row] = "";
+    }
+  }
+
+  return { erased, energyGain, locationInfo };
+}
 export function performPattern4(locationInfo, selectPlace) {}
 export function performPattern5(locationInfo, selectPlace) {}
 export function performPattern6(locationInfo, selectPlace) {}
