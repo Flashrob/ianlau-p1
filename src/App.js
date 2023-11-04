@@ -4,12 +4,14 @@ import Header from "./header/Header";
 import UpperPlayBoard from "./upper-play-board/UpperPlayBoard";
 import LowerPlayBoard from "./lower-play-board/LowerPlayBoard";
 import { DEFAULTROUNDSTATE, DEFAULTGAMESTATE } from "./Constant";
-import drawFromCentral from "./drawFromCentral";
-import checkAction from "./check/checkActionList";
-import checkPattern from "./check/checkPatternList";
-import performAction from "./perform/performAction";
-import drawPattern from "./drawPattern";
-import performPatternList from "./perform/performPatternList";
+import drawFromCentral from "./gameLogic/drawFromCentral";
+import checkAction from "./gameLogic/check/checkActionList";
+import checkPattern from "./gameLogic/check/checkPatternList";
+import performAction from "./gameLogic/perform/performAction";
+import drawPattern from "./gameLogic/drawPattern";
+import performPatternList from "./gameLogic/perform/performPatternList";
+import placeBullet from "./gameLogic/placeBullet";
+import MainMenu from "./MainMenu";
 
 class App extends React.Component {
   constructor(props) {
@@ -19,7 +21,12 @@ class App extends React.Component {
     };
   }
 
-  handlePlaceBullet = (locationInfo, bulletPool, hp) => {
+  handlePlaceBullet = () => {
+    const { locationInfo, bulletPool, hp } = placeBullet(
+      this.state.locationInfo,
+      this.state.bulletPool,
+      this.state.hp
+    );
     this.setState({
       locationInfo: locationInfo,
       bulletPool: bulletPool,
@@ -63,15 +70,6 @@ class App extends React.Component {
     });
   };
 
-  handleSelectPattern = (pattern) => {
-    let availableSpace = checkPattern(pattern, this.state.locationInfo);
-    this.setState({
-      selectedElement: pattern,
-      availableSpace: availableSpace,
-      ...(pattern === "" && { availableSpace: [] }),
-    });
-  };
-
   handlePerformAction = (selectPlace) => {
     const updated = performAction(
       this.state.selectedElement,
@@ -87,6 +85,15 @@ class App extends React.Component {
       availableSpace: [],
       locationInfo: updatedLocation,
       energy: energy,
+    });
+  };
+
+  handleSelectPattern = (pattern) => {
+    let availableSpace = checkPattern(pattern, this.state.locationInfo);
+    this.setState({
+      selectedElement: pattern,
+      availableSpace: availableSpace,
+      ...(pattern === "" && { availableSpace: [] }),
     });
   };
 
@@ -116,15 +123,7 @@ class App extends React.Component {
     });
   };
 
-  resetGame = () => {
-    this.setState({ ...DEFAULTGAMESTATE });
-  };
-
-  passRound = () => {
-    this.setState({ ...DEFAULTROUNDSTATE });
-  };
-
-  test = () => {
+  handleStartGame = () => {
     drawFromCentral(
       this.state.bulletCentralPool,
       10,
@@ -136,13 +135,17 @@ class App extends React.Component {
       4,
       this.handleDrawPattern
     );
-    this.setState({ playing: true });
+    this.setState({ playing: true, currRound: 1 });
   };
 
   render() {
     return (
       <div className="App">
         <div className="game-board">
+          <MainMenu
+            playing={this.state.playing}
+            handleStartGame={this.handleStartGame}
+          />
           <Header
             currRound={this.state.currRound}
             playing={this.state.playing}
@@ -162,10 +165,8 @@ class App extends React.Component {
           </div>
           <LowerPlayBoard
             patternCard={this.state.patternCard}
-            locationInfo={this.state.locationInfo}
             bulletPool={this.state.bulletPool}
             handlePlaceBullet={this.handlePlaceBullet}
-            hp={this.state.hp}
             selectedElement={this.state.selectedElement}
             handleSelectPattern={this.handleSelectPattern}
           />

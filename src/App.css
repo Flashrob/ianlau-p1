@@ -9,6 +9,7 @@
 }
 
 .game-board {
+  position: relative;
   background-color: #282c34;
 }
 
@@ -35,4 +36,20 @@ button {
   height: 50px;
   border-radius: 5%;
   font-size: small;
+}
+
+.main-menu {
+  background-color: rgba(0, 0, 0, 0.438);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-menu-button {
+  width: 60%;
+  height: 50px;
 }

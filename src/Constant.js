@@ -1,6 +1,6 @@
-import genLocationInfo from "./genLocationInfo";
-import genCentralPool from "./genCentralPool";
-import genPatternDeck from "./genPatternDeck";
+import genLocationInfo from "./gameLogic/genLocationInfo";
+import genCentralPool from "./gameLogic/genCentralPool";
+import genPatternDeck from "./gameLogic/genPatternDeck";
 
 export const DEFAULTROUNDSTATE = {
   energy: 7,

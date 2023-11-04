@@ -1,20 +1,21 @@
-import placeBullet from "./placeBullet";
+import React from "react";
 
-export default function PlaceBulletButton(props) {
-  let { locationInfo, bulletPool, handlePlaceBullet, hp, selectedElement } =
-    props;
-  return (
-    <button
-      className="place-bullet-button"
-      onClick={
-        !selectedElement
-          ? () => placeBullet(locationInfo, bulletPool, handlePlaceBullet, hp)
-          : null
-      }
-    >
-      Bullet Left:
-      <div className="bullet-left">{bulletPool.length}</div>
-      Place Bullet
-    </button>
-  );
+export default class PlaceBulletButton extends React.Component {
+  handleClick = () => {
+    this.props.handlePlaceBullet();
+  };
+
+  render() {
+    const { bulletPool, selectedElement } = this.props;
+    return (
+      <button
+        className="place-bullet-button"
+        onClick={!selectedElement ? this.handleClick : null}
+      >
+        Bullet Left:
+        <div className="bullet-left">{bulletPool.length}</div>
+        Place Bullet
+      </button>
+    );
+  }
 }

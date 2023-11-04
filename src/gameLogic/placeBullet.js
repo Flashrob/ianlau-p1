@@ -1,9 +1,4 @@
-export default function placeBullet(
-  location,
-  bulletPool,
-  handlePlaceBullet,
-  hp
-) {
+export default function placeBullet(locationInfo, bulletPool, hp) {
   //draw one bullet from the pool
   let bullet = bulletPool.pop();
   //location format
@@ -13,18 +8,18 @@ export default function placeBullet(
   //bullet keys name,rank,color
   let color = bullet.color;
   let rank = bullet.rank;
-  const column = Object.keys(location).filter((key) => key.includes(color));
+  const column = Object.keys(locationInfo).filter((key) => key.includes(color));
   for (let place of column) {
-    if (location[place] === "") {
+    if (locationInfo[place] === "") {
       rank--;
     }
     if (rank === 0) {
-      location[place] = bullet;
+      locationInfo[place] = bullet;
       break;
     }
   }
 
   rank !== 0 && (hp -= 1);
 
-  handlePlaceBullet(location, bulletPool, hp);
+  return { locationInfo, bulletPool, hp };
 }
