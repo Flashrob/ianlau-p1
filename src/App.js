@@ -73,7 +73,8 @@ class App extends React.Component {
     let availableSpace = checkAction(
       this.state.selectedElement,
       this.state.locationInfo,
-      selectBullet
+      selectBullet,
+      this.state.energy
     );
     this.setState({
       selectBullet: selectBullet,
@@ -86,16 +87,16 @@ class App extends React.Component {
       this.state.selectedElement,
       this.state.locationInfo,
       this.state.selectBullet,
-      selectPlace,
-      this.state.energy
+      selectPlace
     );
-    const { updatedLocation, energy } = updated;
+    const { updatedLocation, cost } = updated;
+    console.log(cost);
     this.setState({
       selectedElement: "",
       selectBullet: "",
       availableSpace: [],
       locationInfo: updatedLocation,
-      energy: energy,
+      energy: this.state.energy - cost,
     });
   };
 
@@ -190,7 +191,6 @@ class App extends React.Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <div className="App">
         <div className="game-board">
