@@ -18,5 +18,5 @@ export const DEFAULTGAMESTATE = {
   playing: false,
   selectBullet: "",
   selectedElement: "",
-  popUp: false,
+  popUpMessage: "",
 };

@@ -1,4 +1,5 @@
 export default function placeBullet(amount, locationInfo, bulletPool, hp) {
+  const bulletHit = [];
   for (let i = 0; i < amount; i++) {
     let bullet = bulletPool.pop();
     let color = bullet.color;
@@ -16,8 +17,8 @@ export default function placeBullet(amount, locationInfo, bulletPool, hp) {
       }
     }
 
-    rank !== 0 && (hp -= 1);
+    rank !== 0 && (hp -= 1) && bulletHit.push(bullet);
   }
 
-  return { locationInfo, bulletPool, hp };
+  return { locationInfo, bulletPool, hp, bulletHit };
 }

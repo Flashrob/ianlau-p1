@@ -4,17 +4,18 @@ import Header from "./header/Header";
 import UpperPlayBoard from "./upper-play-board/UpperPlayBoard";
 import LowerPlayBoard from "./lower-play-board/LowerPlayBoard";
 import { DEFAULTROUNDSTATE, DEFAULTGAMESTATE } from "./Constant";
-import drawFromCentral from "./gameLogic/drawFromCentral";
-import checkAction from "./gameLogic/check/checkActionList";
-import checkPatternList from "./gameLogic/check/checkPatternList";
-import performAction from "./gameLogic/perform/performAction";
-import drawPattern from "./gameLogic/drawPattern";
-import performPatternList from "./gameLogic/perform/performPatternList";
-import placeBullet from "./gameLogic/placeBullet";
+import drawFromCentral from "./game-logic/drawFromCentral";
+import checkAction from "./game-logic/check/checkActionList";
+import checkPatternList from "./game-logic/check/checkPatternList";
+import performAction from "./game-logic/perform/performAction";
+import drawPattern from "./game-logic/drawPattern";
+import performPatternList from "./game-logic/perform/performPatternList";
+import placeBullet from "./game-logic/placeBullet";
 import MainMenu from "./MainMenu";
-import genLocationInfo from "./gameLogic/genLocationInfo";
-import genCentralPool from "./gameLogic/genCentralPool";
-import genPatternDeck from "./gameLogic/genPatternDeck";
+import genLocationInfo from "./game-logic/genLocationInfo";
+import genCentralPool from "./game-logic/genCentralPool";
+import genPatternDeck from "./game-logic/genPatternDeck";
+import PopUp from "./pop-up/PopUp";
 
 class App extends React.Component {
   constructor(props) {
@@ -29,14 +30,12 @@ class App extends React.Component {
   }
 
   handlePlaceBullet = (amount) => {
-    const { locationInfo, bulletPool, hp } = placeBullet(
+    const { locationInfo, bulletPool, hp, bulletHit } = placeBullet(
       amount,
       this.state.locationInfo,
       this.state.bulletPool,
       this.state.hp
     );
-    if (hp < this.state.hp) {
-    }
     if (hp < 1) {
       this.handleEndGame();
     } else {
@@ -44,6 +43,7 @@ class App extends React.Component {
         locationInfo: locationInfo,
         bulletPool: bulletPool,
         hp: hp,
+        ...{ popUpMessage: hp < this.state.hp && bulletHit },
       });
     }
   };
@@ -195,6 +195,9 @@ class App extends React.Component {
     return (
       <div className="App">
         <div className="game-board">
+          {this.state.popUpMessage && (
+            <PopUp popUpMessage={this.state.popUpMessage} />
+          )}
           <MainMenu
             currRound={this.state.currRound}
             playing={this.state.playing}
