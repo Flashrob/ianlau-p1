@@ -1,7 +1,3 @@
-import genLocationInfo from "./gameLogic/genLocationInfo";
-import genCentralPool from "./gameLogic/genCentralPool";
-import genPatternDeck from "./gameLogic/genPatternDeck";
-
 export const DEFAULTROUNDSTATE = {
   energy: 7,
   erasedBullet: 0,
@@ -16,13 +12,11 @@ export const DEFAULTGAMESTATE = {
   energy: 7,
   bulletPool: [],
   availableSpace: [],
-  locationInfo: genLocationInfo(),
-  bulletCentralPool: genCentralPool(),
-  patternDeck: genPatternDeck([]),
   patternCard: [],
   erasedBullet: 0,
   currRound: 0,
   playing: false,
   selectBullet: "",
   selectedElement: "",
+  popUp: false,
 };

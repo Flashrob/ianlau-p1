@@ -16,7 +16,31 @@
 .hp-bar {
   width: auto;
   margin: 5px;
-  background-color: #09ff00b8;
+  background: linear-gradient(to left, red, green 0%, green);
+}
+
+.hp-bar3 {
+  width: auto;
+  margin: 5px;
+  background: linear-gradient(to left, red, green 50%, green);
+}
+
+.hp-bar2 {
+  width: auto;
+  margin: 5px;
+  background: linear-gradient(to left, red, green 100%, green);
+}
+
+.hp-bar1 {
+  width: auto;
+  margin: 5px;
+  background: linear-gradient(to left, red, green 150%, green);
+}
+
+.hp-bar0 {
+  width: auto;
+  margin: 5px;
+  background: linear-gradient(to left, red, green 200%, green);
 }
 
 img {

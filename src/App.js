@@ -35,6 +35,8 @@ class App extends React.Component {
       this.state.bulletPool,
       this.state.hp
     );
+    if (hp < this.state.hp) {
+    }
     if (hp < 1) {
       this.handleEndGame();
     } else {
@@ -219,7 +221,20 @@ class App extends React.Component {
             energy={this.state.energy}
             handlePerformPattern={this.handlePerformPattern}
           />
-          <div className="hp-bar" onClick={this.test}>
+          <div
+            className={
+              this.state.hp === 4
+                ? "hp-bar"
+                : this.state.hp === 3
+                ? "hp-bar3"
+                : this.state.hp === 2
+                ? "hp-bar2"
+                : this.state.hp === 1
+                ? "hp-bar1"
+                : "hp-bar0"
+            }
+            onClick={this.test}
+          >
             {this.state.hp}
           </div>
           <LowerPlayBoard
