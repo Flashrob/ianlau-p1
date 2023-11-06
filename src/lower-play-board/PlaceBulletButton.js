@@ -9,10 +9,12 @@ export default class PlaceBulletButton extends React.Component {
 
   render() {
     const { bulletPool, selectedElement, popUpMessage } = this.props;
+    const isButtonEnabled = !(!selectedElement && !popUpMessage);
     return (
       <button
         className="place-bullet-button"
-        onClick={!selectedElement && !popUpMessage ? this.handleClick : null}
+        onClick={this.handleClick}
+        disabled={isButtonEnabled}
       >
         Bullet Left:
         <div className="bullet-left">{bulletPool.length}</div>

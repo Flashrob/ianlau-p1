@@ -16,10 +16,12 @@ export default class PatternDisplay extends React.Component {
         className={selectedElement === card ? "selected-card" : "pattern-card"}
         key={card}
         value={card}
-        onClick={
-          (selectedElement === card || selectedElement === "") && !popUpMessage
-            ? this.handleClick
-            : null
+        onClick={this.handleClick}
+        disabled={
+          !(
+            selectedElement === card ||
+            (selectedElement === "" && !popUpMessage)
+          )
         }
       >
         <img src={require(`./PatternIcon/${card}.jpg`)} alt={card} />

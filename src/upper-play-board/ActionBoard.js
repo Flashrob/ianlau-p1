@@ -14,8 +14,16 @@ export default class ActionBoard extends React.Component {
     handleSelectAction(action);
   };
 
+  detButtonEnable = (action) => {
+    return !(
+      (this.props.selectedElement === action ||
+        this.props.selectedElement === "") &&
+      !this.props.popUpMessage
+    );
+  };
+
   render() {
-    const { selectedElement, energy, popUpMessage } = this.props;
+    const { selectedElement, energy } = this.props;
     return (
       <div className="action-board">
         Action:
@@ -24,12 +32,8 @@ export default class ActionBoard extends React.Component {
             selectedElement === "Action1" ? "selected-icon" : "action-icon"
           }
           value="Action1"
-          onClick={
-            (selectedElement === "Action1" || selectedElement === "") &&
-            !popUpMessage
-              ? this.handleClick
-              : null
-          }
+          onClick={this.handleClick}
+          disabled={this.detButtonEnable("Action1")}
         >
           <img src={require("./ActionIcon/Action1.jpg")} alt="Action1" />
           Move
@@ -39,12 +43,8 @@ export default class ActionBoard extends React.Component {
             selectedElement === "Action2" ? "selected-icon" : "action-icon"
           }
           value="Action2"
-          onClick={
-            selectedElement === "Action2" ||
-            (selectedElement === "" && !popUpMessage)
-              ? this.handleClick
-              : null
-          }
+          onClick={this.handleClick}
+          disabled={this.detButtonEnable("Action2")}
         >
           <img src={require("./ActionIcon/Action2.jpg")} alt="Action2" />
           Move
@@ -54,12 +54,8 @@ export default class ActionBoard extends React.Component {
             selectedElement === "Action3" ? "selected-icon" : "action-icon"
           }
           value="Action3"
-          onClick={
-            (selectedElement === "Action3" || selectedElement === "") &&
-            !popUpMessage
-              ? this.handleClick
-              : null
-          }
+          onClick={this.handleClick}
+          disabled={this.detButtonEnable("Action3")}
         >
           <img src={require("./ActionIcon/Action3.jpg")} alt="Action3" />
           Move
@@ -67,9 +63,8 @@ export default class ActionBoard extends React.Component {
         <button
           className="action-icon"
           value="Action4"
-          onClick={
-            selectedElement === "" && !popUpMessage ? this.handleClick : null
-          }
+          onClick={this.handleClick}
+          disabled={this.detButtonEnable("Action4")}
         >
           <img src={require("./ActionIcon/Action4.jpg")} alt="Action4" />
           Draw
