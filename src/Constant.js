@@ -19,4 +19,5 @@ export const DEFAULTGAMESTATE = {
   selectBullet: "",
   selectedElement: "",
   popUpMessage: "",
+  tutorial: 0,
 };

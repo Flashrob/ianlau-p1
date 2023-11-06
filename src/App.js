@@ -11,7 +11,7 @@ import performAction from "./game-logic/perform/performAction";
 import drawPattern from "./game-logic/drawPattern";
 import performPatternList from "./game-logic/perform/performPatternList";
 import placeBullet from "./game-logic/placeBullet";
-import MainMenu from "./MainMenu";
+import Cover from "./cover/Cover";
 import genLocationInfo from "./game-logic/genLocationInfo";
 import genCentralPool from "./game-logic/genCentralPool";
 import genPatternDeck from "./game-logic/genPatternDeck";
@@ -29,8 +29,17 @@ class App extends React.Component {
     };
   }
 
+  handleTutorial = () => {
+    this.setState({
+      tutorial: this.state.tutorial + 1,
+    });
+  };
+
   handleConfirmMessage = () => {
-    this.setState({ popUpMessage: "" });
+    this.setState({
+      popUpMessage: "",
+      tutorial: this.state.tutorial > 0 && this.state.tutorial + 1,
+    });
   };
 
   handlePlaceBullet = () => {
@@ -204,10 +213,11 @@ class App extends React.Component {
           {this.state.popUpMessage && (
             <PopUp
               popUpMessage={this.state.popUpMessage}
+              tutorial={this.state.tutorial}
               handleConfirmMessage={this.handleConfirmMessage}
             />
           )}
-          <MainMenu
+          <Cover
             currRound={this.state.currRound}
             playing={this.state.playing}
             handleStartGame={this.handleStartGame}
@@ -217,6 +227,8 @@ class App extends React.Component {
             selectedElement
             bestScore={this.state.bestScore}
             handleReset={this.handleReset}
+            handleTutorial={this.handleTutorial}
+            tutorial={this.state.tutorial}
           />
           <Header
             selectedElement={this.state.selectedElement}

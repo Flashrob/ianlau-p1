@@ -4,15 +4,19 @@
 
 Simplified version of board game "Bullet"
 
+# User Stories
+
+https://docs.google.com/document/d/1XpHUTHpNqi8hqvm0bCkjZ_3Jt0eIYnaxVusIJbq9pqc/edit?usp=sharing
+
+# wireframe:
+
+https://www.figma.com/file/205aPtCAc3zAcSb4aKezCs/Project-1?type=design&node-id=0%3A1&mode=design&t=AXYPjAnwbssU8odS-1
+
 # How to use:
 
 1. You can choose solo mode or tutorial in the main menu
 2. The game will return to the main menu after displaying the game result.
 3. If you are playing this game for the first time, I recommend that you play the tutorial in the app first.
-
-# wireframe:
-
-https://www.figma.com/file/205aPtCAc3zAcSb4aKezCs/Project-1?type=design&node-id=0%3A1&mode=design&t=AXYPjAnwbssU8odS-1
 
 # General Game rules:
 
