@@ -10,7 +10,7 @@ Simplified version of board game "Bullet"
 2. The game will return to the main menu after displaying the game result.
 3. If you are playing this game for the first time, I recommend that you play the tutorial in the app first.
 
-# Layout:
+# wireframe:
 
 https://www.figma.com/file/205aPtCAc3zAcSb4aKezCs/Project-1?type=design&node-id=0%3A1&mode=design&t=AXYPjAnwbssU8odS-1
 
@@ -57,7 +57,3 @@ Here are the incoming bullet no. of each round.
 3. 5 bullets + no. of all the bullets you cleared in the 2nd rd.
 4. 6 bullets + no. of all the bullets you cleared in the 3rd rd.
    ...and so on
-
-# Disclaimer
-
-This web-based game is a digital adaptation of a board game and is intended solely for educational purposes as part of a bootcamp project. It is not intended for commercial use or business purposes.

@@ -33,9 +33,8 @@ class App extends React.Component {
     this.setState({ popUpMessage: "" });
   };
 
-  handlePlaceBullet = (amount) => {
+  handlePlaceBullet = () => {
     const { locationInfo, bulletPool, hp, bulletHit } = placeBullet(
-      amount,
       this.state.locationInfo,
       this.state.bulletPool,
       this.state.hp
@@ -160,8 +159,11 @@ class App extends React.Component {
   };
 
   handleEndRound = () => {
-    this.handlePlaceBullet(this.state.bulletPool.length);
-    this.setState({ playing: false });
+    if (this.state.bulletPool.length) {
+      this.setState({ selectedElement: "EndRound" });
+    } else {
+      this.setState({ playing: false, selectedElement: "" });
+    }
   };
 
   handleStartRound = () => {
@@ -217,6 +219,7 @@ class App extends React.Component {
             handleReset={this.handleReset}
           />
           <Header
+            selectedElement={this.state.selectedElement}
             currRound={this.state.currRound}
             playing={this.state.playing}
             handleEndRound={this.handleEndRound}

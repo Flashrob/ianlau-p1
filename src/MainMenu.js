@@ -21,7 +21,7 @@ export default class MainMenu extends React.Component {
         <button className="main-menu-button" onClick={handleStartGame}>
           Play
         </button>
-        <button className="main-menu-button">Turtorial</button>
+        <button className="main-menu-button">Tutorial</button>
         <button className="main-menu-button">Disclaimer</button>
       </div>
     );

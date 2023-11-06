@@ -7,7 +7,7 @@ export default class PopUp extends React.Component {
   };
 
   render() {
-    let bullet = `You have been hit by a ${this.props.popUpMessage[0].color}${this.props.popUpMessage[0].name} bullet .`;
+    let bullet = `You have been hit by a ${this.props.popUpMessage.color}${this.props.popUpMessage.name} bullet .`;
     return (
       <div className="bullet-hit">
         {bullet}
