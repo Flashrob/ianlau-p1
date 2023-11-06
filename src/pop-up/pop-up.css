@@ -9,3 +9,12 @@
   flex-direction: column;
   align-items: center;
 }
+
+.tutorial-popup2 {
+  border: solid rgba(0, 0, 0, 0.6);
+  border-width: 80px 70px 250px 5px;
+  position: absolute;
+  width: 230px;
+  height: 322px;
+  overflow: auto;
+}

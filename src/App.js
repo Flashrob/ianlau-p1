@@ -3,7 +3,11 @@ import "./App.css";
 import Header from "./header/Header";
 import UpperPlayBoard from "./upper-play-board/UpperPlayBoard";
 import LowerPlayBoard from "./lower-play-board/LowerPlayBoard";
-import { DEFAULTROUNDSTATE, DEFAULTGAMESTATE } from "./Constant";
+import {
+  DEFAULTROUNDSTATE,
+  DEFAULTGAMESTATE,
+  TUTORIALPOOLANDBAG,
+} from "./Constant";
 import drawFromCentral from "./game-logic/drawFromCentral";
 import checkAction from "./game-logic/check/checkActionList";
 import checkPatternList from "./game-logic/check/checkPatternList";
@@ -15,7 +19,7 @@ import Cover from "./cover/Cover";
 import genLocationInfo from "./game-logic/genLocationInfo";
 import genCentralPool from "./game-logic/genCentralPool";
 import genPatternDeck from "./game-logic/genPatternDeck";
-import PopUp from "./pop-up/PopUp";
+import PopUp from "./pop-up/Popup";
 
 class App extends React.Component {
   constructor(props) {
@@ -32,12 +36,14 @@ class App extends React.Component {
   handleTutorial = () => {
     this.setState({
       tutorial: this.state.tutorial + 1,
+      popUpMessage: "tutorial",
+      ...(this.state.patternCard.length === 0 && TUTORIALPOOLANDBAG),
     });
   };
 
   handleConfirmMessage = () => {
     this.setState({
-      popUpMessage: "",
+      ...(this.state.popUpMessage !== "tutorial" && { popUpMessage: "" }),
       tutorial: this.state.tutorial > 0 && this.state.tutorial + 1,
     });
   };
@@ -55,7 +61,7 @@ class App extends React.Component {
         locationInfo: locationInfo,
         bulletPool: bulletPool,
         hp: hp,
-        ...{ popUpMessage: hp < this.state.hp && bulletHit },
+        ...(hp < this.state.hp && { popUpMessage: bulletHit }),
       });
     }
   };
@@ -207,6 +213,7 @@ class App extends React.Component {
   };
 
   render() {
+    console.log(this.state.popUpMessage);
     return (
       <div className="App">
         <div className="game-board">
@@ -229,12 +236,14 @@ class App extends React.Component {
             handleReset={this.handleReset}
             handleTutorial={this.handleTutorial}
             tutorial={this.state.tutorial}
+            handleConfirmMessage={this.handleConfirmMessage}
           />
           <Header
             selectedElement={this.state.selectedElement}
             currRound={this.state.currRound}
             playing={this.state.playing}
             handleEndRound={this.handleEndRound}
+            tutorial={this.state.tutorial}
           />
           <UpperPlayBoard
             locationInfo={this.state.locationInfo}

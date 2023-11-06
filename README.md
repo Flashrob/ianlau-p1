@@ -28,7 +28,7 @@ You have three options to choose from in each round, and you can perform them in
 2. Use Energy to perform actions.
 3. Use Patterns to clear bullets.
 
-When the timer counts down to 0, all options are no longer available, and any unplaced bullets will be automatically placed.
+When the timer counts down to 0, all options are no longer available, and any unplaced bullets must be placed before ending the round.
 
 # Bullet placing rules:
 

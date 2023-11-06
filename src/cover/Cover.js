@@ -18,12 +18,14 @@ export default class Cover extends React.Component {
       handleReset,
       handleTutorial,
       tutorial,
+      handleConfirmMessage,
     } = this.props;
 
-    let test = <div className="hollow-div">test</div>;
-
     return tutorial > 0 ? (
-      <TutorialList tutorial={tutorial} />
+      <TutorialList
+        tutorial={tutorial}
+        handleConfirmMessage={handleConfirmMessage}
+      />
     ) : currRound === 0 ? (
       <MainMenu
         bestScore={bestScore}

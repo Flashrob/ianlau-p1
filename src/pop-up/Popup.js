@@ -1,6 +1,6 @@
 import React from "react";
 import "./pop-up.css";
-import TutorialMessageList from "./tutorial-message/TutorialMessageList";
+import TutorialPopupList from "./tutorial-popup/TutorialPopupList";
 
 export default class PopUp extends React.Component {
   handleClick = () => {
@@ -13,11 +13,11 @@ export default class PopUp extends React.Component {
       display = (
         <div className="bullet-hit">
           {`You have been hit by a ${this.props.popUpMessage.color}${this.props.popUpMessage.name} bullet .`}
-          <button onClick={this.handleClick}>Okay</button>{" "}
+          <button onClick={this.handleClick}>Okay</button>
         </div>
       );
     } else if (this.props.popUpMessage === "tutorial") {
-      display = <TutorialMessageList tutorial={this.props.tutorial} />;
+      display = <TutorialPopupList tutorial={this.props.tutorial} />;
     }
     return display;
   }

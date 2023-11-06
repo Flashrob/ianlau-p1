@@ -1,4 +1,4 @@
-export default function (props) {
+export default function Result(props) {
   const { currRound, handleReset, bestScore } = props;
   return (
     <div className="main-menu">
