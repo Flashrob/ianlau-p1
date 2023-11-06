@@ -12,6 +12,7 @@ export default function UpperPlayBoard(props) {
     handlePerformAction,
     energy,
     handlePerformPattern,
+    popUpMessage,
   } = props;
   return (
     <div className="upper-play-board">
@@ -27,6 +28,7 @@ export default function UpperPlayBoard(props) {
         selectedElement={selectedElement}
         handleSelectAction={handleSelectAction}
         energy={energy}
+        popUpMessage={popUpMessage}
       />
     </div>
   );

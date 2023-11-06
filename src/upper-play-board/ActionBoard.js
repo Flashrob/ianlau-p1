@@ -15,7 +15,7 @@ export default class ActionBoard extends React.Component {
   };
 
   render() {
-    const { selectedElement, energy } = this.props;
+    const { selectedElement, energy, popUpMessage } = this.props;
     return (
       <div className="action-board">
         Action:
@@ -25,7 +25,8 @@ export default class ActionBoard extends React.Component {
           }
           value="Action1"
           onClick={
-            selectedElement === "Action1" || selectedElement === ""
+            (selectedElement === "Action1" || selectedElement === "") &&
+            !popUpMessage
               ? this.handleClick
               : null
           }
@@ -39,7 +40,8 @@ export default class ActionBoard extends React.Component {
           }
           value="Action2"
           onClick={
-            selectedElement === "Action2" || selectedElement === ""
+            selectedElement === "Action2" ||
+            (selectedElement === "" && !popUpMessage)
               ? this.handleClick
               : null
           }
@@ -53,7 +55,8 @@ export default class ActionBoard extends React.Component {
           }
           value="Action3"
           onClick={
-            selectedElement === "Action3" || selectedElement === ""
+            (selectedElement === "Action3" || selectedElement === "") &&
+            !popUpMessage
               ? this.handleClick
               : null
           }
@@ -64,7 +67,9 @@ export default class ActionBoard extends React.Component {
         <button
           className="action-icon"
           value="Action4"
-          onClick={selectedElement === "" ? this.handleClick : null}
+          onClick={
+            selectedElement === "" && !popUpMessage ? this.handleClick : null
+          }
         >
           <img src={require("./ActionIcon/Action4.jpg")} alt="Action4" />
           Draw

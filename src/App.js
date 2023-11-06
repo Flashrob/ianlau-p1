@@ -29,6 +29,10 @@ class App extends React.Component {
     };
   }
 
+  handleConfirmMessage = () => {
+    this.setState({ popUpMessage: "" });
+  };
+
   handlePlaceBullet = (amount) => {
     const { locationInfo, bulletPool, hp, bulletHit } = placeBullet(
       amount,
@@ -196,7 +200,10 @@ class App extends React.Component {
       <div className="App">
         <div className="game-board">
           {this.state.popUpMessage && (
-            <PopUp popUpMessage={this.state.popUpMessage} />
+            <PopUp
+              popUpMessage={this.state.popUpMessage}
+              handleConfirmMessage={this.handleConfirmMessage}
+            />
           )}
           <MainMenu
             currRound={this.state.currRound}
@@ -223,6 +230,7 @@ class App extends React.Component {
             handlePerformAction={this.handlePerformAction}
             energy={this.state.energy}
             handlePerformPattern={this.handlePerformPattern}
+            popUpMessage={this.state.popUpMessage}
           />
           <div
             className={
@@ -247,6 +255,7 @@ class App extends React.Component {
             selectedElement={this.state.selectedElement}
             handleSelectPattern={this.handleSelectPattern}
             handleEndRound={this.handleEndRound}
+            popUpMessage={this.state.popUpMessage}
           />
         </div>
       </div>
