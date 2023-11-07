@@ -16,7 +16,7 @@ export default function Tutorial1(props) {
         You have three options to choose from in each round, and you can perform
         them in any order and as many times as you are able.
       </p>
-      <button className="main-menu-button" onClick={props.handleConfirmMessage}>
+      <button className="tutorial-button" onClick={props.handleConfirmMessage}>
         Next
       </button>
     </div>

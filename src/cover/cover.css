@@ -24,6 +24,11 @@
   justify-content: center;
 }
 
+.tutorial-button {
+  width: 50px;
+  margin-bottom: 2px;
+}
+
 .tutorial2 {
   width: 80%;
   background-color: rgba(255, 255, 255, 0.8);
@@ -54,6 +59,17 @@
   border: 3px solid black;
   position: absolute;
   margin-top: 430px;
+  margin-left: 2px;
+  color: black;
+}
+
+.tutorial5 {
+  width: 80%;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 5%;
+  border: 3px solid black;
+  position: absolute;
+  margin-top: 230px;
   margin-left: 2px;
   color: black;
 }
