@@ -46,3 +46,14 @@
   margin-left: 15px;
   color: black;
 }
+
+.tutorial4 {
+  width: 95%;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 5%;
+  border: 3px solid black;
+  position: absolute;
+  margin-top: 430px;
+  margin-left: 2px;
+  color: black;
+}
