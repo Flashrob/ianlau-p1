@@ -10,7 +10,7 @@ export default class PatternDisplay extends React.Component {
     handleSelectPattern(pattern);
   };
   render() {
-    const { patternCard, selectedElement, popUpMessage } = this.props;
+    const { patternCard, selectedElement, popUpMessage, tutorial } = this.props;
     const patternCardsDisplay = patternCard.map((card) => (
       <button
         className={selectedElement === card ? "selected-card" : "pattern-card"}
@@ -19,8 +19,9 @@ export default class PatternDisplay extends React.Component {
         onClick={this.handleClick}
         disabled={
           !(
-            selectedElement === card ||
-            (selectedElement === "" && !popUpMessage)
+            (selectedElement === card || selectedElement === "") &&
+            !popUpMessage &&
+            (tutorial === 0 || (tutorial === 29 && card === "pattern3"))
           )
         }
       >

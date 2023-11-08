@@ -35,16 +35,14 @@ class App extends React.Component {
 
   handleTutorial = () => {
     this.setState({
-      tutorial: this.state.tutorial + 1,
-      popUpMessage: "tutorial",
-      ...(this.state.patternCard.length === 0 && TUTORIALPOOLANDBAG),
+      ...TUTORIALPOOLANDBAG,
     });
   };
 
   handleConfirmMessage = () => {
     this.setState({
-      ...(this.state.popUpMessage !== "tutorial" && { popUpMessage: "" }),
-      tutorial: this.state.tutorial > 0 && this.state.tutorial + 1,
+      popUpMessage: "",
+      ...(this.state.tutorial > 0 && { tutorial: this.state.tutorial + 1 }),
     });
   };
 
@@ -61,7 +59,10 @@ class App extends React.Component {
         locationInfo: locationInfo,
         bulletPool: bulletPool,
         hp: hp,
-        ...(hp < this.state.hp && { popUpMessage: bulletHit }),
+        ...(hp < this.state.hp && {
+          popUpMessage: bulletHit,
+        }),
+        ...(this.state.tutorial > 0 && { tutorial: this.state.tutorial + 1 }),
       });
     }
   };
@@ -86,19 +87,30 @@ class App extends React.Component {
     this.setState({
       selectedElement: action,
       ...(action === "" && { selectBullet: "", availableSpace: [] }),
+      ...(this.state.tutorial > 0 && { tutorial: this.state.tutorial + 1 }),
     });
   };
 
   handleSelectBullet = (selectBullet) => {
+    if (
+      (this.state.tutorial === 17 && selectBullet !== "green0") ||
+      (this.state.tutorial === 24 && selectBullet !== "blue1")
+    ) {
+      return;
+    }
     let availableSpace = checkAction(
       this.state.selectedElement,
       this.state.locationInfo,
       selectBullet,
       this.state.energy
     );
+    this.state.tutorial === 17 && (availableSpace = ["blue0"]);
+    this.state.tutorial === 24 && (availableSpace = ["red3"]);
+
     this.setState({
       selectBullet: selectBullet,
       availableSpace: availableSpace,
+      ...(this.state.tutorial > 0 && { tutorial: this.state.tutorial + 1 }),
     });
   };
 
@@ -116,6 +128,7 @@ class App extends React.Component {
       availableSpace: [],
       locationInfo: updatedLocation,
       energy: this.state.energy - cost,
+      ...(this.state.tutorial > 0 && { tutorial: this.state.tutorial + 1 }),
     });
   };
 
@@ -131,6 +144,7 @@ class App extends React.Component {
       selectedElement: pattern,
       availableSpace: availableSpace,
       ...(pattern === "" && { availableSpace: [] }),
+      ...(this.state.tutorial > 0 && { tutorial: this.state.tutorial + 1 }),
     });
   };
 
@@ -152,6 +166,7 @@ class App extends React.Component {
       availableSpace: "",
       patternCard: newPatternCard,
       energy: updatedEnergy > 7 ? 7 : updatedEnergy,
+      ...(this.state.tutorial > 0 && { tutorial: this.state.tutorial + 1 }),
     });
   };
 
@@ -174,6 +189,9 @@ class App extends React.Component {
   };
 
   handleEndRound = () => {
+    if (this.state.tutorial > 0) {
+      this.setState({ tutorial: this.state.tutorial + 1 });
+    }
     if (this.state.bulletPool.length) {
       this.setState({ selectedElement: "EndRound" });
     } else {
@@ -209,14 +227,17 @@ class App extends React.Component {
       locationInfo: genLocationInfo(),
       bulletCentralPool: genCentralPool(),
       patternDeck: genPatternDeck([]),
+      tutorial: 0,
     });
   };
 
   render() {
+    console.log(this.state.patternDeck);
+    console.log(this.state.patternCard);
     return (
       <div className="App">
         <div className="game-board">
-          {this.state.popUpMessage && (
+          {(this.state.popUpMessage || this.state.tutorial > 0) && (
             <PopUp
               popUpMessage={this.state.popUpMessage}
               tutorial={this.state.tutorial}
@@ -254,6 +275,7 @@ class App extends React.Component {
             energy={this.state.energy}
             handlePerformPattern={this.handlePerformPattern}
             popUpMessage={this.state.popUpMessage}
+            tutorial={this.state.tutorial}
           />
           <div
             className={
@@ -279,6 +301,7 @@ class App extends React.Component {
             handleSelectPattern={this.handleSelectPattern}
             handleEndRound={this.handleEndRound}
             popUpMessage={this.state.popUpMessage}
+            tutorial={this.state.tutorial}
           />
         </div>
       </div>

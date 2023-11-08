@@ -1,3 +1,8 @@
+h5 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 .main-menu {
   background-color: rgba(0, 0, 0, 0.8);
   position: absolute;
@@ -7,6 +12,9 @@
   justify-content: space-around;
   flex-direction: column;
   align-items: center;
+}
+.main-menu img {
+  height: 30px;
 }
 
 .main-menu-button {
@@ -31,19 +39,18 @@
 
 .tutorial2 {
   width: 80%;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.9);
   border-radius: 5%;
   border: 3px solid black;
   position: absolute;
-  margin-top: 420px;
+  margin-top: 410px;
   margin-left: 2px;
   color: black;
 }
 
 .tutorial3 {
   width: 70%;
-  height: 250px;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.9);
   border-radius: 5%;
   border: 3px solid black;
   position: absolute;
@@ -54,7 +61,7 @@
 
 .tutorial4 {
   width: 95%;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.9);
   border-radius: 5%;
   border: 3px solid black;
   position: absolute;
@@ -65,11 +72,186 @@
 
 .tutorial5 {
   width: 80%;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5%;
+  border: 3px solid black;
+  position: absolute;
+  margin-top: 250px;
+  margin-left: 2px;
+  color: black;
+}
+
+.tutorial6,
+.tutorial10 {
+  width: 70%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5%;
+  border: 3px solid black;
+  position: absolute;
+  margin-top: 380px;
+  margin-left: 15px;
+  color: black;
+}
+
+.tutorial7,
+.tutorial9,
+.tutorial11121314 {
+  width: 70%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5%;
+  border: 3px solid black;
+  position: absolute;
+  margin-top: 450px;
+  margin-left: 15px;
+  color: black;
+}
+
+.tutorial8 {
+  width: 70%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5%;
+  border: 3px solid black;
+  position: absolute;
+  margin-top: 300px;
+  margin-left: 15px;
+  color: black;
+}
+
+.tutorial15,
+.tutorial29 {
+  width: 95%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5%;
+  border: 3px solid black;
+  position: absolute;
+  margin-top: 300px;
+  margin-left: 2px;
+  color: black;
+}
+
+.tutorial16,
+.tutorial23 {
+  width: 70%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5%;
+  border: 3px solid black;
+  position: absolute;
+  margin-top: 100px;
+  margin-left: 15px;
+  color: black;
+}
+
+.tutorial17 {
+  width: 70%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5%;
+  border: 3px solid black;
+  position: absolute;
+  margin-top: 180px;
+  margin-left: 15px;
+  color: black;
+}
+.tutorial18,
+.tutorial19 {
+  width: 50%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5%;
+  border: 3px solid black;
+  position: absolute;
+  margin-top: 170px;
+  margin-left: 5px;
+  color: black;
+}
+
+.tutorial20 {
+  width: 70%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5%;
+  border: 3px solid black;
+  position: absolute;
+  margin-top: 170px;
+  margin-left: 15px;
+  color: black;
+}
+.tutorial21 {
+  width: 70%;
+  background-color: rgba(255, 255, 255, 0.9);
   border-radius: 5%;
   border: 3px solid black;
   position: absolute;
   margin-top: 230px;
-  margin-left: 2px;
+  margin-left: 15px;
+  color: black;
+}
+.tutorial22 {
+  width: 70%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5%;
+  border: 3px solid black;
+  position: absolute;
+  margin-top: 290px;
+  margin-left: 15px;
+  color: black;
+}
+
+.tutorial24 {
+  width: 50%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5%;
+  border: 3px solid black;
+  position: absolute;
+  margin-top: 210px;
+  margin-left: 5px;
+  color: black;
+}
+.tutorial25 {
+  width: 70%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5%;
+  border: 3px solid black;
+  position: absolute;
+  margin-top: 260px;
+  margin-left: 60px;
+  color: black;
+}
+.tutorial26 {
+  width: 70%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5%;
+  border: 3px solid black;
+  position: absolute;
+  margin-top: 350px;
+  margin-left: 15px;
+  color: black;
+}
+.tutorial30 {
+  width: 80%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5%;
+  border: 3px solid black;
+  position: absolute;
+  margin-top: 260px;
+  margin-left: 50px;
+  color: black;
+}
+.tutorial31 {
+  width: 80%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5%;
+  border: 3px solid black;
+  position: absolute;
+  margin-top: 260px;
+  margin-left: 5px;
+  color: black;
+}
+
+.tutorial33 {
+  width: 70%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5%;
+  border: 3px solid black;
+  position: absolute;
+  margin-top: 450px;
+  margin-left: 20px;
   color: black;
 }

@@ -25,6 +25,7 @@ export default class Cover extends React.Component {
       <TutorialList
         tutorial={tutorial}
         handleConfirmMessage={handleConfirmMessage}
+        handleReset={handleReset}
       />
     ) : currRound === 0 ? (
       <MainMenu

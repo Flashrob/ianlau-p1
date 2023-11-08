@@ -4,7 +4,7 @@ export default function drawPattern(deck, card, number) {
   const newCard = [...card];
   for (let i = 0; i < number; i++) {
     if (!deck.length) {
-      genPatternDeck(newCard);
+      deck = genPatternDeck(newCard);
     }
     newCard.push(deck.pop());
   }

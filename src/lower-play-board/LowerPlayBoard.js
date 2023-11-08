@@ -11,6 +11,7 @@ export default function LowerPlayBoard(props) {
     handleSelectPattern,
     handleEndRound,
     popUpMessage,
+    tutorial,
   } = props;
   return (
     <div className="lower-play-board">
@@ -19,6 +20,7 @@ export default function LowerPlayBoard(props) {
         selectedElement={selectedElement}
         handleSelectPattern={handleSelectPattern}
         popUpMessage={popUpMessage}
+        tutorial={tutorial}
       />
       <PlaceBulletButton
         bulletPool={bulletPool}
@@ -26,6 +28,7 @@ export default function LowerPlayBoard(props) {
         selectedElement={selectedElement}
         handleEndRound={handleEndRound}
         popUpMessage={popUpMessage}
+        tutorial={tutorial}
       />
     </div>
   );

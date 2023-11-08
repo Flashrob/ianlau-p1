@@ -1,6 +1,6 @@
 import React from "react";
 import "./pop-up.css";
-import TutorialPopupList from "./tutorial-popup/TutorialPopupList";
+import TutorialPopup from "./tutorial-popup/TutorialPopup";
 
 export default class PopUp extends React.Component {
   handleClick = () => {
@@ -16,8 +16,8 @@ export default class PopUp extends React.Component {
           <button onClick={this.handleClick}>Okay</button>
         </div>
       );
-    } else if (this.props.popUpMessage === "tutorial") {
-      display = <TutorialPopupList tutorial={this.props.tutorial} />;
+    } else if (this.props.tutorial > 0) {
+      display = <TutorialPopup tutorial={this.props.tutorial} />;
     }
     return display;
   }

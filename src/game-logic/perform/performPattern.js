@@ -181,7 +181,7 @@ export function performPattern9(locationInfo, selectPlace) {
   let column = selectPlace.slice(0, -1);
   let columnIndex = color.indexOf(column);
   let row = selectPlace.slice(-1);
-  for (let c = columnIndex - 1; c < columnIndex + 3; c++) {
+  for (let c = columnIndex - 1; c < columnIndex + 2; c++) {
     let target = locationInfo[color[c] + (Number(row) - 2)];
     if (target) {
       target.star && (energyGain += 1);

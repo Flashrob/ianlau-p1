@@ -16,9 +16,12 @@ export default class ActionBoard extends React.Component {
 
   detButtonEnable = (action) => {
     return !(
-      (this.props.selectedElement === action ||
+      ((this.props.selectedElement === action ||
         this.props.selectedElement === "") &&
-      !this.props.popUpMessage
+        !this.props.popUpMessage &&
+        this.props.tutorial === 0) ||
+      (action === "Action1" &&
+        (this.props.tutorial === 16 || this.props.tutorial === 23))
     );
   };
 

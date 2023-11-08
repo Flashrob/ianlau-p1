@@ -8,10 +8,22 @@ export default class PlaceBulletButton extends React.Component {
   };
 
   render() {
-    const { bulletPool, selectedElement, popUpMessage } = this.props;
+    const { bulletPool, selectedElement, popUpMessage, tutorial } = this.props;
     const isButtonDisabled = !(
       (selectedElement === "EndRound" || selectedElement === "") &&
-      !popUpMessage
+      !popUpMessage &&
+      (tutorial === 0 ||
+        tutorial === 7 ||
+        tutorial === 9 ||
+        tutorial === 11 ||
+        tutorial === 12 ||
+        tutorial === 13 ||
+        tutorial === 14 ||
+        tutorial === 26 ||
+        tutorial === 27 ||
+        tutorial === 31 ||
+        tutorial === 32 ||
+        tutorial === 33)
     );
     return (
       <button
