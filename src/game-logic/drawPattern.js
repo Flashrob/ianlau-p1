@@ -4,10 +4,10 @@ export default function drawPattern(deck, card, number) {
   const newDeck = [...deck];
   const newCard = [...card];
   for (let i = 0; i < number; i++) {
-    if (!deck.length) {
-      deck = genPatternDeck(newCard);
+    if (!newDeck.length) {
+      newDeck = genPatternDeck(newCard);
     }
-    newCard.push(deck.pop());
+    newCard.push(newDeck.pop());
   }
   return { newDeck, newCard };
 }

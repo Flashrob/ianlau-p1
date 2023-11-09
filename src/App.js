@@ -50,28 +50,33 @@ class App extends React.Component {
   handlePlaceBullet = () => {
     let inputLocation = this.state.locationInfo;
     let inputPool = this.state.bulletPool;
+    let inputHp = this.state.hp;
     if (this.state.secondPlayer) {
       inputLocation = this.state.locationInfoSecond;
       inputPool = this.state.bulletPoolSecond;
+      inputHp = this.state.hpSecond;
     }
     const { Updatedlocation, playerPool, hp, bulletHit } = placeBullet(
       inputLocation,
       inputPool,
-      this.state.hp
+      inputHp
     );
-    if (hp < 1) {
+    if (hp < 1 && !this.state.twoPlayer) {
       this.handleEndGame();
+    }
+    if (hp < 1 && this.state.secondPlayer) {
+      this.setState({ selectBullet: "player1win" });
     } else {
       this.setState({
-        hp: hp,
         ...(hp < this.state.hp && {
           popUpMessage: bulletHit,
         }),
         ...(!this.state.secondPlayer
-          ? { locationInfo: Updatedlocation, bulletPool: playerPool }
+          ? { locationInfo: Updatedlocation, bulletPool: playerPool, hp: hp }
           : {
               locationInfoSecond: Updatedlocation,
               bulletPoolSecond: playerPool,
+              hpSecond: hp,
             }),
         ...(this.state.tutorial > 0 && { tutorial: this.state.tutorial + 1 }),
       });
@@ -255,7 +260,9 @@ class App extends React.Component {
       this.setState({
         playing: false,
         selectedElement: "",
-        ...(this.state.secondPlayer && { currRound: this.state.currRound + 1 }),
+        ...((this.state.secondPlayer || !this.state.twoPlayer) && {
+          currRound: this.state.currRound + 1,
+        }),
       });
     }
   };
