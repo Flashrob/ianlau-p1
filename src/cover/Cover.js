@@ -6,6 +6,7 @@ import Result from "./Result";
 import TutorialList from "./tutorial/TutorialList";
 import TwoPlayerMenu from "./TwoPlayerMenu";
 import PassPlayer from "./PassPlayer";
+import TwoPlayerResult from "./TwoPlayerResult";
 
 export default class Cover extends React.Component {
   render() {
@@ -28,6 +29,7 @@ export default class Cover extends React.Component {
       handleStartTwoPlayer,
       playerName,
       handlePassPlayer,
+      hpSecond,
     } = this.props;
 
     return tutorial > 0 ? (
@@ -45,12 +47,20 @@ export default class Cover extends React.Component {
         handleTutorial={handleTutorial}
         handleTwoPlayerMode={handleTwoPlayerMode}
       />
-    ) : hp === 0 ? (
+    ) : hp === 0 && !twoPlayer ? (
       <Result
         currRound={currRound}
         handleReset={handleReset}
         bestScore={bestScore}
       />
+    ) : hp === 0 && !secondPlayer && !playing ? (
+      <Result
+        currRound={currRound}
+        handleReset={handleReset}
+        bestScore={bestScore}
+      />
+    ) : ((hp === 0 && hpSecond === 0) || hpSecond === 0) && twoPlayer ? (
+      <TwoPlayerResult hpSecond={hpSecond} hp={hp} handleReset={handleReset} />
     ) : !playing && !twoPlayer ? (
       <RoundBreak
         erasedBullet={erasedBullet}

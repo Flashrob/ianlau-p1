@@ -65,7 +65,7 @@ class App extends React.Component {
       this.handleEndGame();
     }
     if (hp < 1 && this.state.secondPlayer) {
-      this.setState({ selectBullet: "player1win" });
+      this.setState({ selectedElement: "player1win" });
     } else {
       this.setState({
         ...(hp < this.state.hp && {
@@ -184,7 +184,11 @@ class App extends React.Component {
       selectPlace
     );
 
-    const newPatternCard = this.state.patternCard.filter(
+    let inputCard = this.state.secondPlayer
+      ? this.state.patternCardSecond
+      : this.state.patternCard;
+
+    const newPatternCard = inputCard.filter(
       (pattern) => pattern !== this.state.selectedElement
     );
     let updatedEnergy = this.state.energy + energyGain;
@@ -192,15 +196,21 @@ class App extends React.Component {
       selectedElement: "",
       availableSpace: "",
       energy: updatedEnergy > 7 ? 7 : updatedEnergy,
-      ...(!this.state.secondPlayer
+      ...(!this.state.twoPlayer
         ? {
             locationInfo: updatedLocation,
             erasedBullet: this.state.erasedBullet + erased,
             patternCard: newPatternCard,
           }
+        : !this.state.secondPlayer
+        ? {
+            locationInfo: updatedLocation,
+            erasedBulletNextRound: this.state.erasedBulletNextRound + erased,
+            patternCard: newPatternCard,
+          }
         : {
             locationInfoSecond: updatedLocation,
-            erasedBulletSecond: this.state.erasedBullet + erased,
+            erasedBulletSecond: this.state.erasedBulletSecond + erased,
             patternCardSecond: newPatternCard,
           }),
       ...(this.state.tutorial > 0 && { tutorial: this.state.tutorial + 1 }),
@@ -237,6 +247,7 @@ class App extends React.Component {
       erasedBulletSecond: 0,
       hpSecond: 4,
       twoPlayer: true,
+      erasedBulletNextRound: 0,
     });
   };
 
@@ -268,7 +279,7 @@ class App extends React.Component {
   };
 
   handleStartRound = () => {
-    let bulletAmount = this.state.currRound + 3 + this.state.erasedBullet;
+    let bulletAmount = this.state.currRound + 2 + this.state.erasedBullet;
     if (this.state.patternCard.length < 4) {
       this.handleDrawPattern(4 - this.state.patternCard.length, false);
     }
@@ -303,9 +314,12 @@ class App extends React.Component {
     this.setState({
       ...DEFAULTROUNDSTATE,
       secondPlayer: !this.state.secondPlayer,
-      ...(isNextPlayerSecondPlayer
-        ? { erasedBulletSecond: 0 }
-        : { erasedBullet: 0 }),
+      ...(!isNextPlayerSecondPlayer
+        ? {
+            erasedBullet: this.state.erasedBulletNextRound,
+            erasedBulletNextRound: 0,
+          }
+        : { erasedBulletSecond: 0 }),
     });
   };
 
@@ -327,6 +341,11 @@ class App extends React.Component {
       patternDeck: genPatternDeck([]),
       patternCard: [],
       tutorial: 0,
+      locationInfoSecond: {},
+      patternDeckSecond: [],
+      patternCardSecond: [],
+      bulletPoolSecond: [],
+      erasedBulletSecond: 0,
     });
   };
 
@@ -369,6 +388,7 @@ class App extends React.Component {
             playerName={this.state.playerName}
             handlePassPlayer={this.handlePassPlayer}
             secondPlayer={this.state.secondPlayer}
+            hpSecond={this.state.hpSecond}
           />
           <Header
             selectedElement={this.state.selectedElement}

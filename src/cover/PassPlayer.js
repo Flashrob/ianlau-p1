@@ -7,6 +7,7 @@ export default function PassPlayer(props) {
     secondPlayer,
     currRound,
   } = props;
+  const nextPlayer = !secondPlayer;
   let current = 0;
   let nonCurrent = 1;
   if (secondPlayer === true) {
@@ -17,9 +18,9 @@ export default function PassPlayer(props) {
   let bulletAmount =
     currRound === 1
       ? 10
-      : !secondPlayer
-      ? currRound + 2 + erasedBulletSecond
-      : currRound + 2 + erasedBullet;
+      : nextPlayer === true
+      ? currRound + 2 + erasedBullet
+      : currRound + 2 + erasedBulletSecond;
 
   return (
     <div className="main-menu">
