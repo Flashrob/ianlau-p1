@@ -1,5 +1,6 @@
 export default function MainMenu(props) {
-  const { bestScore, handleStartGame, handleTutorial } = props;
+  const { bestScore, handleStartGame, handleTutorial, handleTwoPlayerMode } =
+    props;
   return (
     <div className="main-menu">
       <div className="big-title">
@@ -12,7 +13,9 @@ export default function MainMenu(props) {
       <button className="main-menu-button" onClick={handleTutorial}>
         Tutorial
       </button>
-      <button className="main-menu-button">Player Versus Player</button>
+      <button className="main-menu-button" onClick={handleTwoPlayerMode}>
+        Player Versus Player
+      </button>
     </div>
   );
 }

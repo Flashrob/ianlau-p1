@@ -4,6 +4,7 @@ import RoundBreak from "./RoundBreak";
 import "./cover.css";
 import Result from "./Result";
 import TutorialList from "./tutorial/TutorialList";
+import TwoPlayerMenu from "./TwoPlayerMenu";
 
 export default class Cover extends React.Component {
   render() {
@@ -19,6 +20,9 @@ export default class Cover extends React.Component {
       handleTutorial,
       tutorial,
       handleConfirmMessage,
+      handleTwoPlayerMode,
+      twoPlayer,
+      handlePlayerName,
     } = this.props;
 
     return tutorial > 0 ? (
@@ -27,11 +31,14 @@ export default class Cover extends React.Component {
         handleConfirmMessage={handleConfirmMessage}
         handleReset={handleReset}
       />
+    ) : twoPlayer ? (
+      <TwoPlayerMenu handlePlayerName={handlePlayerName} />
     ) : currRound === 0 ? (
       <MainMenu
         bestScore={bestScore}
         handleStartGame={handleStartGame}
         handleTutorial={handleTutorial}
+        handleTwoPlayerMode={handleTwoPlayerMode}
       />
     ) : hp === 0 ? (
       <Result

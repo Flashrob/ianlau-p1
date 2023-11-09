@@ -188,6 +188,24 @@ class App extends React.Component {
     this.setState({ playing: true, currRound: 1 });
   };
 
+  handleTwoPlayerMode = () => {
+    this.setState({
+      locationInfoSecond: genLocationInfo(),
+      patternDeckSecond: genPatternDeck([]),
+      patternCardSecond: [],
+      bulletPoolSecond: [],
+      hpSecond: 4,
+      twoPlayer: true,
+      currPlayer: 0,
+    });
+  };
+
+  handlePlayerName = (name1, name2) => {
+    this.setState({
+      playerName: [name1, name2],
+    });
+  };
+
   handleEndRound = () => {
     if (this.state.tutorial > 0) {
       this.setState({ tutorial: this.state.tutorial + 1 });
@@ -232,8 +250,7 @@ class App extends React.Component {
   };
 
   render() {
-    console.log(this.state.patternDeck);
-    console.log(this.state.patternCard);
+    console.log(this.state);
     return (
       <div className="App">
         <div className="game-board">
@@ -257,6 +274,9 @@ class App extends React.Component {
             handleTutorial={this.handleTutorial}
             tutorial={this.state.tutorial}
             handleConfirmMessage={this.handleConfirmMessage}
+            handleTwoPlayerMode={this.handleTwoPlayerMode}
+            twoPlayer={this.state.twoPlayer}
+            handlePlayerName={this.handlePlayerName}
           />
           <Header
             selectedElement={this.state.selectedElement}
@@ -264,6 +284,7 @@ class App extends React.Component {
             playing={this.state.playing}
             handleEndRound={this.handleEndRound}
             tutorial={this.state.tutorial}
+            playerName={this.state.playerName[this.state.currPlayer]}
           />
           <UpperPlayBoard
             locationInfo={this.state.locationInfo}

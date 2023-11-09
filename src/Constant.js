@@ -20,6 +20,7 @@ export const DEFAULTGAMESTATE = {
   selectedElement: "",
   popUpMessage: "",
   tutorial: 0,
+  playerName: [],
 };
 
 export const TUTORIALPOOLANDBAG = {
