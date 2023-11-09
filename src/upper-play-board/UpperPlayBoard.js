@@ -4,7 +4,7 @@ import ActionBoard from "./ActionBoard";
 
 export default function UpperPlayBoard(props) {
   const {
-    locationInfo,
+    location,
     selectedElement,
     handleSelectAction,
     handleSelectBullet,
@@ -18,7 +18,7 @@ export default function UpperPlayBoard(props) {
   return (
     <div className="upper-play-board">
       <BulletBoard
-        locationInfo={locationInfo}
+        location={location}
         selectedElement={selectedElement}
         handleSelectBullet={handleSelectBullet}
         availableSpace={availableSpace}

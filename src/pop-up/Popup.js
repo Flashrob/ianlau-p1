@@ -8,7 +8,7 @@ export default class PopUp extends React.Component {
   };
 
   render() {
-    let display;
+    let display = "";
     if (this.props.popUpMessage.name) {
       display = (
         <div className="bullet-hit">

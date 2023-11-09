@@ -1,6 +1,5 @@
 export const DEFAULTROUNDSTATE = {
   energy: 7,
-  erasedBullet: 0,
   playing: true,
   selectBullet: "",
   selectedElement: "",
