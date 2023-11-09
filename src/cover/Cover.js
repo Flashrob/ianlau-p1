@@ -22,7 +22,7 @@ export default class Cover extends React.Component {
       handleConfirmMessage,
       handleTwoPlayerMode,
       twoPlayer,
-      handlePlayerName,
+      handleStartTwoPlayer,
     } = this.props;
 
     return tutorial > 0 ? (
@@ -31,8 +31,8 @@ export default class Cover extends React.Component {
         handleConfirmMessage={handleConfirmMessage}
         handleReset={handleReset}
       />
-    ) : twoPlayer ? (
-      <TwoPlayerMenu handlePlayerName={handlePlayerName} />
+    ) : twoPlayer && currRound === 0 ? (
+      <TwoPlayerMenu handleStartTwoPlayer={handleStartTwoPlayer} />
     ) : currRound === 0 ? (
       <MainMenu
         bestScore={bestScore}

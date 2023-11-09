@@ -13,7 +13,7 @@ export default class TwoPlayerMenu extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.handlePlayerName(this.state.name1, this.state.name2);
+    this.props.handleStartTwoPlayer(this.state.name1, this.state.name2);
   };
 
   render() {
@@ -45,7 +45,11 @@ export default class TwoPlayerMenu extends React.Component {
               onChange={this.handleChange}
             />
           </div>
-          <input type="submit" value="Player 1 go!" />
+          <input
+            type="submit"
+            value="Player 1 go!"
+            disabled={this.state.name1 === "" || this.state.name2 === ""}
+          />
         </form>
       </div>
     );

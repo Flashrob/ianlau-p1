@@ -30,6 +30,7 @@ class App extends React.Component {
       locationInfo: genLocationInfo(),
       bulletCentralPool: genCentralPool(),
       patternDeck: genPatternDeck([]),
+      patternCard: [],
     };
   }
 
@@ -47,21 +48,28 @@ class App extends React.Component {
   };
 
   handlePlaceBullet = () => {
+    let inputLocation = this.state.locationInfo;
+    let inputPool = this.state.bulletPool;
+    if (this.state.secondPlayer) {
+      inputLocation = this.state.locationInfoSecond;
+      inputPool = this.state.bulletPool;
+    }
     const { locationInfo, bulletPool, hp, bulletHit } = placeBullet(
-      this.state.locationInfo,
-      this.state.bulletPool,
+      inputLocation,
+      inputPool,
       this.state.hp
     );
     if (hp < 1) {
       this.handleEndGame();
     } else {
       this.setState({
-        locationInfo: locationInfo,
-        bulletPool: bulletPool,
         hp: hp,
         ...(hp < this.state.hp && {
           popUpMessage: bulletHit,
         }),
+        ...(!this.state.secondPlayer
+          ? { locationInfo: locationInfo, bulletPool: bulletPool }
+          : { locationInfoSecond: locationInfo, bulletPoolSecond: bulletPool }),
         ...(this.state.tutorial > 0 && { tutorial: this.state.tutorial + 1 }),
       });
     }
@@ -72,9 +80,12 @@ class App extends React.Component {
       this.state.bulletCentralPool,
       amount
     );
+
     this.setState({
       bulletCentralPool: central,
-      bulletPool: playerPool,
+      ...(!this.state.secondPlayer
+        ? { bulletPool: playerPool }
+        : { bulletPoolSecond: playerPool }),
     });
   };
 
@@ -98,9 +109,11 @@ class App extends React.Component {
     ) {
       return;
     }
+    let inputLocation = this.state.locationInfo;
+    this.state.secondPlayer && (inputLocation = this.state.locationInfoSecond);
     let availableSpace = checkAction(
       this.state.selectedElement,
-      this.state.locationInfo,
+      inputLocation,
       selectBullet,
       this.state.energy
     );
@@ -115,9 +128,11 @@ class App extends React.Component {
   };
 
   handlePerformAction = (selectPlace) => {
+    let inputLocation = this.state.locationInfo;
+    this.state.secondPlayer && (inputLocation = this.state.locationInfoSecond);
     const updated = performAction(
       this.state.selectedElement,
-      this.state.locationInfo,
+      inputLocation,
       this.state.selectBullet,
       selectPlace
     );
@@ -126,16 +141,20 @@ class App extends React.Component {
       selectedElement: "",
       selectBullet: "",
       availableSpace: [],
-      locationInfo: updatedLocation,
       energy: this.state.energy - cost,
+      ...(!this.state.secondPlayer
+        ? { locationInfo: updatedLocation }
+        : { locationInfoSecond: updatedLocation }),
       ...(this.state.tutorial > 0 && { tutorial: this.state.tutorial + 1 }),
     });
   };
 
   handleSelectPattern = (pattern) => {
+    let inputLocation = this.state.locationInfo;
+    this.state.secondPlayer && (inputLocation = this.state.locationInfoSecond);
     let availableSpace = [];
     if (pattern !== "") {
-      availableSpace = checkPatternList(pattern, this.state.locationInfo);
+      availableSpace = checkPatternList(pattern, inputLocation);
     }
     if (availableSpace.length === 0) {
       pattern = "";
@@ -149,9 +168,11 @@ class App extends React.Component {
   };
 
   handlePerformPattern = (selectPlace) => {
+    let inputLocation = this.state.locationInfo;
+    this.state.secondPlayer && (inputLocation = this.state.locationInfoSecond);
     const updated = performPatternList(
       this.state.selectedElement,
-      this.state.locationInfo,
+      inputLocation,
       selectPlace
     );
     const { erased, energyGain, locationInfo } = updated;
@@ -160,25 +181,36 @@ class App extends React.Component {
     );
     let updatedEnergy = this.state.energy + energyGain;
     this.setState({
-      locationInfo: locationInfo,
-      erasedBullet: this.state.erasedBullet + erased,
       selectedElement: "",
       availableSpace: "",
-      patternCard: newPatternCard,
       energy: updatedEnergy > 7 ? 7 : updatedEnergy,
+      ...(!this.state.secondPlayer
+        ? {
+            locationInfo: locationInfo,
+            erasedBullet: this.state.erasedBullet + erased,
+            patternCard: newPatternCard,
+          }
+        : {
+            locationInfoSecond: locationInfo,
+            erasedBulletSecond: this.state.erasedBullet + erased,
+            patternCardSecond: newPatternCard,
+          }),
       ...(this.state.tutorial > 0 && { tutorial: this.state.tutorial + 1 }),
     });
   };
 
   handleDrawPattern = (amount) => {
-    const { deck, newCard } = drawPattern(
-      this.state.patternDeck,
-      this.state.patternCard,
-      amount
-    );
+    let inputDeck = this.state.patternDeck;
+    let inputCard = this.state.patternCard;
+    if (this.state.secondPlayer) {
+      inputDeck = this.state.patternDeckSecond;
+      inputCard = this.state.patternCardSecond;
+    }
+    const { deck, newCard } = drawPattern(inputDeck, inputCard, amount);
     this.setState({
-      patternDeck: deck,
-      patternCard: newCard,
+      ...(!this.state.secondPlayer
+        ? { patternDeck: deck, patternCard: newCard }
+        : { patternDeckSecond: deck, patternCardSecond: newCard }),
     });
   };
 
@@ -194,13 +226,14 @@ class App extends React.Component {
       patternDeckSecond: genPatternDeck([]),
       patternCardSecond: [],
       bulletPoolSecond: [],
+      erasedBulletSecond: [],
       hpSecond: 4,
       twoPlayer: true,
-      currPlayer: 0,
     });
   };
 
-  handlePlayerName = (name1, name2) => {
+  handleStartTwoPlayer = (name1, name2) => {
+    this.handleStartGame();
     this.setState({
       playerName: [name1, name2],
     });
@@ -276,7 +309,7 @@ class App extends React.Component {
             handleConfirmMessage={this.handleConfirmMessage}
             handleTwoPlayerMode={this.handleTwoPlayerMode}
             twoPlayer={this.state.twoPlayer}
-            handlePlayerName={this.handlePlayerName}
+            handleStartTwoPlayer={this.handleStartTwoPlayer}
           />
           <Header
             selectedElement={this.state.selectedElement}
@@ -284,7 +317,8 @@ class App extends React.Component {
             playing={this.state.playing}
             handleEndRound={this.handleEndRound}
             tutorial={this.state.tutorial}
-            playerName={this.state.playerName[this.state.currPlayer]}
+            playerName={this.state.playerName}
+            secondPlayer={this.state.secondPlayer}
           />
           <UpperPlayBoard
             locationInfo={this.state.locationInfo}

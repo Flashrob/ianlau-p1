@@ -12,7 +12,6 @@ export const DEFAULTGAMESTATE = {
   energy: 7,
   bulletPool: [],
   availableSpace: [],
-  patternCard: [],
   erasedBullet: 0,
   currRound: 0,
   playing: false,
@@ -20,7 +19,8 @@ export const DEFAULTGAMESTATE = {
   selectedElement: "",
   popUpMessage: "",
   tutorial: 0,
-  playerName: [],
+  playerName: [""],
+  secondPlayer: false,
 };
 
 export const TUTORIALPOOLANDBAG = {
