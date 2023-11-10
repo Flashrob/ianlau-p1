@@ -61,3 +61,25 @@ Here are the incoming bullet no. of each round.
 3. 5 bullets + no. of all the bullets you cleared in the 2nd rd.
 4. 6 bullets + no. of all the bullets you cleared in the 3rd rd.
    ...and so on
+
+# Tutorial Mode:
+
+In tutorial mode, the app will guide the users to acknowledge the basic rules of this game and how to control the interfence of this game.
+
+# Player Versus player mode:
+
+In Player Versus player mode, user will have to play against another user on the same computer.
+First start with player1 playing the round, then player2 will playing the same round.
+After player2 played that round, it will continue with player1 playing the next round.
+If two players is down in the same round, they draw.
+If player2 is down, player1 win.
+If player1 is down, player2 will continue play the same round to see if player2 survived this round.
+If yes, player 2 win.
+
+Here are the incoming bullet no. of each round.
+
+1. 10 bullets,
+2. 4 bullets + no. of all the bullets your opponent cleared in the 1st rd.
+3. 5 bullets + no. of all the bullets your opponent cleared in the 2nd rd.
+4. 6 bullets + no. of all the bullets your opponent cleared in the 3rd rd.
+   ...and so on
