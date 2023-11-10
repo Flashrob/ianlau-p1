@@ -61,16 +61,19 @@ class App extends React.Component {
       inputPool,
       inputHp
     );
+
+    this.setState({
+      popUpMessage: bulletHit,
+    });
     if (hp < 1 && !this.state.twoPlayer) {
-      this.handleEndGame();
-    }
-    if (hp < 1 && this.state.secondPlayer) {
-      this.setState({ selectedElement: "player1win" });
+      this.handleEndGame(bulletHit);
+    } else if (hp < 1 && this.state.secondPlayer) {
+      this.setState({ hpSecond: 0 });
+    } else if (hp < 1 && !this.state.secondPlayer && this.state.twoPlayer) {
+      this.setState({ hp: 0, playing: false });
     } else {
       this.setState({
-        ...(hp < this.state.hp && {
-          popUpMessage: bulletHit,
-        }),
+        popUpMessage: bulletHit,
         ...(!this.state.secondPlayer
           ? { locationInfo: Updatedlocation, bulletPool: playerPool, hp: hp }
           : {
@@ -259,6 +262,9 @@ class App extends React.Component {
   };
 
   handleEndRound = () => {
+    if (this.state.hp === 0) {
+      return this.handlePassPlayer();
+    }
     let inputPool = this.state.secondPlayer
       ? this.state.bulletPoolSecond
       : this.state.bulletPool;
@@ -360,6 +366,7 @@ class App extends React.Component {
     let inputPool = this.state.secondPlayer
       ? this.state.bulletPoolSecond
       : this.state.bulletPool;
+    let inputHp = this.state.secondPlayer ? this.state.hpSecond : this.state.hp;
     return (
       <div className="App">
         <div className="game-board">
@@ -389,6 +396,7 @@ class App extends React.Component {
             handlePassPlayer={this.handlePassPlayer}
             secondPlayer={this.state.secondPlayer}
             hpSecond={this.state.hpSecond}
+            erasedBulletNextRound={this.state.erasedBulletNextRound}
           />
           <Header
             selectedElement={this.state.selectedElement}
@@ -413,19 +421,18 @@ class App extends React.Component {
           />
           <div
             className={
-              this.state.hp === 4
+              inputHp === 4
                 ? "hp-bar"
-                : this.state.hp === 3
+                : inputHp === 3
                 ? "hp-bar3"
-                : this.state.hp === 2
+                : inputHp === 2
                 ? "hp-bar2"
-                : this.state.hp === 1
+                : inputHp === 1
                 ? "hp-bar1"
                 : "hp-bar0"
             }
-            onClick={this.test}
           >
-            {this.state.hp}
+            {inputHp}
           </div>
           <LowerPlayBoard
             patternCard={inputCard}

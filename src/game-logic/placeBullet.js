@@ -1,7 +1,7 @@
 export default function placeBullet(locationInfo, bulletPool, hp) {
   const Updatedlocation = { ...locationInfo };
   const playerPool = [...bulletPool];
-  let bulletHit;
+  let bulletHit = "";
   let bullet = playerPool.pop();
   let color = bullet.color;
   let rank = bullet.rank;
@@ -17,7 +17,9 @@ export default function placeBullet(locationInfo, bulletPool, hp) {
       break;
     }
   }
-  rank !== 0 && (hp -= 1) && (bulletHit = bullet);
-
+  if (rank !== 0) {
+    hp -= 1;
+    bulletHit = `${bullet.color}${bullet.name}`;
+  }
   return { Updatedlocation, playerPool, hp, bulletHit };
 }

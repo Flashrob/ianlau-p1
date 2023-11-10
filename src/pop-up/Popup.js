@@ -9,15 +9,15 @@ export default class PopUp extends React.Component {
 
   render() {
     let display = "";
-    if (this.props.popUpMessage.name) {
+    if (this.props.tutorial > 0 && this.props.tutorial !== 15) {
+      display = <TutorialPopup tutorial={this.props.tutorial} />;
+    } else if (this.props.popUpMessage !== "") {
       display = (
         <div className="bullet-hit">
-          {`You have been hit by a ${this.props.popUpMessage.color}${this.props.popUpMessage.name} bullet .`}
+          {`You have been hit by a ${this.props.popUpMessage} bullet .`}
           <button onClick={this.handleClick}>Okay</button>
         </div>
       );
-    } else if (this.props.tutorial > 0) {
-      display = <TutorialPopup tutorial={this.props.tutorial} />;
     }
     return display;
   }

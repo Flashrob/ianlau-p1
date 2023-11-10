@@ -4,6 +4,7 @@ export const DEFAULTROUNDSTATE = {
   selectBullet: "",
   selectedElement: "",
   availableSpace: [],
+  popUpMessage: "",
 };
 
 export const DEFAULTGAMESTATE = {
@@ -20,6 +21,7 @@ export const DEFAULTGAMESTATE = {
   tutorial: 0,
   playerName: [""],
   secondPlayer: false,
+  twoPlayer: false,
 };
 
 export const TUTORIALPOOLANDBAG = {

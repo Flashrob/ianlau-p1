@@ -6,6 +6,7 @@ export default function PassPlayer(props) {
     handlePassPlayer,
     secondPlayer,
     currRound,
+    erasedBulletNextRound,
   } = props;
   const nextPlayer = !secondPlayer;
   let current = 0;
@@ -22,14 +23,17 @@ export default function PassPlayer(props) {
       ? currRound + 2 + erasedBullet
       : currRound + 2 + erasedBulletSecond;
 
+  let erasedRecord =
+    secondPlayer === false ? erasedBulletNextRound : erasedBulletSecond;
+
   return (
     <div className="main-menu">
-      <h1>Nice Job {playerName[current]}</h1>You have erased {erasedBullet}
+      <h1>Nice Job {playerName[current]}</h1>You have erased {erasedRecord}{" "}
       bullets this round.
       <br />
       These bullets amount will be your opponent incoming bullet next round.
       <h1>Your turn,{playerName[nonCurrent]}.</h1>
-      you will facing {bulletAmount} bullets.
+      You will facing {bulletAmount} bullets.
       <button className="main-menu-button" onClick={handlePassPlayer}>
         let's go!!
       </button>
