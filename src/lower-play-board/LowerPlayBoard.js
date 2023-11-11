@@ -1,3 +1,4 @@
+import EndGameButton from "./EndGameButton";
 import "./LowerPlayBoard.css";
 import PatternDisplay from "./PatternDisplay";
 import PlaceBulletButton from "./PlaceBulletButton";
@@ -9,10 +10,11 @@ export default function LowerPlayBoard(props) {
     handlePlaceBullet,
     selectedElement,
     handleSelectPattern,
-    handleEndRound,
     popUpMessage,
     tutorial,
+    handleEndRound,
   } = props;
+
   return (
     <div className="lower-play-board">
       <PatternDisplay
@@ -22,14 +24,21 @@ export default function LowerPlayBoard(props) {
         popUpMessage={popUpMessage}
         tutorial={tutorial}
       />
-      <PlaceBulletButton
-        bulletPool={bulletPool}
-        handlePlaceBullet={handlePlaceBullet}
-        selectedElement={selectedElement}
-        handleEndRound={handleEndRound}
-        popUpMessage={popUpMessage}
-        tutorial={tutorial}
-      />
+      <div className="place-bullet-area">
+        <PlaceBulletButton
+          bulletPool={bulletPool}
+          handlePlaceBullet={handlePlaceBullet}
+          selectedElement={selectedElement}
+          popUpMessage={popUpMessage}
+          tutorial={tutorial}
+        />
+        {(bulletPool.length === 0 || selectedElement === "EndRound") && (
+          <EndGameButton
+            bulletPool={bulletPool}
+            handleEndRound={handleEndRound}
+          />
+        )}
+      </div>
     </div>
   );
 }

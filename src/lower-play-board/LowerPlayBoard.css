@@ -39,3 +39,9 @@
   height: 90px;
   margin: 5px;
 }
+
+.place-bullet-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

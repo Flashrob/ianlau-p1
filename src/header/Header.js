@@ -8,15 +8,21 @@ export default function Header(props) {
   return (
     <div className="header">
       <GameTitle />
-      {!props.playing || props.selectedElement === "EndRound" ? (
+      {props.selectedElement === "EndRound" || !props.playing ? (
         <div className="timer">
           Timer
           <br />
           3:00
         </div>
       ) : (
-        <Timer handleEndRound={props.handleEndRound} />
+        <Timer
+          playing={props.playing}
+          handleEndRound={props.handleEndRound}
+          selectedElement={props.selectedElement}
+          bulletPool={props.bulletPool}
+        />
       )}
+
       <RoundDisplay
         currRound={props.currRound}
         playerName={props.playerName}

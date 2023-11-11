@@ -356,7 +356,6 @@ class App extends React.Component {
   };
 
   render() {
-    console.log(this.state);
     let inputCard = this.state.secondPlayer
       ? this.state.patternCardSecond
       : this.state.patternCard;
@@ -440,9 +439,9 @@ class App extends React.Component {
             handlePlaceBullet={this.handlePlaceBullet}
             selectedElement={this.state.selectedElement}
             handleSelectPattern={this.handleSelectPattern}
-            handleEndRound={this.handleEndRound}
             popUpMessage={this.state.popUpMessage}
             tutorial={this.state.tutorial}
+            handleEndRound={this.handleEndRound}
           />
         </div>
       </div>
