@@ -1,6 +1,6 @@
 import Tutorial1 from "./Tutorial1";
 import Tutorial10 from "./Tutorial10";
-import Tutorial11121314 from "./Tutorial11121314";
+import Tutorial11 from "./Tutorial11";
 import Tutorial15 from "./Tutorial15";
 import Tutorial16 from "./Tutorial16";
 import Tutorial17 from "./Tutorial17";
@@ -54,7 +54,7 @@ export default function TutorialList(props) {
     tutorial === 12 ||
     tutorial === 13 ||
     tutorial === 14 ? (
-    <Tutorial11121314 tutorial={tutorial} />
+    <Tutorial11 tutorial={tutorial} />
   ) : tutorial === 15 ? (
     <Tutorial15 />
   ) : tutorial === 16 ? (

@@ -14,7 +14,7 @@ export default class PopUp extends React.Component {
     } else if (this.props.popUpMessage !== "") {
       display = (
         <div className="bullet-hit">
-          {`You have been hit by a ${this.props.popUpMessage} bullet .`}
+          {`You have been hit by a ${this.props.popUpMessage} bullet.`}
           <button onClick={this.handleClick}>Okay</button>
         </div>
       );

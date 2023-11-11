@@ -31,9 +31,10 @@ export default function PassPlayer(props) {
       <h1>Nice Job {playerName[current]}</h1>You have erased {erasedRecord}{" "}
       bullets this round.
       <br />
-      These bullets amount will be your opponent incoming bullet next round.
+      The number of bullets you erased this round will be part of the incoming
+      bullets for your opponent in the next round.
       <h1>Your turn,{playerName[nonCurrent]}.</h1>
-      You will facing {bulletAmount} bullets.
+      You will be facing {bulletAmount} bullets.
       <button className="main-menu-button" onClick={handlePassPlayer}>
         let's go!!
       </button>

@@ -3,8 +3,9 @@ export default function Tutorial28(props) {
     <div className="main-menu">
       <h1>Pattern Card</h1>
       <h4>
-        When your bullet have pattern equal to the requirement, you can clear up
-        the bullet in clear logo.
+        When your bullet has a pattern that matches the requirement, you can
+        clear the bullet by clicking on the mouse logo in the place where the
+        clear logo is located.
       </h4>
       <h5>
         Clear Logo:
@@ -19,19 +20,20 @@ export default function Tutorial28(props) {
       </h5>
       <h5>
         <img src={require(`./tutorial-img/color.jpg`)} alt="color" />
-        That bullet must have same color as on the card.
+        This bullet must have the same color as the one shown on the card.
       </h5>
       <h5>
         <img src={require(`./tutorial-img/empty.jpg`)} alt="empty" />
-        That space must be empty.
+        This space must be empty.
       </h5>
       <h5>
         <img src={require(`./tutorial-img/equal.jpg`)} alt="equal" />
-        All bullet on the card that have the equal sign must have same rank.
+        All bullets on the card that have the equal sign must have the same
+        rank.
       </h5>
       <h5>
         <img src={require(`./tutorial-img/rank.jpg`)} alt="rank" />
-        That bullet must have same rank as on the card
+        This bullet must have the same rank as the one shown on the card.
       </h5>
       <button className="tutorial-button" onClick={props.handleConfirmMessage}>
         Next

@@ -20,7 +20,7 @@ export default class TwoPlayerMenu extends React.Component {
     return (
       <div className="main-menu">
         <h4>
-          In this game mode, you two have to survived longer than the others in
+          In this game mode, you two have to survive longer than the others in
           order to win.
         </h4>
         <h5>

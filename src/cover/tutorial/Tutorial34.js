@@ -1,8 +1,8 @@
 export default function Tutorial34(props) {
   return (
     <div className="main-menu">
-      <h4>When the timer is up, all you have to do is to place bullet.</h4>
-      <h4>After each round, the pattern cards will be drawn up to 4 cards</h4>
+      <h4>When the timer is up, you can only place the bullets.</h4>
+      <h4>After each round, up to 4 pattern cards will be drawn.</h4>
       <div>
         <h4>Here are the incoming bullet no. of each round.</h4>
 

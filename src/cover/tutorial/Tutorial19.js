@@ -6,7 +6,7 @@ export default function Tutorial19(props) {
       <button className="tutorial-button" onClick={props.handleConfirmMessage}>
         Next
       </button>
-      <h5>Energy is spent after using action.</h5>
+      <h5>Energy is spent after using an action.</h5>
       <h1>→</h1>
     </div>
   );
