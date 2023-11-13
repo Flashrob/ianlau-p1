@@ -7,8 +7,9 @@
 }
 
 .game-title {
-  background-color: rgb(115, 115, 115);
+  background-color: #78909c;
   width: 150px;
+  border-radius: 15px;
 }
 
 h1 {
@@ -16,12 +17,13 @@ h1 {
 }
 
 .timer {
-  background-color: rgb(115, 115, 115);
+  background-color: #78909c;
   width: 60px;
+  border-radius: 10px;
 }
 
 .round-display {
-  background-color: rgb(115, 115, 115);
+  background-color: #78909c;
   border-radius: 50%;
   width: 70px;
   height: 70px;

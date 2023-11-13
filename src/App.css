@@ -26,35 +26,41 @@
 .game-board {
   position: relative;
   background-color: #282c34;
+  border-radius: 25px;
 }
 
 .hp-bar {
   width: auto;
   margin: 5px;
+  border-radius: 50px;
   background: linear-gradient(to left, red, green 0%, green);
 }
 
 .hp-bar3 {
   width: auto;
   margin: 5px;
+  border-radius: 50px;
   background: linear-gradient(to left, red, green 50%, green);
 }
 
 .hp-bar2 {
   width: auto;
   margin: 5px;
+  border-radius: 50px;
   background: linear-gradient(to left, red, green 100%, green);
 }
 
 .hp-bar1 {
   width: auto;
   margin: 5px;
+  border-radius: 50px;
   background: linear-gradient(to left, red, green 150%, green);
 }
 
 .hp-bar0 {
   width: auto;
   margin: 5px;
+  border-radius: 50px;
   background: linear-gradient(to left, red, green 200%, green);
 }
 
@@ -68,4 +74,11 @@ img {
 button {
   padding: 0px;
   box-shadow: none;
+}
+
+.popup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  left: -300px;
 }

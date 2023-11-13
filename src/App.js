@@ -19,9 +19,10 @@ import Cover from "./cover/Cover";
 import genLocationInfo from "./game-logic/genLocationInfo";
 import genCentralPool from "./game-logic/genCentralPool";
 import genPatternDeck from "./game-logic/genPatternDeck";
-import PopUp from "./pop-up/Popup";
 
 import "primereact/resources/themes/lara-light-purple/theme.css";
+import { ConfirmPopup } from "primereact/confirmpopup";
+import { Button } from "primereact/button";
 
 class App extends React.Component {
   constructor(props) {
@@ -371,13 +372,13 @@ class App extends React.Component {
     return (
       <div className="App">
         <div className="game-board">
-          {this.state.popUpMessage.name && (
-            <PopUp
-              popUpMessage={this.state.popUpMessage}
-              tutorial={this.state.tutorial}
-              handleConfirmMessage={this.handleConfirmMessage}
-            />
-          )}
+          <ConfirmPopup
+            className="popup"
+            visible={this.state.popUpMessage.length}
+            message={`You have been hit by a ${this.state.popUpMessage} bullet.`}
+            footer={<Button onClick={this.handleConfirmMessage} label="Okay" />}
+            style={{ left: "-500px", position: "fixed" }}
+          />
           <Cover
             currRound={this.state.currRound}
             playing={this.state.playing}

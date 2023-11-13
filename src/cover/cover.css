@@ -13,6 +13,7 @@ h5 {
   flex-direction: column;
   align-items: center;
   z-index: 3;
+  border-radius: 25px;
 }
 
 .main-menu img {
@@ -20,12 +21,12 @@ h5 {
 }
 
 .main-menu-button {
+  margin-top: 10px;
   width: 60%;
   height: 50px;
 }
 
 .big-title {
-  background-color: rgb(115, 115, 115);
   width: 90%;
   height: 30%;
   display: flex;
@@ -48,6 +49,7 @@ h5 {
   margin-top: 410px;
   margin-left: 2px;
   color: black;
+  z-index: 3;
 }
 
 .tutorial3 {
@@ -59,6 +61,7 @@ h5 {
   margin-top: 100px;
   margin-left: 15px;
   color: black;
+  z-index: 3;
 }
 
 .tutorial4 {
@@ -70,6 +73,7 @@ h5 {
   margin-top: 430px;
   margin-left: 2px;
   color: black;
+  z-index: 3;
 }
 
 .tutorial5 {
@@ -81,6 +85,7 @@ h5 {
   margin-top: 250px;
   margin-left: 2px;
   color: black;
+  z-index: 3;
 }
 
 .tutorial6,
@@ -93,6 +98,7 @@ h5 {
   margin-top: 380px;
   margin-left: 15px;
   color: black;
+  z-index: 3;
 }
 
 .tutorial7,
@@ -106,6 +112,7 @@ h5 {
   margin-top: 450px;
   margin-left: 15px;
   color: black;
+  z-index: 3;
 }
 
 .tutorial8 {
@@ -117,6 +124,7 @@ h5 {
   margin-top: 300px;
   margin-left: 15px;
   color: black;
+  z-index: 3;
 }
 
 .tutorial15,
@@ -129,6 +137,7 @@ h5 {
   margin-top: 300px;
   margin-left: 2px;
   color: black;
+  z-index: 3;
 }
 
 .tutorial16,
@@ -141,6 +150,7 @@ h5 {
   margin-top: 100px;
   margin-left: 15px;
   color: black;
+  z-index: 3;
 }
 
 .tutorial17 {
@@ -152,6 +162,7 @@ h5 {
   margin-top: 180px;
   margin-left: 15px;
   color: black;
+  z-index: 3;
 }
 .tutorial18,
 .tutorial19 {
@@ -163,6 +174,7 @@ h5 {
   margin-top: 170px;
   margin-left: 5px;
   color: black;
+  z-index: 3;
 }
 
 .tutorial20 {
@@ -174,6 +186,7 @@ h5 {
   margin-top: 170px;
   margin-left: 15px;
   color: black;
+  z-index: 3;
 }
 .tutorial21 {
   width: 70%;
@@ -184,6 +197,7 @@ h5 {
   margin-top: 230px;
   margin-left: 15px;
   color: black;
+  z-index: 3;
 }
 .tutorial22 {
   width: 70%;
@@ -194,6 +208,7 @@ h5 {
   margin-top: 290px;
   margin-left: 15px;
   color: black;
+  z-index: 3;
 }
 
 .tutorial24 {
@@ -205,6 +220,7 @@ h5 {
   margin-top: 210px;
   margin-left: 5px;
   color: black;
+  z-index: 3;
 }
 .tutorial25 {
   width: 70%;
@@ -215,6 +231,7 @@ h5 {
   margin-top: 260px;
   margin-left: 60px;
   color: black;
+  z-index: 3;
 }
 .tutorial26 {
   width: 70%;
@@ -225,6 +242,7 @@ h5 {
   margin-top: 350px;
   margin-left: 15px;
   color: black;
+  z-index: 3;
 }
 .tutorial30 {
   width: 80%;
@@ -235,6 +253,7 @@ h5 {
   margin-top: 260px;
   margin-left: 50px;
   color: black;
+  z-index: 3;
 }
 .tutorial31 {
   width: 80%;
@@ -245,6 +264,7 @@ h5 {
   margin-top: 260px;
   margin-left: 5px;
   color: black;
+  z-index: 3;
 }
 
 .tutorial33 {
@@ -256,4 +276,10 @@ h5 {
   margin-top: 450px;
   margin-left: 20px;
   color: black;
+  z-index: 3;
+}
+
+.clear-logo {
+  display: flex;
+  justify-content: space-around;
 }

@@ -19,7 +19,7 @@ export default function placeBullet(locationInfo, bulletPool, hp) {
   }
   if (rank !== 0) {
     hp -= 1;
-    bulletHit = bullet;
+    bulletHit = `${bullet.color}${bullet.name}`;
   }
   return { Updatedlocation, playerPool, hp, bulletHit };
 }

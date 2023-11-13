@@ -77,9 +77,8 @@ export default class ActionBoard extends React.Component {
           severity="secondary"
         />
         <div className="energy-icon">
-          Energy:
-          <br />
-          {energy}
+          <h5>Energy:</h5>
+          <h5>{energy}</h5>
         </div>
       </div>
     );

@@ -1,4 +1,6 @@
 import React from "react";
+import { InputText } from "primereact/inputtext";
+import { Button } from "primereact/button";
 
 export default class TwoPlayerMenu extends React.Component {
   constructor(props) {
@@ -31,7 +33,7 @@ export default class TwoPlayerMenu extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <div>
             <label>Player 1's name:</label>
-            <input
+            <InputText
               name="name1"
               value={this.state.name1}
               onChange={this.handleChange}
@@ -39,16 +41,17 @@ export default class TwoPlayerMenu extends React.Component {
           </div>
           <div>
             <label>Player 2's name:</label>
-            <input
+            <InputText
               name="name2"
               value={this.state.name2}
               onChange={this.handleChange}
             />
           </div>
-          <input
-            type="submit"
-            value="Player 1 go!"
+          <Button
+            type="sumbit"
+            label="Player 1 go!"
             disabled={this.state.name1 === "" || this.state.name2 === ""}
+            className="main-menu-button"
           />
         </form>
       </div>

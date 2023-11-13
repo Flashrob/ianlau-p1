@@ -34,7 +34,7 @@ export default function LowerPlayBoard(props) {
           tutorial={tutorial}
         />
         {(bulletPool.length === 0 || selectedElement === "EndRound") &&
-          playing && (
+          (playing || tutorial === 33) && (
             <EndGameButton
               bulletPool={bulletPool}
               handleEndRound={handleEndRound}
