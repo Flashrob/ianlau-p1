@@ -1,3 +1,5 @@
+import { Button } from "primereact/button";
+
 export default function Tutorial8(props) {
   return (
     <div className="tutorial8">
@@ -8,9 +10,11 @@ export default function Tutorial8(props) {
         The placement row is determined by the number of vacancies in that
         column.
       </h5>
-      <button className="tutorial-button" onClick={props.handleConfirmMessage}>
-        Next
-      </button>
+      <Button
+        className="tutorial-button"
+        onClick={props.handleConfirmMessage}
+        label="Next"
+      />
     </div>
   );
 }

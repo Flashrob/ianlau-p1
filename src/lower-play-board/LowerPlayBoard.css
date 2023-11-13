@@ -12,18 +12,31 @@
 }
 
 .pattern-card {
-  margin: 5px;
+  margin: 5px auto;
   width: 90px;
   height: 90px;
-  background-color: rgb(115, 115, 115);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.selected-card {
+  margin: 5px auto;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid purple;
 }
 
 .place-bullet-button {
   width: 50px;
-  background-color: rgb(115, 115, 115);
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
+  z-index: 1;
 }
 
 .bullet-left {
@@ -31,15 +44,6 @@
   border-radius: 100%;
   border: 1px solid black;
 }
-
-.selected-card {
-  background-color: rgb(115, 115, 115);
-  border: 2px solid green;
-  width: 90px;
-  height: 90px;
-  margin: 5px;
-}
-
 .place-bullet-area {
   display: flex;
   flex-direction: column;

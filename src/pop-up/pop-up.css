@@ -8,44 +8,5 @@
   justify-content: space-around;
   flex-direction: column;
   align-items: center;
-}
-
-.tutorial-popup2 {
-  border: solid rgba(0, 0, 0, 0.6);
-  border-width: 80px 70px 235px 5px;
-  position: absolute;
-  width: 230px;
-  height: 322px;
-}
-
-.tutorial-popup3 {
-  border: solid rgba(0, 0, 0, 0.6);
-  border-width: 80px 5px 235px 240px;
-  position: absolute;
-  width: 60px;
-  height: 322px;
-}
-
-.tutorial-popup4 {
-  border: solid rgba(0, 0, 0, 0.6);
-  border-width: 405px 2px 200px 2px;
-  position: absolute;
-  width: 98%;
-  height: 30px;
-}
-
-.tutorial-popup5 {
-  border: solid rgba(0, 0, 0, 0.6);
-  border-width: 435px 65px 5px 10px;
-  position: absolute;
-  width: 75%;
-  height: 195px;
-}
-
-.tutorial-popup6 {
-  border: solid rgba(0, 0, 0, 0.6);
-  border-width: 430px 5px 5px 240px;
-  position: absolute;
-  width: 60px;
-  height: 205px;
+  z-index: 2;
 }

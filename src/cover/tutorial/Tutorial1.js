@@ -1,3 +1,5 @@
+import { Button } from "primereact/button";
+
 export default function Tutorial1(props) {
   return (
     <div className="main-menu">
@@ -16,9 +18,11 @@ export default function Tutorial1(props) {
         You have three options to choose from in each round, and you can perform
         them in any order and as many times as you are able to.
       </p>
-      <button className="tutorial-button" onClick={props.handleConfirmMessage}>
-        Next
-      </button>
+      <Button
+        className="tutorial-button"
+        onClick={props.handleConfirmMessage}
+        label="Next"
+      />
     </div>
   );
 }

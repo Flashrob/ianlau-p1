@@ -1,3 +1,5 @@
+import { Button } from "primereact/button";
+
 export default function Result(props) {
   const { currRound, handleReset, bestScore } = props;
   return (
@@ -7,9 +9,11 @@ export default function Result(props) {
       Your score is {currRound}
       <br />
       Your best score is {bestScore}
-      <button onClick={handleReset} className="main-menu-button">
-        Main Menu
-      </button>
+      <Button
+        onClick={handleReset}
+        className="main-menu-button"
+        label="Main Menu"
+      />
     </div>
   );
 }

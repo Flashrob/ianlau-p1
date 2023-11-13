@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "primereact/button";
 
 export default class PatternDisplay extends React.Component {
   handleClick = (e) => {
@@ -12,7 +13,8 @@ export default class PatternDisplay extends React.Component {
   render() {
     const { patternCard, selectedElement, popUpMessage, tutorial } = this.props;
     const patternCardsDisplay = patternCard.map((card) => (
-      <button
+      <Button
+        tabIndex="-1"
         className={selectedElement === card ? "selected-card" : "pattern-card"}
         key={card}
         value={card}
@@ -24,9 +26,10 @@ export default class PatternDisplay extends React.Component {
             (tutorial === 0 || (tutorial === 29 && card === "pattern3"))
           )
         }
+        severity="secondary"
       >
         <img src={require(`./PatternIcon/${card}.jpg`)} alt={card} />
-      </button>
+      </Button>
     ));
 
     return <div className="pattern-display">{patternCardsDisplay}</div>;

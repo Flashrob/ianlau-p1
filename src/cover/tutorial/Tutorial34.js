@@ -1,3 +1,5 @@
+import { Button } from "primereact/button";
+
 export default function Tutorial34(props) {
   return (
     <div className="main-menu">
@@ -16,9 +18,11 @@ export default function Tutorial34(props) {
         </h6>
       </div>
       <h3>Enjoy your game!</h3>
-      <button className="main-menu-button" onClick={props.handleReset}>
-        Main Menu
-      </button>
+      <Button
+        className="main-menu-button"
+        onClick={props.handleReset}
+        label="Main Menu"
+      />
       <br />
     </div>
   );

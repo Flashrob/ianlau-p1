@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "primereact/button";
 
 export default class PlaceBulletButton extends React.Component {
   render() {
@@ -22,15 +23,18 @@ export default class PlaceBulletButton extends React.Component {
           tutorial === 33)
       );
     return (
-      <button
+      <Button
         className="place-bullet-button"
         onClick={() => this.props.handlePlaceBullet(1)}
         disabled={isButtonDisabled}
-      >
-        Bullet Left:
-        <div className="bullet-left">{bulletPool.length}</div>
-        Place Bullet
-      </button>
+        label={
+          <div className="place-bullet-button">
+            Bullet <div className="bullet-left">{bulletPool.length}</div>
+            Place Bullet
+          </div>
+        }
+        severity="secondary"
+      />
     );
   }
 }

@@ -13,6 +13,7 @@ export default function LowerPlayBoard(props) {
     popUpMessage,
     tutorial,
     handleEndRound,
+    playing,
   } = props;
 
   return (
@@ -32,12 +33,13 @@ export default function LowerPlayBoard(props) {
           popUpMessage={popUpMessage}
           tutorial={tutorial}
         />
-        {(bulletPool.length === 0 || selectedElement === "EndRound") && (
-          <EndGameButton
-            bulletPool={bulletPool}
-            handleEndRound={handleEndRound}
-          />
-        )}
+        {(bulletPool.length === 0 || selectedElement === "EndRound") &&
+          playing && (
+            <EndGameButton
+              bulletPool={bulletPool}
+              handleEndRound={handleEndRound}
+            />
+          )}
       </div>
     </div>
   );

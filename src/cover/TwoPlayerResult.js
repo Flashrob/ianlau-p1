@@ -1,3 +1,5 @@
+import { Button } from "primereact/button";
+
 export default function TwoPlayerResult(props) {
   const { hp, hpSecond, handleReset, playerName } = props;
   let result = <h1>You two are inpressive! You draw.</h1>;
@@ -8,9 +10,11 @@ export default function TwoPlayerResult(props) {
   return (
     <div className="main-menu">
       {result}
-      <button onClick={handleReset} className="main-menu-button">
-        Main Menu
-      </button>
+      <Button
+        onClick={handleReset}
+        className="main-menu-button"
+        label="Main Menu"
+      />
     </div>
   );
 }

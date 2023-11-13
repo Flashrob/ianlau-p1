@@ -21,6 +21,8 @@ import genCentralPool from "./game-logic/genCentralPool";
 import genPatternDeck from "./game-logic/genPatternDeck";
 import PopUp from "./pop-up/Popup";
 
+import "primereact/resources/themes/lara-light-purple/theme.css";
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -369,11 +371,13 @@ class App extends React.Component {
     return (
       <div className="App">
         <div className="game-board">
-          <PopUp
-            popUpMessage={this.state.popUpMessage}
-            tutorial={this.state.tutorial}
-            handleConfirmMessage={this.handleConfirmMessage}
-          />
+          {this.state.popUpMessage.name && (
+            <PopUp
+              popUpMessage={this.state.popUpMessage}
+              tutorial={this.state.tutorial}
+              handleConfirmMessage={this.handleConfirmMessage}
+            />
+          )}
           <Cover
             currRound={this.state.currRound}
             playing={this.state.playing}
@@ -442,6 +446,7 @@ class App extends React.Component {
             popUpMessage={this.state.popUpMessage}
             tutorial={this.state.tutorial}
             handleEndRound={this.handleEndRound}
+            playing={this.state.playing}
           />
         </div>
       </div>

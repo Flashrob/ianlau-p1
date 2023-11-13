@@ -1,3 +1,4 @@
+import { Button } from "primereact/button";
 export default function PassPlayer(props) {
   const {
     erasedBulletSecond,
@@ -35,9 +36,11 @@ export default function PassPlayer(props) {
       bullets for your opponent in the next round.
       <h1>Your turn,{playerName[nonCurrent]}.</h1>
       You will be facing {bulletAmount} bullets.
-      <button className="main-menu-button" onClick={handlePassPlayer}>
-        let's go!!
-      </button>
+      <Button
+        className="main-menu-button"
+        onClick={handlePassPlayer}
+        label="Let's go!!"
+      />
     </div>
   );
 }

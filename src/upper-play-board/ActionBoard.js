@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Button } from "primereact/button";
 export default class ActionBoard extends React.Component {
   handleClick = (e) => {
     const { handleSelectAction, selectedElement, energy } = this.props;
@@ -30,48 +30,52 @@ export default class ActionBoard extends React.Component {
     return (
       <div className="action-board">
         Action:
-        <button
+        <Button
           className={
             selectedElement === "Action1" ? "selected-icon" : "action-icon"
           }
           value="Action1"
           onClick={this.handleClick}
           disabled={this.detButtonEnable("Action1")}
-        >
-          <img src={require("./ActionIcon/Action1.jpg")} alt="Action1" />
-          Move
-        </button>
-        <button
+          label={
+            <img src={require("./ActionIcon/Action1.jpg")} alt="Action1" />
+          }
+          severity="secondary"
+        />
+        <Button
           className={
             selectedElement === "Action2" ? "selected-icon" : "action-icon"
           }
           value="Action2"
           onClick={this.handleClick}
           disabled={this.detButtonEnable("Action2")}
-        >
-          <img src={require("./ActionIcon/Action2.jpg")} alt="Action2" />
-          Move
-        </button>
-        <button
+          label={
+            <img src={require("./ActionIcon/Action2.jpg")} alt="Action2" />
+          }
+          severity="secondary"
+        />
+        <Button
           className={
             selectedElement === "Action3" ? "selected-icon" : "action-icon"
           }
           value="Action3"
           onClick={this.handleClick}
           disabled={this.detButtonEnable("Action3")}
-        >
-          <img src={require("./ActionIcon/Action3.jpg")} alt="Action3" />
-          Move
-        </button>
-        <button
+          label={
+            <img src={require("./ActionIcon/Action3.jpg")} alt="Action3" />
+          }
+          severity="secondary"
+        />
+        <Button
           className="action-icon"
           value="Action4"
           onClick={this.handleClick}
           disabled={this.detButtonEnable("Action4")}
-        >
-          <img src={require("./ActionIcon/Action4.jpg")} alt="Action4" />
-          Draw
-        </button>
+          label={
+            <img src={require("./ActionIcon/Action4.jpg")} alt="Action4" />
+          }
+          severity="secondary"
+        />
         <div className="energy-icon">
           Energy:
           <br />

@@ -1,3 +1,5 @@
+import { Button } from "primereact/button";
+
 export default function Tutorial28(props) {
   return (
     <div className="main-menu">
@@ -35,9 +37,11 @@ export default function Tutorial28(props) {
         <img src={require(`./tutorial-img/rank.jpg`)} alt="rank" />
         This bullet must have the same rank as the one shown on the card.
       </h5>
-      <button className="tutorial-button" onClick={props.handleConfirmMessage}>
-        Next
-      </button>
+      <Button
+        className="tutorial-button"
+        onClick={props.handleConfirmMessage}
+        label="Next"
+      />
     </div>
   );
 }

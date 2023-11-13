@@ -1,3 +1,5 @@
+import { Button } from "primereact/button";
+
 export default function MainMenu(props) {
   const { bestScore, handleStartGame, handleTutorial, handleTwoPlayerMode } =
     props;
@@ -7,15 +9,21 @@ export default function MainMenu(props) {
         <h1>Bullet</h1>
         Best score: {bestScore} rounds.
       </div>
-      <button className="main-menu-button" onClick={handleStartGame}>
-        Play
-      </button>
-      <button className="main-menu-button" onClick={handleTutorial}>
-        Tutorial
-      </button>
-      <button className="main-menu-button" onClick={handleTwoPlayerMode}>
-        Player Versus Player
-      </button>
+      <Button
+        className="main-menu-button"
+        onClick={handleStartGame}
+        label="Play"
+      />
+      <Button
+        className="main-menu-button"
+        onClick={handleTutorial}
+        label="Tutorial"
+      />
+      <Button
+        className="main-menu-button"
+        onClick={handleTwoPlayerMode}
+        label="Player Versus Player"
+      />
     </div>
   );
 }
