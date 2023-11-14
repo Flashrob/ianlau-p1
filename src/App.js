@@ -374,12 +374,18 @@ class App extends React.Component {
       <div className="App">
         <div className="game-board">
           <ConfirmPopup
+            onHide={this.handleConfirmMessage}
             target={hpBarID}
             className="popup"
             visible={this.state.popUpMessage.length}
             message={`You have been hit by a ${this.state.popUpMessage} bullet.`}
-            footer={<Button onClick={this.handleConfirmMessage} label="Okay" />}
-            style={{ left: "-500px", position: "fixed" }}
+            footer={
+              <Button
+                onClick={this.handleConfirmMessage}
+                label="Okay"
+                style={{ width: "80%", margin: "5px" }}
+              />
+            }
           />
           <Cover
             currRound={this.state.currRound}

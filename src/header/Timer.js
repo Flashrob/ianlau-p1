@@ -3,7 +3,7 @@ import React from "react";
 export default class Timer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { timer: 120 };
+    this.state = { timer: 90 };
   }
 
   convertSecToMin = (second) => {

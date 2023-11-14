@@ -11,7 +11,7 @@ export default function Tutorial1(props) {
 
       <p>
         In each round, you must either move or clear the incoming bullets in
-        order to prevent them from deducting your health.lth.
+        order to prevent them from deducting your health.
       </p>
 
       <p>
