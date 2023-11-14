@@ -1,3 +1,6 @@
+//Must use locationInfo[]===""
+//Because must check that value is "", cannot accept !locationInfo[].length(which is undefined)
+
 export function checkAction1(locationInfo, selectBullet, energy) {
   const color = ["red", "blue", "green", "yellow", "pink"];
   const availableSpace = [];

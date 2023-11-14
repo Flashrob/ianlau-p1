@@ -7,13 +7,13 @@ export default function LowerPlayBoard(props) {
   const {
     patternCard,
     bulletPool,
-    handlePlaceBullet,
     selectedElement,
-    handleSelectPattern,
     popUpMessage,
     tutorial,
-    handleEndRound,
     playing,
+    handlePlaceBullet,
+    handleEndRound,
+    handleSelectPattern,
   } = props;
 
   return (
@@ -21,19 +21,19 @@ export default function LowerPlayBoard(props) {
       <PatternDisplay
         patternCard={patternCard}
         selectedElement={selectedElement}
-        handleSelectPattern={handleSelectPattern}
         popUpMessage={popUpMessage}
         tutorial={tutorial}
+        handleSelectPattern={handleSelectPattern}
       />
       <div className="place-bullet-area">
         <PlaceBulletButton
           bulletPool={bulletPool}
-          handlePlaceBullet={handlePlaceBullet}
           selectedElement={selectedElement}
           popUpMessage={popUpMessage}
           tutorial={tutorial}
+          handlePlaceBullet={handlePlaceBullet}
         />
-        {(bulletPool.length === 0 || selectedElement === "EndRound") &&
+        {(!bulletPool.length || selectedElement === "EndRound") &&
           (playing || tutorial === 33) && (
             <EndGameButton
               bulletPool={bulletPool}

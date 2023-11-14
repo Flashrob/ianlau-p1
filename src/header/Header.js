@@ -5,10 +5,19 @@ import Timer from "./Timer";
 import RoundDisplay from "./RoundDisplay";
 
 export default function Header(props) {
+  const {
+    selectedElement,
+    playing,
+    bulletPool,
+    currRound,
+    playerName,
+    secondPlayer,
+    handleEndRound,
+  } = props;
   return (
     <div className="header">
       <GameTitle />
-      {props.selectedElement === "EndRound" || !props.playing ? (
+      {selectedElement === "EndRound" || !playing ? (
         <div className="timer">
           Timer
           <br />
@@ -16,17 +25,17 @@ export default function Header(props) {
         </div>
       ) : (
         <Timer
-          playing={props.playing}
-          handleEndRound={props.handleEndRound}
-          selectedElement={props.selectedElement}
-          bulletPool={props.bulletPool}
+          playing={playing}
+          selectedElement={selectedElement}
+          bulletPool={bulletPool}
+          handleEndRound={handleEndRound}
         />
       )}
 
       <RoundDisplay
-        currRound={props.currRound}
-        playerName={props.playerName}
-        secondPlayer={props.secondPlayer}
+        currRound={currRound}
+        playerName={playerName}
+        secondPlayer={secondPlayer}
       />
     </div>
   );

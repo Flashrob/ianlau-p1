@@ -12,26 +12,26 @@ import SecondPlayerLast from "./SecondPlayerLast";
 export default class Cover extends React.Component {
   render() {
     const {
-      handleStartGame,
       erasedBullet,
       erasedBulletSecond,
+      erasedBulletNextRound,
       currRound,
       playing,
-      handleStartRound,
       hp,
       bestScore,
-      handleReset,
-      handleTutorial,
       tutorial,
-      handleConfirmMessage,
-      handleTwoPlayerMode,
       twoPlayer,
       secondPlayer,
-      handleStartTwoPlayer,
       playerName,
-      handlePassPlayer,
       hpSecond,
-      erasedBulletNextRound,
+      handleStartRound,
+      handleStartGame,
+      handleStartTwoPlayer,
+      handlePassPlayer,
+      handleConfirmMessage,
+      handleTwoPlayerMode,
+      handleReset,
+      handleTutorial,
     } = this.props;
 
     return tutorial > 0 ? (
@@ -40,35 +40,35 @@ export default class Cover extends React.Component {
         handleConfirmMessage={handleConfirmMessage}
         handleReset={handleReset}
       />
-    ) : twoPlayer && currRound === 0 ? (
+    ) : twoPlayer && !currRound ? (
       <TwoPlayerMenu handleStartTwoPlayer={handleStartTwoPlayer} />
-    ) : currRound === 0 ? (
+    ) : !currRound ? (
       <MainMenu
         bestScore={bestScore}
         handleStartGame={handleStartGame}
         handleTutorial={handleTutorial}
         handleTwoPlayerMode={handleTwoPlayerMode}
       />
-    ) : hp === 0 && !twoPlayer ? (
+    ) : !hp && !twoPlayer ? (
       <Result
         currRound={currRound}
-        handleReset={handleReset}
         bestScore={bestScore}
+        handleReset={handleReset}
       />
-    ) : hp === 0 && !secondPlayer && !playing ? (
+    ) : !hp && !secondPlayer && !playing ? (
       <SecondPlayerLast
-        handlePassPlayer={handlePassPlayer}
         playerName={playerName}
+        handlePassPlayer={handlePassPlayer}
       />
-    ) : ((hp === 0 && hpSecond === 0) ||
-        hpSecond === 0 ||
-        (hp === 0 && playing && !secondPlayer)) &&
+    ) : ((!hp && !hpSecond) ||
+        !hpSecond ||
+        (!hp && playing && !secondPlayer)) &&
       twoPlayer ? (
       <TwoPlayerResult
         hpSecond={hpSecond}
         hp={hp}
-        handleReset={handleReset}
         playerName={playerName}
+        handleReset={handleReset}
       />
     ) : !playing && !twoPlayer ? (
       <RoundBreak
@@ -81,10 +81,10 @@ export default class Cover extends React.Component {
         erasedBullet={erasedBullet}
         erasedBulletSecond={erasedBulletSecond}
         playerName={playerName}
-        handlePassPlayer={handlePassPlayer}
         secondPlayer={secondPlayer}
         currRound={currRound}
         erasedBulletNextRound={erasedBulletNextRound}
+        handlePassPlayer={handlePassPlayer}
       />
     ) : (
       ""

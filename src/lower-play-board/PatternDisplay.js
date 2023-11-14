@@ -21,9 +21,9 @@ export default class PatternDisplay extends React.Component {
         onClick={this.handleClick}
         disabled={
           !(
-            (selectedElement === card || selectedElement === "") &&
+            (selectedElement === card || !selectedElement.length) &&
             !popUpMessage &&
-            (tutorial === 0 || (tutorial === 29 && card === "pattern3"))
+            (!tutorial || (tutorial === 29 && card === "pattern3"))
           )
         }
         severity="secondary"

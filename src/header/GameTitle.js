@@ -1,4 +1,4 @@
-export default function GameTitle(props) {
+export default function GameTitle() {
   return (
     <div className="game-title">
       <h1>Bullet</h1>

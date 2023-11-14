@@ -10,6 +10,7 @@ export default function placeBullet(locationInfo, bulletPool, hp) {
   );
   for (let place of column) {
     if (Updatedlocation[place] === "") {
+      //Must use ==="" because !Updatedlocation.length with  bullet object will return false
       rank--;
     }
     if (rank === 0) {

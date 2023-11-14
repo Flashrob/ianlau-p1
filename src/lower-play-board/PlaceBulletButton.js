@@ -3,11 +3,17 @@ import { Button } from "primereact/button";
 
 export default class PlaceBulletButton extends React.Component {
   render() {
-    const { bulletPool, selectedElement, popUpMessage, tutorial } = this.props;
+    const {
+      bulletPool,
+      selectedElement,
+      popUpMessage,
+      tutorial,
+      handlePlaceBullet,
+    } = this.props;
     const isButtonDisabled =
-      bulletPool.length === 0 ||
+      !bulletPool.length ||
       !(
-        (selectedElement === "EndRound" || selectedElement === "") &&
+        (selectedElement === "EndRound" || !selectedElement.length) &&
         !popUpMessage &&
         (tutorial === 0 ||
           tutorial === 7 ||
@@ -25,7 +31,7 @@ export default class PlaceBulletButton extends React.Component {
     return (
       <Button
         className="place-bullet-button"
-        onClick={() => this.props.handlePlaceBullet(1)}
+        onClick={() => handlePlaceBullet(1)}
         disabled={isButtonDisabled}
         label={
           <div className="place-bullet-button">

@@ -1,17 +1,18 @@
 export default function RoundDisplay(props) {
+  const { currRound, playerName, secondPlayer } = props;
   let currPlayer = 0;
-  props.secondPlayer && (currPlayer = 1);
+  secondPlayer && (currPlayer = 1);
   return (
     <div
       className="round-display"
       style={
-        props.secondPlayer
+        secondPlayer
           ? { border: "3px solid #68a1be" }
           : { border: "3px solid #ab47bc" }
       }
     >
-      <h5>Round {props.currRound}</h5>
-      <h5>{props.playerName[currPlayer]}</h5>
+      <h5>Round {currRound}</h5>
+      <h5>{playerName[currPlayer]}</h5>
     </div>
   );
 }

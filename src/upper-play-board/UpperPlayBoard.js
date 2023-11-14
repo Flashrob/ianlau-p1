@@ -6,31 +6,31 @@ export default function UpperPlayBoard(props) {
   const {
     location,
     selectedElement,
-    handleSelectAction,
-    handleSelectBullet,
     availableSpace,
-    handlePerformAction,
     energy,
-    handlePerformPattern,
     popUpMessage,
     tutorial,
+    handleSelectAction,
+    handleSelectBullet,
+    handlePerformAction,
+    handlePerformPattern,
   } = props;
   return (
     <div className="upper-play-board">
       <BulletBoard
         location={location}
         selectedElement={selectedElement}
-        handleSelectBullet={handleSelectBullet}
         availableSpace={availableSpace}
+        handleSelectBullet={handleSelectBullet}
         handlePerformAction={handlePerformAction}
         handlePerformPattern={handlePerformPattern}
       />
       <ActionBoard
         selectedElement={selectedElement}
-        handleSelectAction={handleSelectAction}
         energy={energy}
         popUpMessage={popUpMessage}
         tutorial={tutorial}
+        handleSelectAction={handleSelectAction}
       />
     </div>
   );

@@ -5,8 +5,8 @@ export default class BulletBoard extends React.Component {
     const {
       location,
       selectedElement,
-      handleSelectBullet,
       availableSpace,
+      handleSelectBullet,
       handlePerformAction,
       handlePerformPattern,
     } = this.props;

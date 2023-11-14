@@ -1,10 +1,11 @@
 import { Button } from "primereact/button";
 export default function EndGameButton(props) {
+  const { handleEndRound, bulletPool } = props;
   return (
     <Button
       className="place-bullet-button"
-      onClick={props.handleEndRound}
-      disabled={props.bulletPool.length}
+      onClick={handleEndRound}
+      disabled={bulletPool.length}
       label="End This Round"
     />
   );
