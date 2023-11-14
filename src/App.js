@@ -359,6 +359,7 @@ class App extends React.Component {
   };
 
   render() {
+    const hpBarID = document.getElementById("hp-barID");
     let inputCard = this.state.secondPlayer
       ? this.state.patternCardSecond
       : this.state.patternCard;
@@ -373,6 +374,7 @@ class App extends React.Component {
       <div className="App">
         <div className="game-board">
           <ConfirmPopup
+            target={hpBarID}
             className="popup"
             visible={this.state.popUpMessage.length}
             message={`You have been hit by a ${this.state.popUpMessage} bullet.`}
@@ -435,6 +437,7 @@ class App extends React.Component {
                 ? "hp-bar1"
                 : "hp-bar0"
             }
+            id="hp-barID"
           >
             {inputHp}
           </div>

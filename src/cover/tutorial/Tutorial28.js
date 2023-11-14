@@ -5,9 +5,12 @@ export default function Tutorial28(props) {
     <div className="main-menu">
       <h1>Pattern Card</h1>
       <h5>
-        When your bullet has a pattern that matches the requirement, you can
-        clear the bullet by clicking on the mouse logo in the place where the
-        clear logo is located.
+        When a your bullet matches the pattern requirement, you can select the
+        pattern by clicking on it.
+      </h5>
+      <h5>
+        Then, click on the bullet board in the same position as indicated by the
+        mouse logo on the pattern card.
       </h5>
       <div className="clear-logo">
         <h5>Clear Logo:</h5>

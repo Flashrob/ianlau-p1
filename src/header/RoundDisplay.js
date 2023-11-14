@@ -6,8 +6,8 @@ export default function RoundDisplay(props) {
       className="round-display"
       style={
         props.secondPlayer
-          ? { border: "5px solid Green" }
-          : { border: "5px solid blue" }
+          ? { border: "3px solid #68a1be" }
+          : { border: "3px solid #ab47bc" }
       }
     >
       <h5>Round {props.currRound}</h5>
