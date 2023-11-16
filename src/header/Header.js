@@ -21,7 +21,7 @@ export default function Header(props) {
         <div className="timer">
           Timer
           <br />
-          3:00
+          1:30
         </div>
       ) : (
         <Timer
