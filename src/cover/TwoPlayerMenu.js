@@ -10,7 +10,9 @@ export default class TwoPlayerMenu extends React.Component {
 
   handleChange = (e) => {
     let { name, value } = e.target;
-    this.setState({ [name]: value });
+    if (value.length < 15) {
+      this.setState({ [name]: value });
+    }
   };
 
   handleSubmit = (e) => {
@@ -49,7 +51,7 @@ export default class TwoPlayerMenu extends React.Component {
           </div>
           <Button
             type="sumbit"
-            label="Player 1 go!"
+            label={`${this.state.name1}, Let's go!`}
             disabled={this.state.name1 === "" || this.state.name2 === ""}
             className="main-menu-button"
           />
