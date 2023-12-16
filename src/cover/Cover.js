@@ -34,6 +34,9 @@ export default class Cover extends React.Component {
       handleTutorial,
     } = this.props;
 
+    // this here calls for a switch statement in my opinion. As it is, it is terrible to read :)!
+    // it would also help to give the different statuses some kind of naming, as otherwise it is very hard to tell what is going on here
+
     return tutorial > 0 ? (
       <TutorialList
         tutorial={tutorial}

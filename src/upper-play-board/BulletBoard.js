@@ -10,7 +10,7 @@ export default class BulletBoard extends React.Component {
       handlePerformAction,
       handlePerformPattern,
     } = this.props;
-    let column = [
+    const column = [
       <div className={`${color}-column-bullet`} key={color}>
         ▼
       </div>,
@@ -19,11 +19,8 @@ export default class BulletBoard extends React.Component {
       place.includes(color)
     );
     for (const place of colorFilter) {
-      let available = availableSpace.includes(place);
-      let bullet = "";
-      if (location[place] !== "") {
-        bullet = location[place].name;
-      }
+      const available = availableSpace.includes(place);
+      const bullet = location[place] ? location[place].name : "";
       column.push(
         <div
           className={available ? "available-space" : "bullet"}
@@ -32,6 +29,7 @@ export default class BulletBoard extends React.Component {
             backgroundColor: location[place].color,
           }}
           onClick={
+            // my eyes, they hurt :D What is going on here? hahaha
             available && selectedElement.slice(0, -1) === "pattern"
               ? () => handlePerformPattern(place)
               : available && selectedElement.slice(0, -1) === "Action"

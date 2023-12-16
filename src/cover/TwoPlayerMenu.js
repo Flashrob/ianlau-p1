@@ -10,6 +10,7 @@ export default class TwoPlayerMenu extends React.Component {
 
   handleChange = (e) => {
     let { name, value } = e.target;
+    // what does the 15 mean?
     if (value.length < 15) {
       this.setState({ [name]: value });
     }

@@ -1,3 +1,4 @@
+// if we could give the patterns names instead of numbers, we could make things way clearer here. As it stands, these functions don't tell me anything about what is going on. Since there is no library on the patterns either, I am very lost.
 export function checkPattern0(locationInfo) {
   const availableSpace = [];
   const color = ["red", "blue", "green", "yellow", "pink"];

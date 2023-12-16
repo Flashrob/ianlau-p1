@@ -1,7 +1,6 @@
 export default function RoundDisplay(props) {
   const { currRound, playerName, secondPlayer } = props;
-  let currPlayer = 0;
-  secondPlayer && (currPlayer = 1);
+  const currPlayer = secondPlayer ? 1 : 0;
   return (
     <div
       className="round-display"

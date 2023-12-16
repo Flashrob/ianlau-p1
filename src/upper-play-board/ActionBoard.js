@@ -9,11 +9,13 @@ export default class ActionBoard extends React.Component {
       ((action === "Action2" || action === "Action3" || action === "Action4") &&
         energy < 2);
     if (action === selectedElement || notEnoughEnergy) {
-      action = "";
+      action = ""; // I think you are trying to determine here if the user can perform an action or not?
+      // Why not have a variable called canPerformAction as a boolean instead of an empty string? That seems more intuitive to me
     }
     handleSelectAction(action);
   };
 
+  // what is det? Would be better to improve naming here
   detButtonDisable = (action) => {
     const { selectedElement, popUpMessage, tutorial } = this.props;
     return !(

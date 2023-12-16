@@ -1,6 +1,7 @@
 //Must use locationInfo[]===""
 //Because must check that value is "", cannot accept !locationInfo[].length(which is undefined)
 
+// similar comments as with patterns, numbers don't tell me much. The logic is complex, and I would need explanations to get what is happening
 export function checkAction1(locationInfo, selectBullet, energy) {
   const color = ["red", "blue", "green", "yellow", "pink"];
   const availableSpace = [];

@@ -4,10 +4,7 @@ import { Button } from "primereact/button";
 export default class PatternDisplay extends React.Component {
   handleClick = (e) => {
     const { handleSelectPattern, selectedElement } = this.props;
-    let pattern = e.currentTarget.value;
-    if (pattern === selectedElement) {
-      pattern = "";
-    }
+    const pattern = e.currentTarget.value === selectedElement ? "" : e.currentTarget.value;
     handleSelectPattern(pattern);
   };
   render() {
@@ -20,6 +17,10 @@ export default class PatternDisplay extends React.Component {
         value={card}
         onClick={this.handleClick}
         disabled={
+          // very hard to read. Ideally pack these different statements into variables and use them here:
+          // also, with too much reversed logic, it gets harder to read. disabled={true} turns here into:
+          // if not, card selected or length 0 and no popup message and tutorial false or tutorial is 29 and card pattern 3
+          // is the result of that statement true or false? at which step? this is very hard to trace back :D
           !(
             (selectedElement === card || !selectedElement.length) &&
             !popUpMessage &&

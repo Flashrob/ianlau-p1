@@ -24,6 +24,7 @@ export const DEFAULTGAMESTATE = {
   twoPlayer: false,
 };
 
+// this variable name could be a bit more descriptive. Not exactly sure what that is for aside from Tutorial
 export const TUTORIALPOOLANDBAG = {
   tutorial: 1,
   patternCard: ["pattern6", "pattern3", "pattern9", "pattern8"],

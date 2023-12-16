@@ -15,6 +15,7 @@ export default class PlaceBulletButton extends React.Component {
       !(
         (selectedElement === "EndRound" || !selectedElement.length) &&
         !popUpMessage &&
+        // similar here as with pattern and actions, we need some kind of description for these numbers, otherwise it gets quite tricky to read and understand
         (tutorial === 0 ||
           tutorial === 7 ||
           tutorial === 9 ||

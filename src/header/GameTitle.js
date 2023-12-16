@@ -5,3 +5,4 @@ export default function GameTitle() {
     </div>
   );
 }
+// I think this wouldn't necessarily need a component as it is just a three liner

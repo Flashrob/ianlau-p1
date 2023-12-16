@@ -12,6 +12,8 @@ import {
 } from "./checkPattern";
 
 export default function checkPatternList(pattern, locationInfo) {
+  // while it seems inefficient, I think it is okay, as each pattern is quite unique and requires its own function to resolve
+  // get rid of the {} curly braces for better readability or use a switch statement, small improvement only.
   if (pattern === "pattern0") {
     return checkPattern0(locationInfo);
   }

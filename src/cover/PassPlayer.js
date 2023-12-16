@@ -11,15 +11,18 @@ export default function PassPlayer(props) {
   } = props;
   const nextPlayer = !secondPlayer;
 
+  // these numbers make no sense when reading it.
+  // Why not just get the playerNames here directly, then it would be easier to understand. 
   let current = 0;
   let nonCurrent = 1;
-  if (secondPlayer === true) {
+  if (secondPlayer) { // since this is seemingly used to determine whose turn it is, why not name it as such? "isSecondPlayerTurn"
+    // Generally I think it might be wise to have a single variable telling which player's turn it is, and then select as such.
     current = 1;
     nonCurrent = 0;
   }
-  let erasedRecord = secondPlayer ? erasedBulletSecond : erasedBulletNextRound;
+  const erasedRecord = secondPlayer ? erasedBulletSecond : erasedBulletNextRound;
 
-  let bulletAmount =
+  const bulletAmount =
     currRound === 1
       ? 10
       : nextPlayer

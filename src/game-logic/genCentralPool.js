@@ -2,6 +2,8 @@ export default function genCentralPool() {
   const color = ["red", "blue", "green", "yellow", "pink"];
   const bag = [];
 
+  // this here is commented and somewhat makes sense bc of it.
+
   //Loop for the color
   for (let c of color) {
     //Loop for the number on the bullet
@@ -26,5 +28,5 @@ export default function genCentralPool() {
     bag[i] = bag[randomIndex];
     bag[randomIndex] = temp;
   }
-  return [...bag];
+  return bag; //same thing
 }

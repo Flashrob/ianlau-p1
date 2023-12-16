@@ -13,7 +13,9 @@ You may also see any lint errors in the console.
 # Package
 
 PrimeReact
-
+<!-- Since primereact is already a dependency, I think this here is unnecessary.
+It would be better to give a general instruction on how to install the dependencies
+ -->
 ### `npm install primereact`
 
 Install the package of primereact.
